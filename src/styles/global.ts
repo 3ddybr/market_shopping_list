@@ -15,7 +15,7 @@ html{
     font-size: 62.5%;
 }
 body{
-  background: ${({ theme }) => theme.gray_700};
+  background: ${({ theme }) => theme.gray_600};
   color: ${({ theme }) => theme.white};
   -webkit-font-smoothing: antialiased;
   line-height: 140%;

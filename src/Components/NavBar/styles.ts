@@ -5,6 +5,10 @@ export const NavBarContainer = styled.div`
   align-items: center;
   justify-content: center;
 
+  font-size: 1.4rem;
+
+  background: ${({ theme }) => theme.gray_700};
+
   padding: 1rem 2rem;
   /* border: 1px solid blue; */
 `;
@@ -24,7 +28,7 @@ export const NavBarContent = styled.div`
     gap: 2rem;
 
     li {
-      font-size: 1.2rem;
+      /* font-size: 1.2rem; */
       cursor: pointer;
     }
   }

@@ -6,6 +6,8 @@ export const BannerContainer = styled.div`
   justify-content: center;
 
   width: 100%;
+
+  background: ${({ theme }) => theme.gray_700};
 `;
 
 export const BannerContent = styled.div`
