@@ -17,14 +17,14 @@ export default function ItemProduct({
       <p>{nameProduct} </p>
       <input
         type="text"
-        value={lastValue.toLocaleString("pt-BR", {
+        defaultValue={lastValue.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
         })}
       />
       <input
         type="text"
-        value={currentValue.toLocaleString("pt-BR", {
+        defaultValue={currentValue.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
         })}
