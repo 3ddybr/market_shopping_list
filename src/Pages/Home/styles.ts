@@ -82,6 +82,7 @@ export const HomeContent = styled.div`
       justify-content: space-between;
 
       width: 100%;
+      padding: 1.2rem 0;
 
       p {
         color: ${({ theme }) => theme.blue};
@@ -103,13 +104,5 @@ export const HomeContent = styled.div`
         padding: 0.2rem 0.8rem;
       }
     }
-  }
-
-  section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 100vw;
   }
 `;
