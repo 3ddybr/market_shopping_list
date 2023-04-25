@@ -1,9 +1,9 @@
 {
-  "lista": [
+  "list": [
     {
       "id": 1,
-      "create_at": "1682311776822",
-      "produtos": [
+      "create_at": 1682311776822,
+      "products": [
         {
           "id": 1,
           "nameProduct": "Feijão 1k",
@@ -29,7 +29,7 @@
     },
     {
       "id": 2,
-      "create_at": "1682388778999",
+      "create_at": 1682388778999,
       "produtos": [
         {
           "id": 1,

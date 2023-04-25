@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { NavBarContainer, NavBarContent } from "./styles";
 
 export default function NavBar() {
@@ -5,9 +6,10 @@ export default function NavBar() {
     <NavBarContainer>
       <NavBarContent>
         <ul>
-          <li>Home</li>
+          <Link to="/">
+            <li>Histórico</li>
+          </Link>
           <li>Produtos</li>
-          <li>Histórico</li>
         </ul>
         <button>Nova Lista</button>
       </NavBarContent>

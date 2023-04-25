@@ -9,7 +9,8 @@ import {
 } from "react-router-dom";
 import App from "./App";
 
-import Home from "./Pages/Home";
+import { Historic } from "./Pages/Historico";
+import List from "./Pages/List";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <Historic />,
+      },
+      {
+        path: "/:id",
+        element: <List />,
       },
       // {
       //   path: '/movie/:id',
