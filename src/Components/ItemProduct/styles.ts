@@ -21,7 +21,7 @@ export const ContainerItemProduct = styled.section(
 
     border-bottom: 1px solid ${({ theme }) => theme.blue};
     p + p {
-      width: 30%;
+      width: 25%;
       text-decoration: ${done ? "line-through" : "initial"};
     }
 

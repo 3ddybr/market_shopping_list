@@ -1,7 +1,6 @@
 import { FormEvent, useState } from "react";
 import { HomeContainer, HomeContent } from "./styles";
 
-import { RiDeleteBin6Line } from "react-icons/ri";
 import { ItemProductTypes } from "../../@types/itemProduct";
 import ItemProduct from "../../Components/ItemProduct";
 
@@ -45,6 +44,20 @@ export default function Home() {
     setInputText("");
   };
 
+  const handleUpdateValue = (id: number, currentValue: number) => {
+    const newArray = itemList.filter((item) => item.id === id);
+    newArray[0].currentValue = currentValue;
+    // const array = [...itemList, newArray];
+    // setItemList(array);
+
+    // console.log(newArray);
+  };
+
+  const handleDelete = (id: number) => {
+    const newArray = itemList.filter((item) => item.id !== id);
+    setItemList(newArray);
+  };
+
   console.log(itemList);
   return (
     <HomeContainer>
@@ -77,6 +90,8 @@ export default function Home() {
                 lastValue={item.lastValue}
                 currentValue={item.currentValue}
                 done={item.done}
+                onUpdate={() => (item.id, item.currentValue)}
+                onDelete={() => handleDelete(item.id)}
               />
             </>
           ))}
