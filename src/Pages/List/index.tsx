@@ -13,20 +13,33 @@ export default function List() {
   const [list, setList] = useState<marketListTypes[]>([]);
   const [product, setProduct] = useState<ItemProductTypes[]>([]);
   const [inputText, setInputText] = useState("");
+  // const [newList, setNewList] = useState([]);
 
   const getList = async () => {
     const res = await api.get(`list/${id}`);
+    const data: marketListTypes = res.data;
 
-    console.log(res.data);
+    console.log("console data", data);
     setList(res.data);
-    setProduct(res.data.products);
+    setProduct(data.products);
   };
 
   useEffect(() => {
     getList();
   }, []);
 
-  const handleAddProduct = (e: FormEvent) => {
+  // const handleAddProduct = async (e: FormEvent) => {
+  //   e.preventDefault()
+
+  //   let newList = [...list]
+  //   newList.push({
+  //     products: [
+  //       id: product.length + 1
+  //     ]
+  //   });
+  // }
+
+  const handleAddProduct = async (e: FormEvent) => {
     e.preventDefault();
     let newItemList = [...product];
     newItemList.push({
@@ -35,9 +48,26 @@ export default function List() {
       currentValue: 0,
       done: false,
     });
+
+    // let newList = [...list]
+    // newList.push({
+    //   id: list.
+    // })
+    try {
+      await api.patch(`/list/${id}`, {
+        id: id,
+        products: newItemList,
+      });
+    } catch (e) {
+      console.log(e);
+    }
     setProduct(newItemList);
     setInputText("");
   };
+
+  // useEffect(() => {
+
+  // },[])
 
   const handleDelete = (id: number) => {
     const newArray = list.filter((item) => item.id !== id);
