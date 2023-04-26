@@ -13,31 +13,21 @@ export default function List() {
   const [list, setList] = useState<marketListTypes[]>([]);
   const [product, setProduct] = useState<ItemProductTypes[]>([]);
   const [inputText, setInputText] = useState("");
-  // const [newList, setNewList] = useState([]);
+  const [create_at, setCreateAt] = useState(Number);
 
   const getList = async () => {
     const res = await api.get(`list/${id}`);
     const data: marketListTypes = res.data;
 
-    console.log("console data", data);
+    // console.log("console data", data);
     setList(res.data);
     setProduct(data.products);
+    setCreateAt(data.create_at);
   };
 
   useEffect(() => {
     getList();
   }, []);
-
-  // const handleAddProduct = async (e: FormEvent) => {
-  //   e.preventDefault()
-
-  //   let newList = [...list]
-  //   newList.push({
-  //     products: [
-  //       id: product.length + 1
-  //     ]
-  //   });
-  // }
 
   const handleAddProduct = async (e: FormEvent) => {
     e.preventDefault();
@@ -48,11 +38,9 @@ export default function List() {
       currentValue: 0,
       done: false,
     });
+    setProduct(newItemList);
+    setInputText("");
 
-    // let newList = [...list]
-    // newList.push({
-    //   id: list.
-    // })
     try {
       await api.patch(`/list/${id}`, {
         id: id,
@@ -61,20 +49,29 @@ export default function List() {
     } catch (e) {
       console.log(e);
     }
-    setProduct(newItemList);
-    setInputText("");
   };
 
-  // useEffect(() => {
+  const handleDelete = async (idProduct: number) => {
+    // let newList = list;
+    // // let create_atList = newList.map((i) => i.create_at);
 
-  // },[])
-
-  const handleDelete = (id: number) => {
-    const newArray = list.filter((item) => item.id !== id);
-    setList(newArray);
+    // newList?.map((list) =>
+    //   list.products.filter((item) => item.id !== idProduct)
+    // );
+    // console.log(newList);
+    // ______________________
+    try {
+      await api.put(`/list/${id}`, {
+        id: id,
+        create_at: create_at,
+        products: [...product.filter((item) => item.id !== idProduct)],
+      });
+    } catch (e) {
+      console.log(e);
+    }
+    getList();
   };
 
-  // console.log(list);
   return (
     <HomeContainer>
       <HomeContent>
@@ -82,7 +79,7 @@ export default function List() {
           <input
             type="text"
             placeholder="Insira novo item"
-            defaultValue={inputText}
+            // defaultValue={inputText}
             onChange={(event) => setInputText(event.target.value)}
           />
           <button type="submit">Adicionar</button>
@@ -90,10 +87,10 @@ export default function List() {
         <main>
           <header>
             <p>
-              Total de Itens: <span>5</span>
+              Total de Itens: <span>{product.length}</span>
             </p>
             <p>
-              Concluídos <span>1 / 5</span>
+              Concluídos <span>1 / {product.length}</span>
             </p>
           </header>
 

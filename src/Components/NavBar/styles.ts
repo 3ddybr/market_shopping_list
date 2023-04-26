@@ -34,3 +34,16 @@ export const NavBarContent = styled.div`
   }
   /* border: 1px solid green; */
 `;
+
+export const NavBarButton = styled.button`
+  width: 100%;
+  /* max-width: 9rem; */
+  height: 100%;
+  /* max-height: 5.4rem; */
+  padding: 0.5rem 1rem;
+  font-size: 1.4rem;
+  border-radius: 8px;
+
+  background: ${({ theme }) => theme.blue_dark};
+  color: ${({ theme }) => theme.white};
+`;
