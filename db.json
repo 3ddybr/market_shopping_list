@@ -67,13 +67,25 @@
         {
           "id": 1,
           "nameProduct": "Suco",
-          "currentValue": 0,
+          "currentValue": 5,
           "done": false
         },
         {
           "id": 2,
           "nameProduct": "Vassoura",
-          "currentValue": 0,
+          "currentValue": 12,
+          "done": false
+        },
+        {
+          "id": 3,
+          "nameProduct": "Carne",
+          "currentValue": 30,
+          "done": false
+        },
+        {
+          "id": 4,
+          "nameProduct": "tomate",
+          "currentValue": 6,
           "done": false
         }
       ]

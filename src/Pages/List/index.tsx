@@ -25,6 +25,14 @@ export default function List() {
     setCreateAt(data.create_at);
   };
 
+  const formmat = (valor: number) => {
+    new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+    valor;
+  };
+
   useEffect(() => {
     getList();
   }, []);
@@ -35,12 +43,9 @@ export default function List() {
     newItemList.push({
       id: newItemList.length + 1,
       nameProduct: inputText,
-      currentValue: 0,
+      currentValue: 1,
       done: false,
     });
-    setProduct(newItemList);
-    setInputText("");
-
     try {
       await api.patch(`/list/${id}`, {
         id: id,
@@ -49,17 +54,12 @@ export default function List() {
     } catch (e) {
       console.log(e);
     }
+    getList();
+    setProduct(newItemList);
+    setInputText("");
   };
 
   const handleDelete = async (idProduct: number) => {
-    // let newList = list;
-    // // let create_atList = newList.map((i) => i.create_at);
-
-    // newList?.map((list) =>
-    //   list.products.filter((item) => item.id !== idProduct)
-    // );
-    // console.log(newList);
-    // ______________________
     try {
       await api.put(`/list/${id}`, {
         id: id,
@@ -90,7 +90,10 @@ export default function List() {
               Total de Itens: <span>{product.length}</span>
             </p>
             <p>
-              Concluídos <span>1 / {product.length}</span>
+              Concluídos{" "}
+              <span>
+                {1} / {product.length}
+              </span>
             </p>
           </header>
 

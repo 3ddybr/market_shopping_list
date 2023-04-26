@@ -15,6 +15,23 @@ interface itemProductProps {
   onDelete: () => void;
 }
 
+// const formmat = new Intl.NumberFormat("pt-BR", {
+//   style: "currency",
+//   currency: "BRL",
+// });
+
+// const currencyLocal = (valor: number) => {
+//   let newV = new Intl.NumberFormat("pt-BR", {
+//     style: "currency",
+//     currency: "BRL",
+//   });
+//   // let newValue = valor.toLocaleString("pt-BR", {
+//   //   style: "currency",
+//   //   currency: "BRL",
+//   // });
+//   return newV.format(valor);
+// };
+
 export default function ItemProduct({
   id,
   currentValue,
