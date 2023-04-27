@@ -25,13 +25,13 @@ export default function List() {
     setCreateAt(data.create_at);
   };
 
-  const formmat = (valor: number) => {
-    new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
-    valor;
-  };
+  // const formmat = (valor: number) => {
+  //   new Intl.NumberFormat("pt-BR", {
+  //     style: "currency",
+  //     currency: "BRL",
+  //   });
+  //   valor;
+  // };
 
   useEffect(() => {
     getList();
@@ -72,6 +72,47 @@ export default function List() {
     getList();
   };
 
+  const handleUpdateValue = async (idProd: number, valueProd: number) => {
+    try {
+      await api.patch(`/list/${id}`, {
+        id: id,
+        products: [
+          ...product.map((item) =>
+            item.id === idProd
+              ? {
+                  ...item,
+                  currentValue: valueProd,
+                }
+              : item
+          ),
+        ],
+      });
+    } catch (e) {
+      console.log(e);
+    }
+    getList();
+  };
+
+  const handleUpdateDone = async (idProd: number, doneProd: boolean) => {
+    try {
+      await api.patch(`/list/${id}`, {
+        id: id,
+        products: [
+          ...product.map((item) =>
+            item.id === idProd
+              ? {
+                  ...item,
+                  done: doneProd,
+                }
+              : item
+          ),
+        ],
+      });
+    } catch (e) {
+      console.log(e);
+    }
+    getList();
+  };
   return (
     <HomeContainer>
       <HomeContent>
@@ -106,7 +147,12 @@ export default function List() {
                 lastValue={1}
                 currentValue={productItem.currentValue}
                 done={productItem.done}
-                onUpdate={() => (productItem.id, productItem.currentValue)}
+                onUpdateDone={(idProd, doneProd) =>
+                  handleUpdateDone(idProd, doneProd)
+                }
+                onUpdateValue={(idProd, valueProd) =>
+                  handleUpdateValue(idProd, valueProd)
+                }
                 onDelete={() => handleDelete(productItem.id)}
               />
             </>

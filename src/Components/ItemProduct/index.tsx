@@ -11,7 +11,8 @@ interface itemProductProps {
   lastValue: number;
   currentValue: number;
   done: boolean;
-  onUpdate: (id: number, currentValue: number) => void;
+  onUpdateValue: (idProd: number, valueProd: number) => void;
+  onUpdateDone: (idProd: number, doneProd: boolean) => void;
   onDelete: () => void;
 }
 
@@ -39,7 +40,8 @@ export default function ItemProduct({
   lastValue,
   nameProduct,
   onDelete,
-  onUpdate,
+  onUpdateValue,
+  onUpdateDone,
 }: itemProductProps) {
   const [isCheck, setIsCheck] = useState(done);
   const [isLastValue, setIsLastValue] = useState(lastValue);
@@ -49,6 +51,11 @@ export default function ItemProduct({
   //   setIsCurrentValue(isCurrentValue);
   //   console.log("novo preco ", isCurrentValue);
   // }, [isCurrentValue]);
+
+  const handleUpdate = (id: number, value: number) => {
+    value = isCurrentValue;
+    id;
+  };
 
   return (
     <ContainerItemProduct done={isCheck}>
@@ -70,12 +77,13 @@ export default function ItemProduct({
         type="checkbox"
         checked={isCheck}
         onChange={(e) => setIsCheck(e.target.checked)}
+        onClick={() => onUpdateDone(id, isCheck)}
       />
       <FaCheck
         size={24}
         color="green"
         cursor="pointer"
-        onClick={() => onUpdate(id, isCurrentValue)}
+        onClick={() => onUpdateValue(id, isCurrentValue)}
       />
 
       <RiDeleteBin6Line

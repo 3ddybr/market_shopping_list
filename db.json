@@ -73,14 +73,14 @@
         {
           "id": 2,
           "nameProduct": "Vassoura",
-          "currentValue": 12,
+          "currentValue": 120,
           "done": false
         },
         {
           "id": 3,
           "nameProduct": "Carne",
           "currentValue": 30,
-          "done": false
+          "done": true
         },
         {
           "id": 4,
