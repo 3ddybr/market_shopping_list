@@ -1,11 +1,12 @@
 import { FormEvent, useEffect, useState } from "react";
-import { HomeContainer, HomeContent } from "./styles";
 
 import ItemProduct from "../../Components/ItemProduct";
 import { api } from "../../services/api/api";
 import { useParams } from "react-router-dom";
 import { marketListTypes } from "../../@types/marketList";
 import { ItemProductTypes } from "../../@types/itemProduct";
+
+import { HomeContainer, HomeContent } from "./styles";
 
 export default function List() {
   const { id } = useParams();
@@ -18,45 +19,55 @@ export default function List() {
   const getList = async () => {
     const res = await api.get(`list/${id}`);
     const data: marketListTypes = res.data;
-
-    // console.log("console data", data);
     setList(res.data);
     setProduct(data.products);
     setCreateAt(data.create_at);
   };
 
-  // const formmat = (valor: number) => {
-  //   new Intl.NumberFormat("pt-BR", {
-  //     style: "currency",
-  //     currency: "BRL",
-  //   });
-  //   valor;
-  // };
+  const format2 = (valor: number) => {
+    valor.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+  };
+
+  const formmat = (valor: number) => {
+    new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+    valor;
+  };
 
   useEffect(() => {
     getList();
+    setInputText("");
   }, []);
 
   const handleAddProduct = async (e: FormEvent) => {
     e.preventDefault();
     let newItemList = [...product];
-    newItemList.push({
-      id: newItemList.length + 1,
-      nameProduct: inputText,
-      currentValue: 1,
-      done: false,
-    });
-    try {
-      await api.patch(`/list/${id}`, {
-        id: id,
-        products: newItemList,
+
+    if (inputText) {
+      newItemList.push({
+        id: newItemList.length + 1,
+        nameProduct: inputText,
+        currentValue: 1,
+        done: false,
       });
-    } catch (e) {
-      console.log(e);
-    }
-    getList();
-    setProduct(newItemList);
-    setInputText("");
+
+      try {
+        await api.patch(`/list/${id}`, {
+          id: id,
+          products: newItemList,
+        });
+      } catch (e) {
+        console.log(e);
+      }
+      setInputText("");
+      setProduct(newItemList);
+      getList();
+    } else alert("Por favor insira um produto!");
   };
 
   const handleDelete = async (idProduct: number) => {
@@ -113,6 +124,7 @@ export default function List() {
     }
     getList();
   };
+
   return (
     <HomeContainer>
       <HomeContent>
@@ -120,8 +132,9 @@ export default function List() {
           <input
             type="text"
             placeholder="Insira novo item"
-            // defaultValue={inputText}
-            onChange={(event) => setInputText(event.target.value)}
+            value={inputText}
+            defaultValue={""}
+            onChange={(event) => setInputText(event.target.value.toUpperCase())}
           />
           <button type="submit">Adicionar</button>
         </form>

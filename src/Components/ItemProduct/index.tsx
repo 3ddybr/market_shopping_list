@@ -1,9 +1,10 @@
-import { ItemProductTypes } from "../../@types/itemProduct";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ContainerItemProduct } from "./styles";
 
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaCheck } from "react-icons/fa";
+
+import * as CurrencyFormat from "react-currency-format";
 
 interface itemProductProps {
   id: number;
@@ -61,18 +62,42 @@ export default function ItemProduct({
     <ContainerItemProduct done={isCheck}>
       <p>{id} -</p>
       <p>{nameProduct} </p>
-      <input
+      {/* <input
         type="text"
         defaultValue={isLastValue}
         onChange={(e) => setIsLastValue(parseFloat(e.target.value))}
-      />
-      <input
+      /> */}
+      {/* <input
         type="number"
         // value={isCurrentValue}
         defaultValue={isCurrentValue}
         onChange={(e) => setIsCurrentValue(parseFloat(e.target.value))}
+      /> */}
+
+      <CurrencyFormat
+        thousandSeparator={"."}
+        thousandSpacing={"3"}
+        isNumericString={true}
+        fixedDecimalScale
+        decimalScale={2}
+        decimalSeparator=","
+        prefix="R$"
+        value={isLastValue}
+        onValueChange={(e) => setIsLastValue(e.floatValue)}
+        disabled={true}
       />
 
+      <CurrencyFormat
+        thousandSeparator={"."}
+        thousandSpacing={"3"}
+        isNumericString={true}
+        fixedDecimalScale
+        decimalScale={2}
+        decimalSeparator=","
+        prefix="R$"
+        value={isCurrentValue}
+        onValueChange={(e) => setIsCurrentValue(e.floatValue)}
+      />
       <input
         type="checkbox"
         checked={isCheck}
