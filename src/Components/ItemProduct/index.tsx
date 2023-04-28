@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ContainerItemProduct } from "./styles";
 
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaCheck } from "react-icons/fa";
 
 import * as CurrencyFormat from "react-currency-format";
-
 interface itemProductProps {
   id: number;
   nameProduct: string;
@@ -44,35 +43,14 @@ export default function ItemProduct({
   onUpdateValue,
   onUpdateDone,
 }: itemProductProps) {
-  const [isCheck, setIsCheck] = useState(done);
-  const [isLastValue, setIsLastValue] = useState(lastValue);
+  // const [isCheck, setIsCheck] = useState(done);
+  // const [isLastValue, setIsLastValue] = useState(lastValue);
   const [isCurrentValue, setIsCurrentValue] = useState(currentValue);
 
-  // useEffect(() => {
-  //   setIsCurrentValue(isCurrentValue);
-  //   console.log("novo preco ", isCurrentValue);
-  // }, [isCurrentValue]);
-
-  const handleUpdate = (id: number, value: number) => {
-    value = isCurrentValue;
-    id;
-  };
-
   return (
-    <ContainerItemProduct done={isCheck}>
+    <ContainerItemProduct done={done}>
       <p>{id} -</p>
       <p>{nameProduct} </p>
-      {/* <input
-        type="text"
-        defaultValue={isLastValue}
-        onChange={(e) => setIsLastValue(parseFloat(e.target.value))}
-      /> */}
-      {/* <input
-        type="number"
-        // value={isCurrentValue}
-        defaultValue={isCurrentValue}
-        onChange={(e) => setIsCurrentValue(parseFloat(e.target.value))}
-      /> */}
 
       <CurrencyFormat
         thousandSeparator={"."}
@@ -82,12 +60,13 @@ export default function ItemProduct({
         decimalScale={2}
         decimalSeparator=","
         prefix="R$"
-        value={isLastValue}
-        onValueChange={(e) => setIsLastValue(e.floatValue)}
+        value={lastValue}
+        // onValueChange={(e) => setIsLastValue(e.floatValue)}
         disabled={true}
       />
 
       <CurrencyFormat
+        defaultValue={currentValue}
         thousandSeparator={"."}
         thousandSpacing={"3"}
         isNumericString={true}
@@ -98,17 +77,20 @@ export default function ItemProduct({
         value={isCurrentValue}
         onValueChange={(e) => setIsCurrentValue(e.floatValue)}
       />
+
       <input
         type="checkbox"
-        checked={isCheck}
-        onChange={(e) => setIsCheck(e.target.checked)}
-        onClick={() => onUpdateDone(id, isCheck)}
+        checked={done}
+        onChange={(e) => onUpdateDone(id, e.target.checked)}
+        title="Marcar quando ja estiver no carrinho"
       />
+
       <FaCheck
         size={24}
         color="green"
         cursor="pointer"
         onClick={() => onUpdateValue(id, isCurrentValue)}
+        title="Atualizar o preço"
       />
 
       <RiDeleteBin6Line
@@ -116,6 +98,7 @@ export default function ItemProduct({
         color="red"
         cursor="pointer"
         onClick={onDelete}
+        title="Remover"
       />
     </ContainerItemProduct>
   );

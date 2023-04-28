@@ -134,6 +134,7 @@ export default function List() {
             placeholder="Insira novo item"
             value={inputText}
             defaultValue={""}
+            alt="Adicionar um produto a lista"
             onChange={(event) => setInputText(event.target.value.toUpperCase())}
           />
           <button type="submit">Adicionar</button>
@@ -160,9 +161,10 @@ export default function List() {
                 lastValue={1}
                 currentValue={productItem.currentValue}
                 done={productItem.done}
-                onUpdateDone={(idProd, doneProd) =>
-                  handleUpdateDone(idProd, doneProd)
-                }
+                // onUpdateDone={(idProd, doneProd) =>
+                //   handleUpdateDone(idProd, doneProd)
+                // }
+                onUpdateDone={handleUpdateDone}
                 onUpdateValue={(idProd, valueProd) =>
                   handleUpdateValue(idProd, valueProd)
                 }
