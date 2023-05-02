@@ -4,6 +4,7 @@ import { marketListTypes } from "../../@types/marketList";
 
 import moment from "moment";
 import { Link } from "react-router-dom";
+import { HistoricContainer, HistoricContent } from "./styles";
 
 export const Historic = () => {
   const [list, setList] = useState<marketListTypes[]>([]);
@@ -29,16 +30,18 @@ export const Historic = () => {
   };
 
   return (
-    <div>
-      <h1>Histórico</h1>
-      {list?.map((list) => (
-        <>
-          <Link to={`/${list.id}`}>
-            <p key={list.id}>Cod. Lista {list.id}</p>
-            <span>Data da {convert(list.create_at)}</span>
-          </Link>
-        </>
-      ))}
-    </div>
+    <HistoricContainer>
+      <HistoricContent>
+        <h1>Histórico</h1>
+        {list?.map((list) => (
+          <div>
+            <Link to={`/${list.id}`}>
+              <p key={list.id}>Cod. Lista {list.id}</p>
+              <span>Data da {convert(list.create_at)}</span>
+            </Link>
+          </div>
+        ))}
+      </HistoricContent>
+    </HistoricContainer>
   );
 };

@@ -7,43 +7,32 @@
         {
           "id": 1,
           "nameProduct": "Feijão 1k",
-          "currentValue": 633.32,
+          "currentValue": 6.9,
           "done": true
         },
         {
           "id": 2,
           "nameProduct": "Arroz 5k",
-          "currentValue": 23212.9,
+          "currentValue": 18.9,
           "done": true
         },
         {
           "id": 3,
           "nameProduct": "Sabão em pó 5k",
-          "currentValue": 234234,
-          "done": false
+          "currentValue": 14,
+          "done": true
         },
         {
           "id": 4,
           "nameProduct": "Vassoura",
           "currentValue": 12,
           "done": true
-        },
-        {
-          "id": 5,
-          "nameProduct": "po de cafe",
-          "currentValue": 123.23,
-          "done": true
-        },
-        {
-          "id": 6,
-          "nameProduct": "SUCO",
-          "currentValue": 1,
-          "done": true
         }
       ]
     },
     {
       "id": 2,
+      "userId": "1",
       "create_at": 1682388778999,
       "products": [
         {
@@ -80,7 +69,8 @@
     },
     {
       "id": 3,
-      "create_at": 1685508778999,
+      "userId": "1",
+      "create_at": 1682608778999,
       "products": [
         {
           "id": 1,
@@ -110,6 +100,7 @@
     },
     {
       "id": 4,
+      "userId": "1",
       "create_at": 1682702239937,
       "products": [
         {

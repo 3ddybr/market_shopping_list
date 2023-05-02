@@ -6,38 +6,50 @@ import { useParams } from "react-router-dom";
 import { marketListTypes } from "../../@types/marketList";
 import { ItemProductTypes } from "../../@types/itemProduct";
 
+import moment from "moment";
+
 import { HomeContainer, HomeContent } from "./styles";
 
 export default function List() {
   const { id } = useParams();
 
-  const [list, setList] = useState<marketListTypes[]>([]);
+  const [list, setList] = useState<marketListTypes>();
   const [product, setProduct] = useState<ItemProductTypes[]>([]);
   const [inputText, setInputText] = useState("");
-  const [create_at, setCreateAt] = useState(Number);
+  // const [create_at, setCreateAt] = useState(Number);
 
   const getList = async () => {
     const res = await api.get(`list/${id}`);
     const data: marketListTypes = res.data;
-    setList(res.data);
+    setList(data);
     setProduct(data.products);
-    setCreateAt(data.create_at);
+    // setCreateAt(data.create_at);
   };
 
-  const format2 = (valor: number) => {
-    valor.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
-  };
+  // const getListSecondary = async () => {
+  //   const idAnterior = id - 1
+  //   const res = await api.get(`list/${id}`);
+  //   const data: marketListTypes = res.data;
+  //   // setList(data);
+  //   // setProduct(data.products);
+  //   // setCreateAt(data.create_at);
+  // };
 
-  const formmat = (valor: number) => {
-    new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
-    valor;
-  };
+  // const newData =
+  // const format2 = (valor: number) => {
+  //   valor.toLocaleString("pt-BR", {
+  //     style: "currency",
+  //     currency: "BRL",
+  //   });
+  // };
+
+  // const formmat = (valor: number) => {
+  //   new Intl.NumberFormat("pt-BR", {
+  //     style: "currency",
+  //     currency: "BRL",
+  //   });
+  //   valor;
+  // };
 
   useEffect(() => {
     getList();
@@ -74,7 +86,7 @@ export default function List() {
     try {
       await api.put(`/list/${id}`, {
         id: id,
-        create_at: create_at,
+        create_at: list?.create_at,
         products: [...product.filter((item) => item.id !== idProduct)],
       });
     } catch (e) {
@@ -125,6 +137,13 @@ export default function List() {
     getList();
   };
 
+  const convert = (date: number) => {
+    const dateFormat = moment(date).format("DD/MM/YYYY");
+    return dateFormat;
+  };
+
+  const dataList = list?.create_at as number;
+
   return (
     <HomeContainer>
       <HomeContent>
@@ -140,6 +159,9 @@ export default function List() {
           <button type="submit">Adicionar</button>
         </form>
         <main>
+          <h3>
+            Market List N {list?.id}, criada {convert(dataList)}
+          </h3>
           <header>
             <p>
               Total de Itens: <span>{product.length}</span>
