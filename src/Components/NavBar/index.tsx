@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { NavBarButton, NavBarContainer, NavBarContent } from "./styles";
 import { api } from "../../services/api/api";
 import { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export default function NavBar() {
   const [list, setList] = useState([]);
@@ -25,9 +26,10 @@ export default function NavBar() {
 
   const createList = async () => {
     try {
-      const idList = list.length + 1;
+      const idList = uuidv4();
       api.post(`/list`, {
         id: idList,
+        userId: 1,
         create_at: new Date().getTime(),
         products: [],
       });
@@ -45,7 +47,9 @@ export default function NavBar() {
           <Link to="/">
             <li>Histórico</li>
           </Link>
-          <li>Produtos</li>
+          <Link to="/products">
+            <li>Produtos</li>
+          </Link>
         </ul>
         <NavBarButton onClick={createList}>Nova Lista</NavBarButton>
       </NavBarContent>

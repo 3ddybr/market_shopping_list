@@ -2,30 +2,38 @@
   "list": [
     {
       "id": 1,
+      "userId": "1",
       "create_at": 1682311776822,
       "products": [
         {
           "id": 1,
           "nameProduct": "Feijão 1k",
-          "currentValue": 6,
-          "done": false
+          "currentValue": 6.9,
+          "done": true
         },
         {
           "id": 2,
           "nameProduct": "Arroz 5k",
-          "currentValue": 19,
-          "done": false
+          "currentValue": 18.9,
+          "done": true
         },
         {
           "id": 3,
           "nameProduct": "Sabão em pó 5k",
           "currentValue": 14,
+          "done": false
+        },
+        {
+          "id": 4,
+          "nameProduct": "Vassoura",
+          "currentValue": 12,
           "done": true
         }
       ]
     },
     {
       "id": 2,
+      "userId": "1",
       "create_at": 1682388778999,
       "products": [
         {
@@ -62,15 +70,79 @@
     },
     {
       "id": 3,
-      "create_at": 1685508778999,
+      "userId": "1",
+      "create_at": 1682608778999,
       "products": [
         {
           "id": 1,
           "nameProduct": "Suco",
-          "currentValue": 0,
+          "currentValue": 5,
+          "done": false
+        },
+        {
+          "id": 2,
+          "nameProduct": "Vassoura",
+          "currentValue": 120,
+          "done": false
+        },
+        {
+          "id": 3,
+          "nameProduct": "Carne",
+          "currentValue": 30,
+          "done": true
+        },
+        {
+          "id": 4,
+          "nameProduct": "tomate",
+          "currentValue": 6,
           "done": false
         }
       ]
+    },
+    {
+      "id": 4,
+      "userId": "1",
+      "create_at": 1682702239937,
+      "products": [
+        {
+          "id": 1,
+          "nameProduct": "VASSOURA",
+          "currentValue": 1,
+          "done": true
+        },
+        {
+          "id": 2,
+          "nameProduct": "SUCO",
+          "currentValue": 1,
+          "done": false
+        },
+        {
+          "id": 3,
+          "nameProduct": "CARNE MOÍDA",
+          "currentValue": 1,
+          "done": false
+        },
+        {
+          "id": 5,
+          "nameProduct": "VEJA",
+          "currentValue": 9,
+          "done": false
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "bf66e3c8-88d8-480c-b93d-49af28640e03",
+      "nameProduct": "FEIJAO 1K"
+    },
+    {
+      "id": "d47f5f6e-108c-4bb3-a418-b995e73b9edf",
+      "nameProduct": "VASSOURA"
+    },
+    {
+      "id": "a3b5c644-4f69-4647-b1f0-c0783004b53b",
+      "nameProduct": "CENOURA"
     }
   ]
 }

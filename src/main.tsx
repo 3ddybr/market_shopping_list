@@ -1,16 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 
 import { Historic } from "./Pages/Historico";
 import List from "./Pages/List";
+
+import { ListProvider } from "./contexts/ListContext";
+import { Products } from "./Pages/Products";
 
 const router = createBrowserRouter([
   {
@@ -26,24 +23,18 @@ const router = createBrowserRouter([
         path: "/:id",
         element: <List />,
       },
-      // {
-      //   path: '/movie/:id',
-      //   element: <Movie />,
-      // },
-      // {
-      //   path: '/search',
-      //   element: <Search />,
-      // },
-      // {
-      //   path: '/atualizados',
-      //   element: <Atualizados />,
-      // },
+      {
+        path: "/products",
+        element: <Products />,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ListProvider>
+      <RouterProvider router={router} />
+    </ListProvider>
   </React.StrictMode>
 );

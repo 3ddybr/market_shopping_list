@@ -2,6 +2,7 @@
   "list": [
     {
       "id": 1,
+      "userId": "1",
       "create_at": 1682311776822,
       "products": [
         {
@@ -20,7 +21,7 @@
           "id": 3,
           "nameProduct": "Sabão em pó 5k",
           "currentValue": 14,
-          "done": true
+          "done": false
         },
         {
           "id": 4,
@@ -128,6 +129,75 @@
           "done": false
         }
       ]
+    },
+    {
+      "id": "0eb302d8-6615-4cd6-867d-2e511d965727",
+      "userId": "1",
+      "create_at": 1683073705175,
+      "products": [
+        {
+          "id": 1,
+          "nameProduct": "VASSOURA",
+          "currentValue": 14,
+          "done": false
+        },
+        {
+          "id": 2,
+          "nameProduct": "FEIJAO 1K",
+          "currentValue": 6.9,
+          "done": false
+        },
+        {
+          "id": 3,
+          "nameProduct": "SUCO",
+          "currentValue": 5,
+          "done": false
+        },
+        {
+          "id": 4,
+          "nameProduct": "AMAC URCA",
+          "currentValue": 16,
+          "done": false
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "bf66e3c8-88d8-480c-b93d-49af28640e03",
+      "nameProduct": "FEIJAO 1K"
+    },
+    {
+      "id": "d47f5f6e-108c-4bb3-a418-b995e73b9edf",
+      "nameProduct": "VASSOURA"
+    },
+    {
+      "id": "a3b5c644-4f69-4647-b1f0-c0783004b53b",
+      "nameProduct": "CENOURA"
+    },
+    {
+      "id": "a633c4d7-dc30-4e7c-8f7c-588006713b5b",
+      "nameProduct": "ARROZ 5K"
+    },
+    {
+      "id": "b38144d6-685e-4c75-ba62-e811cfd4d347",
+      "nameProduct": "COPO AMERICANO"
+    },
+    {
+      "id": "56013ec6-7ccd-457d-bcdc-91af616d21d4",
+      "nameProduct": "SUCO FRESH"
+    },
+    {
+      "id": "03ff4fd1-ad6f-4c23-8bf6-c713885e93aa",
+      "nameProduct": "LEITE 1L"
+    },
+    {
+      "id": "1034510c-98c2-4beb-a8d8-14d5a2f5ed01",
+      "nameProduct": "PO DE CAFE"
+    },
+    {
+      "id": "83c884e9-9232-4c27-91a8-4147ca4ab354",
+      "nameProduct": "AMAC ROUPA URCA 5L"
     }
   ]
 }

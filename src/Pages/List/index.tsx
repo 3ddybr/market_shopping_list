@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 
 import ItemProduct from "../../Components/ItemProduct";
 import { api } from "../../services/api/api";
@@ -7,30 +7,33 @@ import { marketListTypes } from "../../@types/marketList";
 import { ItemProductTypes } from "../../@types/itemProduct";
 
 import moment from "moment";
+import { v4 as uuidv4 } from "uuid";
 
 import { HomeContainer, HomeContent } from "./styles";
+import { ListContext } from "../../contexts/ListContext";
 
 export default function List() {
   const { id } = useParams();
+  const { dataContext } = useContext(ListContext);
 
   const [list, setList] = useState<marketListTypes>();
+  const [listSecondary, setListSecondary] = useState<marketListTypes>();
   const [product, setProduct] = useState<ItemProductTypes[]>([]);
   const [inputText, setInputText] = useState("");
-  // const [create_at, setCreateAt] = useState(Number);
 
+  console.log(dataContext);
   const getList = async () => {
     const res = await api.get(`list/${id}`);
     const data: marketListTypes = res.data;
     setList(data);
     setProduct(data.products);
-    // setCreateAt(data.create_at);
   };
 
   // const getListSecondary = async () => {
-  //   const idAnterior = id - 1
-  //   const res = await api.get(`list/${id}`);
+  //   const idAnterior = id;
+  //   const res = await api.get(`list/${idAnterior}`);
   //   const data: marketListTypes = res.data;
-  //   // setList(data);
+  //   // setListSecondary(data);
   //   // setProduct(data.products);
   //   // setCreateAt(data.create_at);
   // };

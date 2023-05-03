@@ -1,28 +1,31 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { api } from "../../services/api/api";
 import { marketListTypes } from "../../@types/marketList";
 
 import moment from "moment";
 import { Link } from "react-router-dom";
 import { HistoricContainer, HistoricContent } from "./styles";
+import { ListContext } from "../../contexts/ListContext";
 
 export const Historic = () => {
-  const [list, setList] = useState<marketListTypes[]>([]);
+  // const [list, setList] = useState<marketListTypes[]>([]);
 
-  const getList = async () => {
-    try {
-      const res = await api.get(`list`);
-      const data = res.data;
+  const { dataContext } = useContext(ListContext);
 
-      setList(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const getList = async () => {
+  //   try {
+  //     const res = await api.get(`list`);
+  //     const data = res.data;
 
-  useEffect(() => {
-    getList();
-  }, []);
+  //     setList(data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   getList();
+  // }, []);
 
   const convert = (date: number) => {
     const dateFormat = moment(date).format("DD/MM/YYYY");
@@ -33,7 +36,7 @@ export const Historic = () => {
     <HistoricContainer>
       <HistoricContent>
         <h1>Histórico</h1>
-        {list?.map((list) => (
+        {dataContext.map((list) => (
           <div>
             <Link to={`/${list.id}`}>
               <p key={list.id}>Cod. Lista {list.id}</p>

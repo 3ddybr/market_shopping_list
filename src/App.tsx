@@ -6,9 +6,12 @@ import { defaultTheme } from "./styles/themes/default";
 import { Outlet } from "react-router-dom";
 import Navbar from "./Components/NavBar";
 import Banner from "./Components/Banner";
+
+import { ListContext } from "./contexts/ListContext";
 // import { Footer } from "./Components/Footer";
 function App() {
   return (
+    // <ListContext.Provider value={{}}>
     <ThemeProvider theme={defaultTheme}>
       <Navbar />
       <Banner />
@@ -16,6 +19,7 @@ function App() {
       <Outlet />
       {/* <Footer /> */}
     </ThemeProvider>
+    // </ListContext.Provider>
   );
 }
 
