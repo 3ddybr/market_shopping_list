@@ -1,6 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { api } from "../../services/api/api";
-import { marketListTypes } from "../../@types/marketList";
 
 import moment from "moment";
 import { Link } from "react-router-dom";
@@ -10,7 +8,7 @@ import { ListContext } from "../../contexts/ListContext";
 export const Historic = () => {
   // const [list, setList] = useState<marketListTypes[]>([]);
 
-  const { dataContext } = useContext(ListContext);
+  const { dataListContext } = useContext(ListContext);
 
   // const getList = async () => {
   //   try {
@@ -36,10 +34,10 @@ export const Historic = () => {
     <HistoricContainer>
       <HistoricContent>
         <h1>Histórico</h1>
-        {dataContext.map((list) => (
+        {dataListContext.map((list, index) => (
           <div>
             <Link to={`/${list.id}`}>
-              <p key={list.id}>Cod. Lista {list.id}</p>
+              <p key={list.id}>Cod. Lista {index + 1}</p>
               <span>Data da {convert(list.create_at)}</span>
             </Link>
           </div>

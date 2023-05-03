@@ -198,6 +198,46 @@
     {
       "id": "83c884e9-9232-4c27-91a8-4147ca4ab354",
       "nameProduct": "AMAC ROUPA URCA 5L"
+    },
+    {
+      "id": "21a745f6-3e66-4b93-8ba2-8854d1fc62e9",
+      "nameProduct": "BATATA PALHA ELMA CHIPS"
+    },
+    {
+      "id": "f66e8339-6229-4109-b2bd-bb1cb61682d7",
+      "nameProduct": "GELATINA"
+    },
+    {
+      "id": "ba31234e-7c7a-4cce-aa10-b9ea09d23fd5",
+      "nameProduct": "FARINHA DE MANDIOCA"
+    },
+    {
+      "id": "ae05a2e7-70be-45aa-83ca-fafb3892f155",
+      "nameProduct": "MILHO DE PIPOCA "
+    },
+    {
+      "id": "afe13705-58ca-4386-8cfb-ba0d3e7e607b",
+      "nameProduct": "FILTRO DE CAFE"
+    },
+    {
+      "id": "69f8d051-cf28-4e8d-b587-4dd1a5e5ad01",
+      "nameProduct": "OLEO DE SOJA"
+    },
+    {
+      "id": "ab5e9dc4-1aac-4028-85fe-539c5c07701d",
+      "nameProduct": "TOMATE"
+    },
+    {
+      "id": "5016a172-d72b-4104-93ec-fd47c72a2f88",
+      "nameProduct": "ARROZ 2K"
+    },
+    {
+      "id": "30d86fae-48cb-4764-ac39-1df8d2cceb9c",
+      "nameProduct": "MASSA DE PASTEL"
+    },
+    {
+      "id": "60f16957-9b9d-4248-86d1-6b90bbc8c6f6",
+      "nameProduct": "PAO DE FORMA"
     }
   ]
 }

@@ -2,12 +2,14 @@ import { createContext, useState, ReactNode, useEffect } from "react";
 import { api } from "../services/api/api";
 import { marketListTypes } from "../@types/marketList";
 
-// type ListContextData = {
-//   listData: marketListTypes[];
-// };
+type ProductType = {
+  id: string;
+  nameProduct: string;
+};
 
 type ContextDefaultValues = {
-  dataContext: marketListTypes[];
+  dataListContext: marketListTypes[];
+  dataProductContext: ProductType[];
 };
 
 interface ListProviderProps {
@@ -22,6 +24,7 @@ export function ListProvider({ children }: ListProviderProps) {
   const [listContextValue, setListContextValue] = useState<marketListTypes[]>(
     []
   );
+  const [productContext, setProductContext] = useState<ProductType[]>([]);
 
   const getList = async () => {
     try {
@@ -34,12 +37,29 @@ export function ListProvider({ children }: ListProviderProps) {
     }
   };
 
+  const getProduct = async () => {
+    try {
+      const res = await api.get(`products`);
+      const data = res.data;
+
+      setProductContext(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     getList();
+    getProduct();
   }, []);
 
   return (
-    <ListContext.Provider value={{ dataContext: listContextValue }}>
+    <ListContext.Provider
+      value={{
+        dataListContext: listContextValue,
+        dataProductContext: productContext,
+      }}
+    >
       {children}
     </ListContext.Provider>
   );

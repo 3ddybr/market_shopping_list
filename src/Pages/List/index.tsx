@@ -14,7 +14,7 @@ import { ListContext } from "../../contexts/ListContext";
 
 export default function List() {
   const { id } = useParams();
-  const { dataContext } = useContext(ListContext);
+  const { dataListContext: dataContext } = useContext(ListContext);
 
   const [list, setList] = useState<marketListTypes>();
   const [listSecondary, setListSecondary] = useState<marketListTypes>();
@@ -162,9 +162,7 @@ export default function List() {
           <button type="submit">Adicionar</button>
         </form>
         <main>
-          <h3>
-            Market List N {list?.id}, criada {convert(dataList)}
-          </h3>
+          <h3>Market List, criada em {convert(dataList)}</h3>
           <header>
             <p>
               Total de Itens: <span>{product.length}</span>
