@@ -63,4 +63,10 @@ export const ProductContent = styled.div`
       color: ${({ theme }) => theme.white};
     }
   }
+  div {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* border: 1px solid red; */
+  }
 `;

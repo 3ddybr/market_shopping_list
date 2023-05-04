@@ -1,4 +1,10 @@
-import { FormEvent, useContext, useEffect, useState } from "react";
+import {
+  FormEvent,
+  useContext,
+  useDeferredValue,
+  useEffect,
+  useState,
+} from "react";
 import { ProductContainer, ProductContent } from "./styled";
 import { api } from "../../services/api/api";
 import { v4 as uuidv4 } from "uuid";
@@ -9,6 +15,8 @@ export const Products = () => {
   const [inputText, setInputText] = useState("");
   const [searchProduct, setSearchProduct] = useState(dataProductContext);
 
+  const deferredSearch = useDeferredValue(searchProduct);
+
   const handleAddProduct = async (e: FormEvent) => {
     e.preventDefault;
     const include = dataProductContext.filter(
@@ -16,7 +24,8 @@ export const Products = () => {
     );
     if (include.length !== 0) {
       alert("Lista de produtos ja possuí esse item");
-      setSearchProduct(dataProductContext);
+      // setSearchProduct(dataProductContext);
+      // console.log(searchProduct);
     } else {
       if (inputText) {
         try {
@@ -31,6 +40,7 @@ export const Products = () => {
       // alert(`Produto ${inputText} cadastrado`);
     }
   };
+  // console.log("search ", searchProduct, "data context", dataProductContext);
 
   const handleSearch = () => {
     if (inputText !== "") {
@@ -47,8 +57,6 @@ export const Products = () => {
     handleSearch();
   }, [inputText]);
 
-  console.log("search ", searchProduct, "data context", dataProductContext);
-
   return (
     <ProductContainer>
       <ProductContent>
@@ -64,7 +72,7 @@ export const Products = () => {
           <button type="submit">Adicionar</button>
         </form>
         <div>
-          {searchProduct.map((item) => (
+          {deferredSearch.map((item) => (
             <p key={item.id}>{item.nameProduct}</p>
           ))}
         </div>
