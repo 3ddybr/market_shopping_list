@@ -6,13 +6,14 @@ import { FaCheck } from "react-icons/fa";
 
 import * as CurrencyFormat from "react-currency-format";
 interface itemProductProps {
-  id: number;
+  index: number;
+  id: string;
   nameProduct: string;
   lastValue: number;
   currentValue: number;
   done: boolean;
-  onUpdateValue: (idProd: number, valueProd: number) => void;
-  onUpdateDone: (idProd: number, doneProd: boolean) => void;
+  onUpdateValue: (idProd: string, valueProd: number) => void;
+  onUpdateDone: (idProd: string, doneProd: boolean) => void;
   onDelete: () => void;
 }
 
@@ -34,6 +35,7 @@ interface itemProductProps {
 // };
 
 export default function ItemProduct({
+  index,
   id,
   currentValue,
   done,
@@ -49,7 +51,7 @@ export default function ItemProduct({
 
   return (
     <ContainerItemProduct done={done}>
-      <p>{id} -</p>
+      <p>{index}-</p>
       <p>{nameProduct} </p>
 
       <CurrencyFormat

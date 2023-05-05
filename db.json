@@ -132,32 +132,25 @@
     },
     {
       "id": "0eb302d8-6615-4cd6-867d-2e511d965727",
-      "userId": "1",
       "create_at": 1683073705175,
       "products": [
         {
-          "id": 1,
-          "nameProduct": "VASSOURA",
-          "currentValue": 14,
-          "done": false
-        },
-        {
-          "id": 2,
+          "id": "bf66e3c8-88d8-480c-b93d-49af28640e03",
           "nameProduct": "FEIJAO 1K",
-          "currentValue": 6.9,
+          "currentValue": 1,
           "done": false
         },
         {
-          "id": 3,
-          "nameProduct": "SUCO",
-          "currentValue": 5,
+          "id": "d47f5f6e-108c-4bb3-a418-b995e73b9edf",
+          "nameProduct": "VASSOURA",
+          "currentValue": 1,
           "done": false
         },
         {
-          "id": 4,
-          "nameProduct": "AMAC URCA",
-          "currentValue": 16,
-          "done": false
+          "id": "56013ec6-7ccd-457d-bcdc-91af616d21d4",
+          "nameProduct": "SUCO FRESH",
+          "currentValue": 2,
+          "done": true
         }
       ]
     }
@@ -238,6 +231,10 @@
     {
       "id": "60f16957-9b9d-4248-86d1-6b90bbc8c6f6",
       "nameProduct": "PAO DE FORMA"
+    },
+    {
+      "id": "141ac0dc-4c09-4ddd-ba09-0708cebd01cc",
+      "nameProduct": "SABAO PO URCA"
     }
   ]
 }

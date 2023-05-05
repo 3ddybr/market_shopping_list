@@ -7,21 +7,26 @@ import { marketListTypes } from "../../@types/marketList";
 import { ItemProductTypes } from "../../@types/itemProduct";
 
 import moment from "moment";
-import { v4 as uuidv4 } from "uuid";
+import Select from "react-select";
 
 import { HomeContainer, HomeContent } from "./styles";
 import { ListContext } from "../../contexts/ListContext";
 
+type selectItemType = {
+  value: string | undefined;
+  label: string | undefined;
+};
+
 export default function List() {
   const { id } = useParams();
-  const { dataListContext: dataContext } = useContext(ListContext);
+  const { dataProductContext } = useContext(ListContext);
 
   const [list, setList] = useState<marketListTypes>();
-  const [listSecondary, setListSecondary] = useState<marketListTypes>();
   const [product, setProduct] = useState<ItemProductTypes[]>([]);
-  const [inputText, setInputText] = useState("");
+  const [inputText, setInputText] = useState<selectItemType>();
 
-  console.log(dataContext);
+  // const [listSecondary, setListSecondary] = useState<marketListTypes>();
+  // console.log(dataContext);
   const getList = async () => {
     const res = await api.get(`list/${id}`);
     const data: marketListTypes = res.data;
@@ -56,17 +61,24 @@ export default function List() {
 
   useEffect(() => {
     getList();
-    setInputText("");
+    setInputText({
+      value: "",
+      label: "",
+    });
   }, []);
 
   const handleAddProduct = async (e: FormEvent) => {
     e.preventDefault();
     let newItemList = [...product];
 
+    // const idProd = dataProductContext.find((e) =>
+    //   e.id ? e.nameProduct === inputText : e.id
+    // );
+
     if (inputText) {
       newItemList.push({
-        id: newItemList.length + 1,
-        nameProduct: inputText,
+        id: inputText.value as string,
+        nameProduct: inputText.label as string,
         currentValue: 1,
         done: false,
       });
@@ -79,13 +91,16 @@ export default function List() {
       } catch (e) {
         console.log(e);
       }
-      setInputText("");
+      setInputText({
+        value: "",
+        label: "",
+      });
       setProduct(newItemList);
       getList();
     } else alert("Por favor insira um produto!");
   };
 
-  const handleDelete = async (idProduct: number) => {
+  const handleDelete = async (idProduct: string) => {
     try {
       await api.put(`/list/${id}`, {
         id: id,
@@ -98,7 +113,7 @@ export default function List() {
     getList();
   };
 
-  const handleUpdateValue = async (idProd: number, valueProd: number) => {
+  const handleUpdateValue = async (idProd: string, valueProd: number) => {
     try {
       await api.patch(`/list/${id}`, {
         id: id,
@@ -119,7 +134,7 @@ export default function List() {
     getList();
   };
 
-  const handleUpdateDone = async (idProd: number, doneProd: boolean) => {
+  const handleUpdateDone = async (idProd: string, doneProd: boolean) => {
     try {
       await api.patch(`/list/${id}`, {
         id: id,
@@ -145,19 +160,32 @@ export default function List() {
     return dateFormat;
   };
 
+  const productsOptions = dataProductContext.map((prod) => ({
+    value: prod.id,
+    label: prod.nameProduct.toLocaleUpperCase(),
+  }));
+
+  const selectedProduct = productsOptions.find(
+    (e) => e.value === inputText?.value
+  );
+
   const dataList = list?.create_at as number;
 
   return (
     <HomeContainer>
       <HomeContent>
         <form onSubmit={handleAddProduct}>
-          <input
-            type="text"
+          <Select
             placeholder="Insira novo item"
-            value={inputText}
-            defaultValue={""}
-            alt="Adicionar um produto a lista"
-            onChange={(event) => setInputText(event.target.value.toUpperCase())}
+            value={selectedProduct}
+            // defaultInputValue={inputText.label}
+            options={productsOptions}
+            onChange={(event) =>
+              setInputText({
+                value: event?.value,
+                label: event?.label.toLocaleUpperCase(),
+              })
+            }
           />
           <button type="submit">Adicionar</button>
         </form>
@@ -179,14 +207,12 @@ export default function List() {
             <>
               <ItemProduct
                 key={productItem.id}
-                id={index + 1}
+                index={index + 1}
+                id={productItem.id}
                 nameProduct={productItem.nameProduct}
                 lastValue={1}
                 currentValue={productItem.currentValue}
                 done={productItem.done}
-                // onUpdateDone={(idProd, doneProd) =>
-                //   handleUpdateDone(idProd, doneProd)
-                // }
                 onUpdateDone={handleUpdateDone}
                 onUpdateValue={(idProd, valueProd) =>
                   handleUpdateValue(idProd, valueProd)
@@ -200,3 +226,18 @@ export default function List() {
     </HomeContainer>
   );
 }
+
+{
+  /* <input
+            type="text"
+            placeholder="Insira novo item"
+            value={inputText}
+            defaultValue={""}
+            alt="Adicionar um produto a lista"
+            onChange={(event) => setInputText(event.target.value.toUpperCase())}
+          /> */
+}
+
+// onUpdateDone={(idProd, doneProd) =>
+//   handleUpdateDone(idProd, doneProd)
+// }

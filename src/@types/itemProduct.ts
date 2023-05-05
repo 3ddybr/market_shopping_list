@@ -1,5 +1,5 @@
 export type ItemProductTypes = {
-  id: number;
+  id: string;
   nameProduct: string;
   currentValue: number;
   done: boolean;

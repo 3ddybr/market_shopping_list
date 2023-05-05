@@ -40,7 +40,18 @@ export const HomeContent = styled.div`
 
     width: 100%;
     max-width: 73.6rem;
-    input {
+
+    /* border: 1px solid yellow; */
+
+    // css especifico do do input select >>>
+    .css-b62m3t-container {
+      width: 100%;
+      height: 100%;
+      color: black;
+    }
+    // css especifico do do input select >>>
+
+    select {
       width: 100%;
       height: 5.4rem;
       font-size: 1.4rem;
@@ -50,7 +61,7 @@ export const HomeContent = styled.div`
 
       border: 1px solid ${({ theme }) => theme.gray_700};
       background: ${({ theme }) => theme.gray_500};
-      color: ${({ theme }) => theme.white};
+      color: ${({ theme }) => theme.blue};
     }
 
     button {
@@ -58,7 +69,7 @@ export const HomeContent = styled.div`
       max-width: 9rem;
       height: 100%;
       max-height: 5.4rem;
-      padding: 1.6rem;
+      padding: 1rem;
       font-size: 1.4rem;
       border-radius: 8px;
 
