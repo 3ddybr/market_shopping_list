@@ -30,15 +30,23 @@ export const Historic = () => {
     return dateFormat;
   };
 
+  const orderProd = dataListContext.sort(function (a, b) {
+    if (a.create_at > b.create_at) {
+      return -1;
+    } else {
+      return +1;
+    }
+  });
+
   return (
     <HistoricContainer>
       <HistoricContent>
         <h1>Histórico</h1>
-        {dataListContext.map((list, index) => (
+        {orderProd.map((list, index) => (
           <div>
             <Link to={`/${list.id}`}>
-              <p key={list.id}>Cod. Lista {index + 1}</p>
-              <span>Data da {convert(list.create_at)}</span>
+              <p key={list.id}>{index + 1} - Criada em</p>
+              <span> {convert(list.create_at)}</span>
             </Link>
           </div>
         ))}

@@ -230,24 +230,21 @@ export default function List() {
               </span>
             </p>
           </header>
-
           {product?.map((productItem, index) => (
-            <>
-              <ItemProduct
-                key={productItem.id}
-                index={index + 1}
-                id={productItem.id}
-                nameProduct={productItem.nameProduct}
-                lastValue={1}
-                currentValue={productItem.currentValue}
-                done={productItem.done}
-                onUpdateDone={handleUpdateDone}
-                onUpdateValue={(idProd, valueProd) =>
-                  handleUpdateValue(idProd, valueProd)
-                }
-                onDelete={() => handleDelete(productItem.id)}
-              />
-            </>
+            <ItemProduct
+              key={productItem.id}
+              index={index + 1}
+              id={productItem.id}
+              nameProduct={productItem.nameProduct}
+              lastValue={1}
+              currentValue={productItem.currentValue}
+              done={productItem.done}
+              onUpdateDone={handleUpdateDone}
+              onUpdateValue={(idProd, valueProd) =>
+                handleUpdateValue(idProd, valueProd)
+              }
+              onDelete={() => handleDelete(productItem.id)}
+            />
           ))}
         </main>
       </HomeContent>

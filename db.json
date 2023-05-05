@@ -7,32 +7,31 @@
   "list": [
     {
       "id": 1,
-      "userId": "1",
       "create_at": 1682311776822,
       "products": [
         {
-          "id": 1,
-          "nameProduct": "Feijão 1k",
-          "currentValue": 6.9,
-          "done": true
-        },
-        {
-          "id": 2,
-          "nameProduct": "Arroz 5k",
-          "currentValue": 18.9,
-          "done": true
-        },
-        {
-          "id": 3,
-          "nameProduct": "Sabão em pó 5k",
-          "currentValue": 14,
+          "id": "d47f5f6e-108c-4bb3-a418-b995e73b9edf",
+          "nameProduct": "VASSOURA",
+          "currentValue": 1,
           "done": false
         },
         {
-          "id": 4,
-          "nameProduct": "Vassoura",
-          "currentValue": 12,
-          "done": true
+          "id": "bf66e3c8-88d8-480c-b93d-49af28640e03",
+          "nameProduct": "FEIJAO 1K",
+          "currentValue": 1,
+          "done": false
+        },
+        {
+          "id": "a633c4d7-dc30-4e7c-8f7c-588006713b5b",
+          "nameProduct": "ARROZ 5K",
+          "currentValue": 1,
+          "done": false
+        },
+        {
+          "id": "83c884e9-9232-4c27-91a8-4147ca4ab354",
+          "nameProduct": "AMAC ROUPA URCA 5L",
+          "currentValue": 1,
+          "done": false
         }
       ]
     },
@@ -174,6 +173,18 @@
           "nameProduct": "VASSOURA",
           "currentValue": 1,
           "done": false
+        },
+        {
+          "id": "9c6ecf00-1b8a-4c8e-a8aa-15a3661edebc",
+          "nameProduct": "ACUCAR 5K",
+          "currentValue": 13,
+          "done": true
+        },
+        {
+          "id": "141ac0dc-4c09-4ddd-ba09-0708cebd01cc",
+          "nameProduct": "SABAO PO URCA",
+          "currentValue": 21,
+          "done": true
         }
       ]
     }
@@ -258,6 +269,10 @@
     {
       "id": "141ac0dc-4c09-4ddd-ba09-0708cebd01cc",
       "nameProduct": "SABAO PO URCA"
+    },
+    {
+      "id": "9c6ecf00-1b8a-4c8e-a8aa-15a3661edebc",
+      "nameProduct": "ACUCAR 5K"
     }
   ]
 }
