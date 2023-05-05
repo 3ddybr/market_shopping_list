@@ -11,11 +11,15 @@ import Select, { InputActionMeta } from "react-select";
 
 import { HomeContainer, HomeContent } from "./styles";
 import { ListContext } from "../../contexts/ListContext";
+import ReactModal from "react-modal";
+import { ModalProduct } from "../../Components/ModalProduct";
 
 type selectItemType = {
   value: string | undefined;
   label: string | undefined;
 };
+
+ReactModal.setAppElement("#root");
 
 export default function List() {
   const { id } = useParams();
@@ -24,41 +28,25 @@ export default function List() {
   const [list, setList] = useState<marketListTypes>();
   const [product, setProduct] = useState<ItemProductTypes[]>([]);
   const [selectedProd, setSelectedPro] = useState<selectItemType>();
+  const [modalIsOpen, setIsOpen] = useState(false);
   // const [inputText, setInputText] = useState("");
 
   // const [listSecondary, setListSecondary] = useState<marketListTypes>();
   // console.log(dataContext);
+
+  function isOpen() {
+    setIsOpen(true);
+  }
+
+  function onRequestClose() {
+    setIsOpen(false);
+  }
   const getList = async () => {
     const res = await api.get(`list/${id}`);
     const data: marketListTypes = res.data;
     setList(data);
     setProduct(data.products);
   };
-
-  // const getListSecondary = async () => {
-  //   const idAnterior = id;
-  //   const res = await api.get(`list/${idAnterior}`);
-  //   const data: marketListTypes = res.data;
-  //   // setListSecondary(data);
-  //   // setProduct(data.products);
-  //   // setCreateAt(data.create_at);
-  // };
-
-  // const newData =
-  // const format2 = (valor: number) => {
-  //   valor.toLocaleString("pt-BR", {
-  //     style: "currency",
-  //     currency: "BRL",
-  //   });
-  // };
-
-  // const formmat = (valor: number) => {
-  //   new Intl.NumberFormat("pt-BR", {
-  //     style: "currency",
-  //     currency: "BRL",
-  //   });
-  //   valor;
-  // };
 
   useEffect(() => {
     getList();
@@ -121,7 +109,9 @@ export default function List() {
       getList();
       return;
     } else {
-      alert(`Por favor insira um produto cadastrado!`);
+      isOpen();
+      //abrir modal de cadastro
+      alert(`Por favor cadastre o produto!`);
     }
   };
 
@@ -205,8 +195,6 @@ export default function List() {
             placeholder="Insira novo item"
             defaultInputValue={selectedProduct?.value}
             options={productsOptions}
-            // inputValue={inputText}
-            // onInputChange={(e) => setInputText(e)}
             onChange={(event) =>
               setSelectedPro({
                 value: event?.value,
@@ -246,14 +234,16 @@ export default function List() {
               onDelete={() => handleDelete(productItem.id)}
             />
           ))}
+          <ModalProduct isOpen={modalIsOpen} onRequestClose={onRequestClose} />
+          {/* <button onClick={isOpen}>modal</button> */}
         </main>
       </HomeContent>
     </HomeContainer>
   );
 }
 
-{
-  /* <input
+// {
+/* <input
             type="text"
             placeholder="Insira novo item"
             value={inputText}
@@ -261,7 +251,7 @@ export default function List() {
             alt="Adicionar um produto a lista"
             onChange={(event) => setInputText(event.target.value.toUpperCase())}
           /> */
-}
+// }
 
 // onUpdateDone={(idProd, doneProd) =>
 //   handleUpdateDone(idProd, doneProd)
@@ -294,3 +284,28 @@ export default function List() {
 //   setProduct(newItemList);
 //   getList();
 // } else alert("Por favor insira um produto!");
+
+// const getListSecondary = async () => {
+//   const idAnterior = id;
+//   const res = await api.get(`list/${idAnterior}`);
+//   const data: marketListTypes = res.data;
+//   // setListSecondary(data);
+//   // setProduct(data.products);
+//   // setCreateAt(data.create_at);
+// };
+
+// const newData =
+// const format2 = (valor: number) => {
+//   valor.toLocaleString("pt-BR", {
+//     style: "currency",
+//     currency: "BRL",
+//   });
+// };
+
+// const formmat = (valor: number) => {
+//   new Intl.NumberFormat("pt-BR", {
+//     style: "currency",
+//     currency: "BRL",
+//   });
+//   valor;
+// };
