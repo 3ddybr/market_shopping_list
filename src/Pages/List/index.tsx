@@ -7,7 +7,7 @@ import { marketListTypes } from "../../@types/marketList";
 import { ItemProductTypes } from "../../@types/itemProduct";
 
 import moment from "moment";
-import Select from "react-select";
+import Select, { InputActionMeta } from "react-select";
 
 import { HomeContainer, HomeContent } from "./styles";
 import { ListContext } from "../../contexts/ListContext";
@@ -23,7 +23,8 @@ export default function List() {
 
   const [list, setList] = useState<marketListTypes>();
   const [product, setProduct] = useState<ItemProductTypes[]>([]);
-  const [inputText, setInputText] = useState<selectItemType>();
+  const [selectedProd, setSelectedPro] = useState<selectItemType>();
+  // const [inputText, setInputText] = useState("");
 
   // const [listSecondary, setListSecondary] = useState<marketListTypes>();
   // console.log(dataContext);
@@ -61,7 +62,7 @@ export default function List() {
 
   useEffect(() => {
     getList();
-    setInputText({
+    setSelectedPro({
       value: "",
       label: "",
     });
@@ -70,15 +71,28 @@ export default function List() {
   const handleAddProduct = async (e: FormEvent) => {
     e.preventDefault();
     let newItemList = [...product];
+    //verificar se ja existe produto na lista
+    let existeNewList = newItemList.filter(
+      (item) => item.id === selectedProd?.value
+    );
+    let existeTabProd = dataProductContext.filter(
+      (item) => item.id === selectedProd?.value
+    );
 
-    // const idProd = dataProductContext.find((e) =>
-    //   e.id ? e.nameProduct === inputText : e.id
-    // );
-
-    if (inputText) {
+    if (existeNewList.length > 0) {
+      //tem na tab prod e na lista
+      alert("Lista já possui este produto");
+      existeNewList = [];
+      existeTabProd = [];
+      setSelectedPro({
+        value: "",
+        label: "",
+      });
+      return;
+    } else if (existeTabProd.length > 0) {
       newItemList.push({
-        id: inputText.value as string,
-        nameProduct: inputText.label as string,
+        id: selectedProd?.value as string,
+        nameProduct: selectedProd?.label as string,
         currentValue: 1,
         done: false,
       });
@@ -91,13 +105,24 @@ export default function List() {
       } catch (e) {
         console.log(e);
       }
-      setInputText({
+      setSelectedPro({
         value: "",
         label: "",
       });
       setProduct(newItemList);
+
+      existeTabProd = [];
+      existeNewList = [];
+      setSelectedPro({
+        value: "",
+        label: "",
+      });
+
       getList();
-    } else alert("Por favor insira um produto!");
+      return;
+    } else {
+      alert(`Por favor insira um produto cadastrado!`);
+    }
   };
 
   const handleDelete = async (idProduct: string) => {
@@ -160,13 +185,13 @@ export default function List() {
     return dateFormat;
   };
 
-  const productsOptions = dataProductContext.map((prod) => ({
+  let productsOptions = dataProductContext.map((prod) => ({
     value: prod.id,
     label: prod.nameProduct.toLocaleUpperCase(),
   }));
 
-  const selectedProduct = productsOptions.find(
-    (e) => e.value === inputText?.value
+  let selectedProduct = productsOptions.find(
+    (e) => e.value === selectedProd?.value
   );
 
   const dataList = list?.create_at as number;
@@ -176,16 +201,19 @@ export default function List() {
       <HomeContent>
         <form onSubmit={handleAddProduct}>
           <Select
+            escapeClearsValue={true}
             placeholder="Insira novo item"
-            value={selectedProduct}
-            // defaultInputValue={inputText.label}
+            defaultInputValue={selectedProduct?.value}
             options={productsOptions}
+            // inputValue={inputText}
+            // onInputChange={(e) => setInputText(e)}
             onChange={(event) =>
-              setInputText({
+              setSelectedPro({
                 value: event?.value,
                 label: event?.label.toLocaleUpperCase(),
               })
             }
+            isClearable={true}
           />
           <button type="submit">Adicionar</button>
         </form>
@@ -241,3 +269,31 @@ export default function List() {
 // onUpdateDone={(idProd, doneProd) =>
 //   handleUpdateDone(idProd, doneProd)
 // }
+
+// const idProd = dataProductContext.find((e) =>
+//   e.id ? e.nameProduct === inputText : e.id
+// );
+
+// if (inputText) {
+//   newItemList.push({
+//     id: inputText.value as string,
+//     nameProduct: inputText.label as string,
+//     currentValue: 1,
+//     done: false,
+//   });
+
+//   try {
+//     await api.patch(`/list/${id}`, {
+//       id: id,
+//       products: newItemList,
+//     });
+//   } catch (e) {
+//     console.log(e);
+//   }
+//   setInputText({
+//     value: "",
+//     label: "",
+//   });
+//   setProduct(newItemList);
+//   getList();
+// } else alert("Por favor insira um produto!");

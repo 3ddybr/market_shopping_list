@@ -1,4 +1,9 @@
 {
+  "user": {
+    "id": "1",
+    "name": "Alberto",
+    "image": "http://"
+  },
   "list": [
     {
       "id": 1,
@@ -137,20 +142,38 @@
         {
           "id": "bf66e3c8-88d8-480c-b93d-49af28640e03",
           "nameProduct": "FEIJAO 1K",
-          "currentValue": 1,
-          "done": false
-        },
-        {
-          "id": "d47f5f6e-108c-4bb3-a418-b995e73b9edf",
-          "nameProduct": "VASSOURA",
-          "currentValue": 1,
-          "done": false
+          "currentValue": 6.9,
+          "done": true
         },
         {
           "id": "56013ec6-7ccd-457d-bcdc-91af616d21d4",
           "nameProduct": "SUCO FRESH",
           "currentValue": 2,
           "done": true
+        },
+        {
+          "id": "a3b5c644-4f69-4647-b1f0-c0783004b53b",
+          "nameProduct": "CENOURA",
+          "currentValue": 1,
+          "done": false
+        },
+        {
+          "id": "1034510c-98c2-4beb-a8d8-14d5a2f5ed01",
+          "nameProduct": "PO DE CAFE",
+          "currentValue": 1,
+          "done": false
+        },
+        {
+          "id": "69f8d051-cf28-4e8d-b587-4dd1a5e5ad01",
+          "nameProduct": "OLEO DE SOJA",
+          "currentValue": 8.6,
+          "done": true
+        },
+        {
+          "id": "d47f5f6e-108c-4bb3-a418-b995e73b9edf",
+          "nameProduct": "VASSOURA",
+          "currentValue": 1,
+          "done": false
         }
       ]
     }
