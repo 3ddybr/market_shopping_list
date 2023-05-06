@@ -57,6 +57,14 @@ export const Products = () => {
     handleSearch();
   }, [inputText]);
 
+  const orderProd = deferredSearch.sort(function (a, b) {
+    if (a.nameProduct < b.nameProduct) {
+      return -1;
+    } else {
+      return +1;
+    }
+  });
+
   return (
     <ProductContainer>
       <ProductContent>
@@ -72,7 +80,7 @@ export const Products = () => {
           <button type="submit">Adicionar</button>
         </form>
         <div>
-          {deferredSearch.map((item) => (
+          {orderProd.map((item) => (
             <p key={item.id}>{item.nameProduct}</p>
           ))}
         </div>

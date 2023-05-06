@@ -184,8 +184,17 @@ export default function List() {
     (e) => e.value === selectedProd?.value
   );
 
+  const orderProd = product.sort(function (a, b) {
+    if (a.nameProduct < b.nameProduct) {
+      return -1;
+    } else {
+      return +1;
+    }
+  });
   const dataList = list?.create_at as number;
 
+  const counterDone = product.filter((item) => item.done === true);
+  // console.log(counterDone.length);
   return (
     <HomeContainer>
       <HomeContent>
@@ -214,11 +223,11 @@ export default function List() {
             <p>
               Concluídos{" "}
               <span>
-                {1} / {product.length}
+                {counterDone.length} / {product.length}
               </span>
             </p>
           </header>
-          {product?.map((productItem, index) => (
+          {orderProd?.map((productItem, index) => (
             <ItemProduct
               key={productItem.id}
               index={index + 1}
