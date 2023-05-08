@@ -33,10 +33,10 @@ export default function List() {
   function lastValueProd(prodId: string) {
     const dataListAtual = list?.create_at as number;
 
-    const excluindoListmaisnovas = dataListContext.filter(
+    const deleteNewerLists = dataListContext.filter(
       (item) => item.create_at < dataListAtual
     );
-    const orderMarketList = excluindoListmaisnovas.sort(function (a, b) {
+    const orderMarketList = deleteNewerLists.sort(function (a, b) {
       if (a.create_at > b.create_at) {
         return -1;
       } else {
@@ -44,14 +44,14 @@ export default function List() {
       }
     });
 
-    const encontra = orderMarketList.find((item) =>
+    const findFirstList = orderMarketList.find((item) =>
       item.products.find((item) => item.id === prodId)
     );
 
-    if (!encontra) {
+    if (!findFirstList) {
       return 1;
     } else {
-      const rr = encontra?.products.find((item) => item.id === prodId);
+      const rr = findFirstList?.products.find((item) => item.id === prodId);
       return rr?.currentValue as number;
     }
   }
