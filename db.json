@@ -10,6 +10,12 @@
       "create_at": 1682311776822,
       "products": [
         {
+          "id": "9c6ecf00-1b8a-4c8e-a8aa-15a3661edebc",
+          "nameProduct": "ACUCAR 5K",
+          "currentValue": 10.99,
+          "done": false
+        },
+        {
           "id": "83c884e9-9232-4c27-91a8-4147ca4ab354",
           "nameProduct": "AMAC ROUPA URCA 5L",
           "currentValue": 1,
@@ -76,14 +82,14 @@
           "done": false
         },
         {
-          "id": "d47f5f6e-108c-4bb3-a418-b995e73b9edf",
-          "nameProduct": "VASSOURA",
+          "id": "2ccb6fcd-833b-4578-849e-967147a041e4",
+          "nameProduct": "QUEIJO MUSSARELA KG",
           "currentValue": 1,
           "done": false
         },
         {
-          "id": "2ccb6fcd-833b-4578-849e-967147a041e4",
-          "nameProduct": "QUEIJO MUSSARELA KG",
+          "id": "d47f5f6e-108c-4bb3-a418-b995e73b9edf",
+          "nameProduct": "VASSOURA",
           "currentValue": 1,
           "done": false
         }
@@ -91,99 +97,48 @@
     },
     {
       "id": 2,
-      "userId": "1",
       "create_at": 1682388778999,
       "products": [
         {
-          "id": 1,
-          "nameProduct": "Feijão 1k",
+          "id": "bf66e3c8-88d8-480c-b93d-49af28640e03",
+          "nameProduct": "FEIJAO 1K",
           "currentValue": 6,
-          "done": false
-        },
-        {
-          "id": 2,
-          "nameProduct": "Arroz 5k",
-          "currentValue": 19,
-          "done": false
-        },
-        {
-          "id": 3,
-          "nameProduct": "Sabão em pó 5k",
-          "currentValue": 14,
-          "done": true
-        },
-        {
-          "id": 4,
-          "nameProduct": "Vassoura",
-          "currentValue": 0,
-          "done": false
-        },
-        {
-          "id": 5,
-          "nameProduct": "Suco",
-          "currentValue": 0,
           "done": false
         }
       ]
     },
     {
       "id": 3,
-      "userId": "1",
       "create_at": 1682608778999,
       "products": [
         {
-          "id": 1,
-          "nameProduct": "Suco",
-          "currentValue": 5,
+          "id": "3eeb7c20-af4b-4f4f-a4f4-4e0aab0527f6",
+          "nameProduct": "OVO",
+          "currentValue": 15,
           "done": false
         },
         {
-          "id": 2,
-          "nameProduct": "Vassoura",
-          "currentValue": 120,
-          "done": false
-        },
-        {
-          "id": 3,
-          "nameProduct": "Carne",
-          "currentValue": 30,
-          "done": true
-        },
-        {
-          "id": 4,
-          "nameProduct": "tomate",
-          "currentValue": 6,
+          "id": "bf66e3c8-88d8-480c-b93d-49af28640e03",
+          "nameProduct": "FEIJAO 1K",
+          "currentValue": 1,
           "done": false
         }
       ]
     },
     {
       "id": 4,
-      "userId": "1",
       "create_at": 1682702239937,
       "products": [
         {
-          "id": 1,
-          "nameProduct": "VASSOURA",
-          "currentValue": 1,
-          "done": true
-        },
-        {
-          "id": 2,
-          "nameProduct": "SUCO",
-          "currentValue": 1,
+          "id": "83c884e9-9232-4c27-91a8-4147ca4ab354",
+          "nameProduct": "AMAC ROUPA URCA 5L",
+          "currentValue": 17.65,
           "done": false
         },
         {
-          "id": 3,
-          "nameProduct": "CARNE MOÍDA",
-          "currentValue": 1,
-          "done": false
-        },
-        {
-          "id": 5,
-          "nameProduct": "VEJA",
-          "currentValue": 9,
+          "id": "3eeb7c20-af4b-4f4f-a4f4-4e0aab0527f6",
+          "nameProduct": "OVO",
+          "currentValue": 10,
           "done": false
         }
       ]
@@ -202,7 +157,7 @@
           "id": "83c884e9-9232-4c27-91a8-4147ca4ab354",
           "nameProduct": "AMAC ROUPA URCA 5L",
           "currentValue": 1,
-          "done": false
+          "done": true
         },
         {
           "id": "a3b5c644-4f69-4647-b1f0-c0783004b53b",
@@ -229,6 +184,12 @@
           "done": true
         },
         {
+          "id": "3eeb7c20-af4b-4f4f-a4f4-4e0aab0527f6",
+          "nameProduct": "OVO",
+          "currentValue": 12,
+          "done": false
+        },
+        {
           "id": "1034510c-98c2-4beb-a8d8-14d5a2f5ed01",
           "nameProduct": "PO DE CAFE",
           "currentValue": 1,
@@ -249,7 +210,7 @@
         {
           "id": "d47f5f6e-108c-4bb3-a418-b995e73b9edf",
           "nameProduct": "VASSOURA",
-          "currentValue": 1,
+          "currentValue": 12,
           "done": true
         }
       ]

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { memo, useRef, useState } from "react";
 import { ContainerItemProduct } from "./styles";
 
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -17,24 +17,7 @@ interface itemProductProps {
   onDelete: () => void;
 }
 
-// const formmat = new Intl.NumberFormat("pt-BR", {
-//   style: "currency",
-//   currency: "BRL",
-// });
-
-// const currencyLocal = (valor: number) => {
-//   let newV = new Intl.NumberFormat("pt-BR", {
-//     style: "currency",
-//     currency: "BRL",
-//   });
-//   // let newValue = valor.toLocaleString("pt-BR", {
-//   //   style: "currency",
-//   //   currency: "BRL",
-//   // });
-//   return newV.format(valor);
-// };
-
-export default function ItemProduct({
+function ItemProduct({
   index,
   id,
   currentValue,
@@ -45,8 +28,6 @@ export default function ItemProduct({
   onUpdateValue,
   onUpdateDone,
 }: itemProductProps) {
-  // const [isCheck, setIsCheck] = useState(done);
-  // const [isLastValue, setIsLastValue] = useState(lastValue);
   const [isCurrentValue, setIsCurrentValue] = useState(currentValue);
 
   return (
@@ -105,3 +86,22 @@ export default function ItemProduct({
     </ContainerItemProduct>
   );
 }
+
+export default memo(ItemProduct);
+
+// const formmat = new Intl.NumberFormat("pt-BR", {
+//   style: "currency",
+//   currency: "BRL",
+// });
+
+// const currencyLocal = (valor: number) => {
+//   let newV = new Intl.NumberFormat("pt-BR", {
+//     style: "currency",
+//     currency: "BRL",
+//   });
+//   // let newValue = valor.toLocaleString("pt-BR", {
+//   //   style: "currency",
+//   //   currency: "BRL",
+//   // });
+//   return newV.format(valor);
+// };

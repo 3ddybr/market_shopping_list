@@ -12,7 +12,7 @@ export const HistoricContainer = styled.div`
 export const HistoricContent = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: column;
   padding: 2rem 2rem;
 
@@ -29,16 +29,14 @@ export const HistoricContent = styled.div`
 
   gap: 2rem;
 
-  div {
-    a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-      width: 100%;
-      gap: 2rem;
+    width: 100%;
+    gap: 2rem;
 
-      /* border: 1px solid yellow; */
-    }
+    /* border: 1px solid yellow; */
   }
 `;

@@ -22,17 +22,39 @@ type selectItemType = {
 ReactModal.setAppElement("#root");
 
 export default function List() {
-  const { id } = useParams();
-  const { dataProductContext } = useContext(ListContext);
+  const { id: idParams } = useParams();
+  const { dataProductContext, dataListContext } = useContext(ListContext);
 
   const [list, setList] = useState<marketListTypes>();
   const [product, setProduct] = useState<ItemProductTypes[]>([]);
   const [selectedProd, setSelectedPro] = useState<selectItemType>();
   const [modalIsOpen, setIsOpen] = useState(false);
-  // const [inputText, setInputText] = useState("");
 
-  // const [listSecondary, setListSecondary] = useState<marketListTypes>();
-  // console.log(dataContext);
+  function lastValueProd(prodId: string) {
+    const dataListAtual = list?.create_at as number;
+
+    const excluindoListmaisnovas = dataListContext.filter(
+      (item) => item.create_at < dataListAtual
+    );
+    const orderMarketList = excluindoListmaisnovas.sort(function (a, b) {
+      if (a.create_at > b.create_at) {
+        return -1;
+      } else {
+        return +1;
+      }
+    });
+
+    const encontra = orderMarketList.find((item) =>
+      item.products.find((item) => item.id === prodId)
+    );
+
+    if (!encontra) {
+      return 1;
+    } else {
+      const rr = encontra?.products.find((item) => item.id === prodId);
+      return rr?.currentValue as number;
+    }
+  }
 
   function isOpen() {
     setIsOpen(true);
@@ -42,7 +64,7 @@ export default function List() {
     setIsOpen(false);
   }
   const getList = async () => {
-    const res = await api.get(`list/${id}`);
+    const res = await api.get(`list/${idParams}`);
     const data: marketListTypes = res.data;
     setList(data);
     setProduct(data.products);
@@ -86,8 +108,8 @@ export default function List() {
       });
 
       try {
-        await api.patch(`/list/${id}`, {
-          id: id,
+        await api.patch(`/list/${idParams}`, {
+          id: idParams,
           products: newItemList,
         });
       } catch (e) {
@@ -117,8 +139,8 @@ export default function List() {
 
   const handleDelete = async (idProduct: string) => {
     try {
-      await api.put(`/list/${id}`, {
-        id: id,
+      await api.put(`/list/${idParams}`, {
+        id: idParams,
         create_at: list?.create_at,
         products: [...product.filter((item) => item.id !== idProduct)],
       });
@@ -130,8 +152,8 @@ export default function List() {
 
   const handleUpdateValue = async (idProd: string, valueProd: number) => {
     try {
-      await api.patch(`/list/${id}`, {
-        id: id,
+      await api.patch(`/list/${idParams}`, {
+        id: idParams,
         products: [
           ...product.map((item) =>
             item.id === idProd
@@ -151,8 +173,8 @@ export default function List() {
 
   const handleUpdateDone = async (idProd: string, doneProd: boolean) => {
     try {
-      await api.patch(`/list/${id}`, {
-        id: id,
+      await api.patch(`/list/${idParams}`, {
+        id: idParams,
         products: [
           ...product.map((item) =>
             item.id === idProd
@@ -194,7 +216,6 @@ export default function List() {
   const dataList = list?.create_at as number;
 
   const counterDone = product.filter((item) => item.done === true);
-  // console.log(counterDone.length);
   return (
     <HomeContainer>
       <HomeContent>
@@ -233,7 +254,7 @@ export default function List() {
               index={index + 1}
               id={productItem.id}
               nameProduct={productItem.nameProduct}
-              lastValue={1}
+              lastValue={lastValueProd(productItem.id)}
               currentValue={productItem.currentValue}
               done={productItem.done}
               onUpdateDone={handleUpdateDone}
