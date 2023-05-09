@@ -69,4 +69,25 @@ export const ProductContent = styled.div`
     grid-template-columns: repeat(3, 1fr);
     /* border: 1px solid red; */
   }
+
+  @media (max-width: 500px) {
+    font-size: 1.2rem;
+
+    form {
+      input {
+        width: 100%;
+        /* max-width: 7.5rem; */
+        height: 3rem;
+
+        font-size: 1.2rem;
+        /* padding: 0.4rem; */
+      }
+      button {
+        height: 3rem;
+        padding: 0.4rem;
+      }
+    }
+  }
 `;
+
+// 390*844 px

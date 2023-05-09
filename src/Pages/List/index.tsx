@@ -51,8 +51,8 @@ export default function List() {
     if (!findFirstList) {
       return 1;
     } else {
-      const rr = findFirstList?.products.find((item) => item.id === prodId);
-      return rr?.currentValue as number;
+      const result = findFirstList?.products.find((item) => item.id === prodId);
+      return result?.currentValue as number;
     }
   }
 

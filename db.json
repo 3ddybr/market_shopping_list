@@ -112,15 +112,21 @@
       "create_at": 1682608778999,
       "products": [
         {
-          "id": "3eeb7c20-af4b-4f4f-a4f4-4e0aab0527f6",
-          "nameProduct": "OVO",
-          "currentValue": 15,
+          "id": "5016a172-d72b-4104-93ec-fd47c72a2f88",
+          "nameProduct": "ARROZ 2K",
+          "currentValue": 8,
           "done": false
         },
         {
           "id": "bf66e3c8-88d8-480c-b93d-49af28640e03",
           "nameProduct": "FEIJAO 1K",
-          "currentValue": 1,
+          "currentValue": 8,
+          "done": false
+        },
+        {
+          "id": "3eeb7c20-af4b-4f4f-a4f4-4e0aab0527f6",
+          "nameProduct": "OVO",
+          "currentValue": 15,
           "done": false
         }
       ]
@@ -133,6 +139,12 @@
           "id": "83c884e9-9232-4c27-91a8-4147ca4ab354",
           "nameProduct": "AMAC ROUPA URCA 5L",
           "currentValue": 17.65,
+          "done": false
+        },
+        {
+          "id": "5016a172-d72b-4104-93ec-fd47c72a2f88",
+          "nameProduct": "ARROZ 2K",
+          "currentValue": 9.5,
           "done": false
         },
         {
@@ -156,6 +168,12 @@
         {
           "id": "83c884e9-9232-4c27-91a8-4147ca4ab354",
           "nameProduct": "AMAC ROUPA URCA 5L",
+          "currentValue": 18,
+          "done": true
+        },
+        {
+          "id": "5016a172-d72b-4104-93ec-fd47c72a2f88",
+          "nameProduct": "ARROZ 2K",
           "currentValue": 1,
           "done": true
         },

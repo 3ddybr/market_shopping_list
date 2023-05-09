@@ -1,5 +1,5 @@
 import { memo, useRef, useState } from "react";
-import { ContainerItemProduct } from "./styles";
+import { ContainerItemProduct, ContentItemProduct } from "./styles";
 
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaCheck } from "react-icons/fa";
@@ -31,58 +31,60 @@ function ItemProduct({
   const [isCurrentValue, setIsCurrentValue] = useState(currentValue);
 
   return (
-    <ContainerItemProduct done={done}>
-      <p>{index}-</p>
-      <p>{nameProduct} </p>
+    <ContainerItemProduct>
+      <ContentItemProduct done={done}>
+        <p>{index}-</p>
+        <p>{nameProduct} </p>
 
-      <CurrencyFormat
-        thousandSeparator={"."}
-        thousandSpacing={"3"}
-        isNumericString={true}
-        fixedDecimalScale
-        decimalScale={2}
-        decimalSeparator=","
-        prefix="R$"
-        value={lastValue}
-        // onValueChange={(e) => setIsLastValue(e.floatValue)}
-        disabled={true}
-      />
+        <CurrencyFormat
+          thousandSeparator={"."}
+          thousandSpacing={"3"}
+          isNumericString={true}
+          fixedDecimalScale
+          decimalScale={2}
+          decimalSeparator=","
+          prefix="R$"
+          value={lastValue}
+          // onValueChange={(e) => setIsLastValue(e.floatValue)}
+          disabled={true}
+        />
 
-      <CurrencyFormat
-        defaultValue={currentValue}
-        thousandSeparator={"."}
-        thousandSpacing={"3"}
-        isNumericString={true}
-        fixedDecimalScale
-        decimalScale={2}
-        decimalSeparator=","
-        prefix="R$"
-        value={isCurrentValue}
-        onValueChange={(e) => setIsCurrentValue(e.floatValue)}
-      />
+        <CurrencyFormat
+          defaultValue={currentValue}
+          thousandSeparator={"."}
+          thousandSpacing={"3"}
+          isNumericString={true}
+          fixedDecimalScale
+          decimalScale={2}
+          decimalSeparator=","
+          prefix="R$"
+          value={isCurrentValue}
+          onValueChange={(e) => setIsCurrentValue(e.floatValue)}
+        />
 
-      <input
-        type="checkbox"
-        checked={done}
-        onChange={(e) => onUpdateDone(id, e.target.checked)}
-        title="Marcar quando ja estiver no carrinho"
-      />
+        <input
+          type="checkbox"
+          checked={done}
+          onChange={(e) => onUpdateDone(id, e.target.checked)}
+          title="Marcar quando ja estiver no carrinho"
+        />
 
-      <FaCheck
-        size={24}
-        color="green"
-        cursor="pointer"
-        onClick={() => onUpdateValue(id, isCurrentValue)}
-        title="Atualizar o preço"
-      />
+        <FaCheck
+          size={24}
+          color="green"
+          cursor="pointer"
+          onClick={() => onUpdateValue(id, isCurrentValue)}
+          title="Atualizar o preço"
+        />
 
-      <RiDeleteBin6Line
-        size={24}
-        color="red"
-        cursor="pointer"
-        onClick={onDelete}
-        title="Remover"
-      />
+        <RiDeleteBin6Line
+          size={24}
+          color="red"
+          cursor="pointer"
+          onClick={onDelete}
+          title="Remover"
+        />
+      </ContentItemProduct>
     </ContainerItemProduct>
   );
 }
