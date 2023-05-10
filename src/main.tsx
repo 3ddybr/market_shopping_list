@@ -8,6 +8,7 @@ import List from "./Pages/List";
 
 import { ListProvider } from "./contexts/ListContext";
 import { Products } from "./Pages/Products";
+import Login from "./Pages/Login";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: <Products />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },
