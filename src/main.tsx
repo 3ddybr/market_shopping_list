@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     // errorElement: <ErrorPage/>,
     children: [
       {
-        path: "/",
+        path: "/historic",
         element: <Historic />,
       },
       {
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
         element: <Products />,
       },
       {
-        path: "/login",
+        path: "/",
         element: <Login />,
       },
     ],
