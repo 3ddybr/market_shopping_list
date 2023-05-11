@@ -3,23 +3,35 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./styles/global";
 import { defaultTheme } from "./styles/themes/default";
 
-import { Outlet } from "react-router-dom";
+import {
+  BrowserRouter,
+  Outlet,
+  RouterProvider,
+  // Routes,
+} from "react-router-dom";
 import Navbar from "./Components/NavBar";
 import Banner from "./Components/Banner";
 
-import { ListContext } from "./contexts/ListContext";
+import { useAuth } from "./contexts/useAuth";
+import { AuthProvider } from "./contexts/AuthContext";
+import { ListProvider } from "./contexts/ListContext";
+import PrivateRoutes from "./routes/privateRoutes";
 // import { Footer } from "./Components/Footer";
 function App() {
+  const { token } = useAuth();
+  console.log(token);
   return (
-    // <ListContext.Provider value={{}}>
     <ThemeProvider theme={defaultTheme}>
-      <Navbar />
-      <Banner />
-      <GlobalStyle />
-      <Outlet />
-      {/* <Footer /> */}
+      <AuthProvider>
+        <ListProvider>
+          <Navbar />
+          <Banner />
+          <GlobalStyle />
+          <Outlet />
+        </ListProvider>
+        {/* <Footer /> */}
+      </AuthProvider>
     </ThemeProvider>
-    // </ListContext.Provider>
   );
 }
 

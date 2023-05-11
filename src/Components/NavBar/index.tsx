@@ -1,28 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import { NavBarButton, NavBarContainer, NavBarContent } from "./styles";
 import { api } from "../../services/api/api";
-// import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 export default function NavBar() {
-  // const [list, setList] = useState([]);
-
   const navigate = useNavigate();
-
-  // const getList = async () => {
-  //   try {
-  //     const res = await api.get(`list`);
-  //     const data = res.data;
-
-  //     // setList(data);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getList();
-  // }, []);
 
   const createList = async () => {
     try {
@@ -44,7 +26,7 @@ export default function NavBar() {
     <NavBarContainer>
       <NavBarContent>
         <ul>
-          <Link to="/historic">
+          <Link to="/">
             <li>Histórico</li>
           </Link>
           <Link to="/products">

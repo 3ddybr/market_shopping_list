@@ -2,7 +2,8 @@
   "user": {
     "id": "1",
     "name": "Alberto",
-    "image": "http://"
+    "image": "http://",
+    "token": "12356"
   },
   "list": [
     {
