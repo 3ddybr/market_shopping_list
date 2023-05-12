@@ -26,7 +26,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   useEffect(() => {
     const user = getUserLocalStorage();
-
     if (user) {
       setUser(user);
     }

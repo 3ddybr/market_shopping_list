@@ -2,9 +2,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { NavBarButton, NavBarContainer, NavBarContent } from "./styles";
 import { api } from "../../services/api/api";
 import { v4 as uuidv4 } from "uuid";
+import { useAuth } from "../../contexts/useAuth";
 
 export default function NavBar() {
   const navigate = useNavigate();
+
+  const { token, logout } = useAuth();
 
   const createList = async () => {
     try {
@@ -26,14 +29,19 @@ export default function NavBar() {
     <NavBarContainer>
       <NavBarContent>
         <ul>
-          <Link to="/">
+          <Link to="/historic">
             <li>Histórico</li>
           </Link>
           <Link to="/products">
             <li>Produtos</li>
           </Link>
         </ul>
-        <NavBarButton onClick={createList}>Nova Lista</NavBarButton>
+        {token ? (
+          <>
+            <NavBarButton onClick={createList}>Nova Lista</NavBarButton>
+            <NavBarButton onClick={logout}>Sair</NavBarButton>
+          </>
+        ) : null}
       </NavBarContent>
     </NavBarContainer>
   );

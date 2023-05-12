@@ -34,7 +34,7 @@ function ItemProduct({
     <ContainerItemProduct>
       <ContentItemProduct done={done}>
         <p>{index}-</p>
-        <p>{nameProduct} </p>
+        <p>{nameProduct}</p>
 
         <CurrencyFormat
           thousandSeparator={"."}

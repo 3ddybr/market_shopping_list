@@ -10,8 +10,18 @@ import { FcGoogle } from "react-icons/fc";
 
 import ImgHistoric from "../../assets/historic.png";
 import ImgList from "../../assets/list.png";
+import { useAuth } from "../../contexts/useAuth";
 
 export default function Login() {
+  const { authenticated } = useAuth();
+
+  const user = {
+    id: "1",
+    name: "Alberto",
+    image: "asdsa",
+    token: "qjdojiasjdqiojasoijdq",
+  };
+
   return (
     <LoginContainer>
       <LoginContent>
@@ -21,7 +31,7 @@ export default function Login() {
           possa comparar quanto pagou por aquele mesmo item na compra anterior
           automaticamente.
         </p>
-        <LoginButtonGoogle>
+        <LoginButtonGoogle onClick={() => authenticated(user)}>
           <span>
             <FcGoogle size={24} />
           </span>

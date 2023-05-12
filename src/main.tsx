@@ -1,9 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import { RouterProvider } from "react-router-dom";
-import PrivateRoutes from "./routes/privateRoutes";
-import PublicRoutes from "./routes/publicRoutes";
+import { AuthProvider } from "./contexts/AuthContext";
+import Rostering from "./routes/routes";
+import { ThemeProvider } from "styled-components";
+import { defaultTheme } from "./styles/themes/default";
+
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+  <React.StrictMode>
+    <ThemeProvider theme={defaultTheme}>
+      <AuthProvider>
+        <Rostering />
+      </AuthProvider>
+    </ThemeProvider>
+  </React.StrictMode>
+);
 
 // const routes = token ? PublicRoutes : PublicRoutes;
 
@@ -33,13 +44,4 @@ import PublicRoutes from "./routes/publicRoutes";
 //   },
 // ]);
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    {/* <BrowserRouter> */}
-    <RouterProvider router={PrivateRoutes} />
-    {/* <App /> */}
-    {/* </BrowserRouter> */}
-  </React.StrictMode>
-);
-{
-}
+// const routa = authenticated.length ? <PrivateRoutes /> : <PublicRoutes />;

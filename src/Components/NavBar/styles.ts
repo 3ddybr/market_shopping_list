@@ -17,8 +17,13 @@ export const NavBarContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+
+  max-width: 73.6rem;
 
   gap: 2rem;
+
+  /* padding: 0 1rem; */
 
   ul {
     display: flex;
@@ -37,13 +42,17 @@ export const NavBarContent = styled.div`
 
 export const NavBarButton = styled.button`
   width: 100%;
-  /* max-width: 9rem; */
+  max-width: 9.5rem;
   height: 100%;
-  /* max-height: 5.4rem; */
   padding: 0.5rem 1rem;
   font-size: 1.4rem;
   border-radius: 8px;
 
   background: ${({ theme }) => theme.blue_dark};
   color: ${({ theme }) => theme.white};
+
+  @media (max-width: 400px) {
+    font-size: 1.2rem;
+    padding: 0.5rem 0.5rem;
+  }
 `;

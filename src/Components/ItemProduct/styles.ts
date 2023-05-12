@@ -31,8 +31,15 @@ export const ContentItemProduct = styled.section(
 
     border-bottom: 1px solid ${({ theme }) => theme.blue};
 
+    p:nth-child(1) {
+      width: 100%;
+      max-width: 2.5rem;
+
+      color: ${({ theme }) => theme.blue};
+    }
+
     p:nth-child(2) {
-      width: 45%;
+      width: 55%;
       overflow: hidden;
       text-overflow: ellipsis;
       text-decoration: ${done ? "line-through" : "initial"};
