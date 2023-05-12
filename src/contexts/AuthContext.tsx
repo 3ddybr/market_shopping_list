@@ -35,6 +35,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     localStorage.setItem("MarketListU", JSON.stringify(user));
   }
 
+  // Função para autenticar o usuário
+  //verificar se exite user se nao cadastrar
   async function LoginRequest(user: UserProps) {
     try {
       const request = await api.post("user", user);
@@ -45,17 +47,55 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }
 
   async function authenticated(user: UserProps) {
-    const response = await LoginRequest(user);
+    try {
+      const response = await api.get("user");
+      const data: UserProps[] = response.data;
+      const exist = data.find((item) => item.id === user.id);
 
-    const payload = {
-      id: response.id,
-      name: response.name,
-      image: response.image,
-      token: response.token,
-    };
+      if (exist) {
+        const payload = {
+          id: exist.id,
+          name: exist.name,
+          image: exist.image,
+          token: exist.token,
+        };
 
-    setUser(payload);
-    setUserLocalStorage(payload);
+        setUser(payload);
+        setUserLocalStorage(payload);
+      } else {
+        const response = await LoginRequest(user);
+
+        const payload = {
+          id: response.id,
+          name: response.name,
+          image: response.image,
+          token: response.token,
+        };
+
+        setUser(payload);
+        setUserLocalStorage(payload);
+      }
+
+      console.log("se existe user", exist);
+
+      // if (user.id) {
+      //   const data = await LoginRequest(user);
+      //   setUser(data);
+      // } else {
+      // }
+    } catch (err) {
+      console.log(err);
+    }
+
+    // const payload = {
+    //   id: response.id,
+    //   name: response.name,
+    //   image: response.image,
+    //   token: response.token,
+    // };
+
+    // setUser(payload);
+    // setUserLocalStorage(payload);
   }
   function logout() {
     setUser(null);

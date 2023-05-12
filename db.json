@@ -1,10 +1,18 @@
 {
-  "user": {
-    "id": "1",
-    "name": "Alberto",
-    "image": "asdsa",
-    "token": "qjdojiasjdqiojasoijdq"
-  },
+  "user": [
+    {
+      "id": "2",
+      "name": "Gedson",
+      "image": "asdsa",
+      "token": "qjdojiasjdqiojasoijdq"
+    },
+    {
+      "id": "1",
+      "name": "Alberto",
+      "image": "asdsa",
+      "token": "qjdojiasjdqiojasoijdq"
+    }
+  ],
   "list": [
     {
       "id": 1,
