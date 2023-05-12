@@ -30,7 +30,9 @@ export function ListProvider({ children }: ListProviderProps) {
 
   const getList = async () => {
     try {
-      const res = await api.get(`list?idUser=${idUser}`);
+      const res = await api.get("list", {
+        params: { idUser },
+      });
       const data: marketListTypes[] = res.data;
       setListContextValue(data);
     } catch (err) {

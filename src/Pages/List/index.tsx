@@ -142,6 +142,7 @@ export default function List() {
       await api.put(`/list/${idParams}`, {
         id: idParams,
         create_at: list?.create_at,
+        idUser: list?.idUser,
         products: [...product.filter((item) => item.id !== idProduct)],
       });
     } catch (e) {

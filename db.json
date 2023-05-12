@@ -161,15 +161,15 @@
           "done": false
         },
         {
-          "id": "5016a172-d72b-4104-93ec-fd47c72a2f88",
-          "nameProduct": "ARROZ 2K",
-          "currentValue": 9.5,
-          "done": false
-        },
-        {
           "id": "3eeb7c20-af4b-4f4f-a4f4-4e0aab0527f6",
           "nameProduct": "OVO",
           "currentValue": 10,
+          "done": false
+        },
+        {
+          "id": "5016a172-d72b-4104-93ec-fd47c72a2f88",
+          "nameProduct": "ARROZ 2K",
+          "currentValue": 1,
           "done": false
         }
       ]
@@ -194,13 +194,13 @@
         {
           "id": "5016a172-d72b-4104-93ec-fd47c72a2f88",
           "nameProduct": "ARROZ 2K",
-          "currentValue": 1,
+          "currentValue": 15,
           "done": true
         },
         {
           "id": "a3b5c644-4f69-4647-b1f0-c0783004b53b",
           "nameProduct": "CENOURA",
-          "currentValue": 3,
+          "currentValue": 4,
           "done": true
         },
         {
@@ -255,7 +255,6 @@
     },
     {
       "id": "2ae01560-7c19-4e33-9faf-1f2642535aa5",
-      "userId": 1,
       "create_at": 1683850462164,
       "idUser": "1",
       "products": [
@@ -266,9 +265,15 @@
           "done": false
         },
         {
+          "id": "5016a172-d72b-4104-93ec-fd47c72a2f88",
+          "nameProduct": "ARROZ 2K",
+          "currentValue": 1,
+          "done": false
+        },
+        {
           "id": "21a745f6-3e66-4b93-8ba2-8854d1fc62e9",
           "nameProduct": "BATATA PALHA ELMA CHIPS",
-          "currentValue": 1,
+          "currentValue": 12,
           "done": false
         }
       ]
