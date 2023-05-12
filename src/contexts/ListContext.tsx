@@ -1,6 +1,7 @@
 import { createContext, useState, ReactNode, useEffect } from "react";
 import { api } from "../services/api/api";
 import { marketListTypes } from "../@types/marketList";
+import { useAuth } from "./useAuth";
 
 type ProductType = {
   id: string;
@@ -25,12 +26,12 @@ export function ListProvider({ children }: ListProviderProps) {
     []
   );
   const [productContext, setProductContext] = useState<ProductType[]>([]);
+  const { id: idUser } = useAuth();
 
   const getList = async () => {
     try {
-      const res = await api.get(`list`);
-      const data = res.data;
-
+      const res = await api.get(`list?idUser=${idUser}`);
+      const data: marketListTypes[] = res.data;
       setListContextValue(data);
     } catch (err) {
       console.log(err);
