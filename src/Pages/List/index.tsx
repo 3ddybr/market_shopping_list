@@ -13,6 +13,7 @@ import { HomeContainer, HomeContent } from "./styles";
 import { ListContext } from "../../contexts/ListContext";
 import ReactModal from "react-modal";
 import { ModalProduct } from "../../Components/ModalProduct";
+import { useAuth } from "../../contexts/useAuth";
 
 type selectItemType = {
   value: string | undefined;
@@ -24,6 +25,7 @@ ReactModal.setAppElement("#root");
 export default function List() {
   const { id: idParams } = useParams();
   const { dataProductContext, dataListContext } = useContext(ListContext);
+  const { id: idUser } = useAuth();
 
   const [list, setList] = useState<marketListTypes>();
   const [product, setProduct] = useState<ItemProductTypes[]>([]);
@@ -33,7 +35,11 @@ export default function List() {
   function lastValueProd(prodId: string) {
     const dataListAtual = list?.create_at as number;
 
-    const deleteNewerLists = dataListContext.filter(
+    const FilteredListPerUser = dataListContext.filter(
+      (item) => item.idUser === idUser
+    );
+
+    const deleteNewerLists = FilteredListPerUser.filter(
       (item) => item.create_at < dataListAtual
     );
     const orderMarketList = deleteNewerLists.sort(function (a, b) {
