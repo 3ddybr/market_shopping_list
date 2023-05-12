@@ -36,7 +36,7 @@ export const HomeContent = styled.div`
     top: -2.5rem;
 
     gap: 0.8rem;
-    padding: 0 2rem;
+    padding: 0 4rem;
 
     width: 100%;
     max-width: 73.6rem;
@@ -85,7 +85,7 @@ export const HomeContent = styled.div`
     flex-direction: column;
 
     width: 100%;
-    padding: 9rem 0;
+    padding: 9rem 2rem;
 
     header {
       display: flex;

@@ -26,7 +26,7 @@ export const ContentItemProduct = styled.section(
     max-width: 73.6rem;
     max-height: 5.2rem;
 
-    padding: 0.6rem 0;
+    padding: 0.6rem 1rem;
     gap: 0.8rem;
 
     border-bottom: 1px solid ${({ theme }) => theme.blue};

@@ -23,7 +23,7 @@ export const NavBarContent = styled.div`
 
   gap: 2rem;
 
-  /* padding: 0 1rem; */
+  padding: 0 1rem;
 
   ul {
     display: flex;
@@ -52,7 +52,8 @@ export const NavBarButton = styled.button`
   color: ${({ theme }) => theme.white};
 
   @media (max-width: 400px) {
-    font-size: 1.2rem;
+    font-size: 1rem;
     padding: 0.5rem 0.5rem;
+    /* color: red; */
   }
 `;

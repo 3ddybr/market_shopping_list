@@ -29,7 +29,7 @@ export default function NavBar() {
     <NavBarContainer>
       <NavBarContent>
         <ul>
-          <Link to="/historic">
+          <Link to="/">
             <li>Histórico</li>
           </Link>
           <Link to="/products">
