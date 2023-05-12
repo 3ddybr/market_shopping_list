@@ -13,6 +13,7 @@ interface UserProps {
 }
 
 interface AuthContextProps extends UserProps {
+  // user: UserProps | null;
   authenticated: (user: UserProps) => void;
   logout: () => void;
 }
@@ -75,27 +76,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         setUser(payload);
         setUserLocalStorage(payload);
       }
-
-      console.log("se existe user", exist);
-
-      // if (user.id) {
-      //   const data = await LoginRequest(user);
-      //   setUser(data);
-      // } else {
-      // }
     } catch (err) {
       console.log(err);
     }
-
-    // const payload = {
-    //   id: response.id,
-    //   name: response.name,
-    //   image: response.image,
-    //   token: response.token,
-    // };
-
-    // setUser(payload);
-    // setUserLocalStorage(payload);
   }
   function logout() {
     setUser(null);

@@ -7,14 +7,15 @@ import { useAuth } from "../../contexts/useAuth";
 export default function NavBar() {
   const navigate = useNavigate();
 
-  const { token, logout } = useAuth();
+  const { id, token, logout } = useAuth();
+  const idUser = id;
 
   const createList = async () => {
     try {
       const idList = uuidv4();
       api.post(`/list`, {
         id: idList,
-        userId: 1,
+        userId: idUser,
         create_at: new Date().getTime(),
         products: [],
       });

@@ -17,6 +17,7 @@
     {
       "id": 1,
       "create_at": 1682311776822,
+      "idUser": "1",
       "products": [
         {
           "id": "9c6ecf00-1b8a-4c8e-a8aa-15a3661edebc",
@@ -101,12 +102,19 @@
           "nameProduct": "VASSOURA",
           "currentValue": 1,
           "done": true
+        },
+        {
+          "id": "ae05a2e7-70be-45aa-83ca-fafb3892f155",
+          "nameProduct": "MILHO DE PIPOCA ",
+          "currentValue": 1,
+          "done": false
         }
       ]
     },
     {
       "id": 2,
       "create_at": 1682388778999,
+      "idUser": "1",
       "products": [
         {
           "id": "bf66e3c8-88d8-480c-b93d-49af28640e03",
@@ -119,6 +127,7 @@
     {
       "id": 3,
       "create_at": 1682608778999,
+      "idUser": "1",
       "products": [
         {
           "id": "5016a172-d72b-4104-93ec-fd47c72a2f88",
@@ -143,6 +152,7 @@
     {
       "id": 4,
       "create_at": 1682702239937,
+      "idUser": "1",
       "products": [
         {
           "id": "83c884e9-9232-4c27-91a8-4147ca4ab354",
@@ -167,6 +177,7 @@
     {
       "id": "0eb302d8-6615-4cd6-867d-2e511d965727",
       "create_at": 1683073705175,
+      "idUser": "1",
       "products": [
         {
           "id": "9c6ecf00-1b8a-4c8e-a8aa-15a3661edebc",
@@ -246,6 +257,7 @@
       "id": "2ae01560-7c19-4e33-9faf-1f2642535aa5",
       "userId": 1,
       "create_at": 1683850462164,
+      "idUser": "1",
       "products": [
         {
           "id": "9c6ecf00-1b8a-4c8e-a8aa-15a3661edebc",
