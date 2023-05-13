@@ -29,16 +29,16 @@ export default function NavBar() {
   return (
     <NavBarContainer>
       <NavBarContent>
-        <ul>
-          <Link to="/">
-            <li>Histórico</li>
-          </Link>
-          <Link to="/products">
-            <li>Produtos</li>
-          </Link>
-        </ul>
         {token ? (
           <>
+            <ul>
+              <Link to="/">
+                <li>Histórico</li>
+              </Link>
+              <Link to="/products">
+                <li>Produtos</li>
+              </Link>
+            </ul>
             <NavBarButton onClick={createList}>Nova Lista</NavBarButton>
             <NavBarButton onClick={logout}>Sair</NavBarButton>
           </>
