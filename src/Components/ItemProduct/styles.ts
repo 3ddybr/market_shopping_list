@@ -59,6 +59,13 @@ export const ContentItemProduct = styled.section(
     }
 
     @media (max-width: 500px) {
+      p:nth-child(1) {
+        width: 100%;
+        max-width: 1rem;
+
+        color: ${({ theme }) => theme.blue};
+      }
+
       font-size: 1.2rem;
 
       input[type="text"] {
@@ -71,7 +78,7 @@ export const ContentItemProduct = styled.section(
         /* color: red; */
       }
     }
-    @media (max-width: 360px) {
+    @media (max-width: 400px) {
       font-size: 1rem;
 
       input[type="text"] {

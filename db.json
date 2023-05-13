@@ -262,7 +262,7 @@
           "id": "9c6ecf00-1b8a-4c8e-a8aa-15a3661edebc",
           "nameProduct": "ACUCAR 5K",
           "currentValue": 1,
-          "done": false
+          "done": true
         },
         {
           "id": "5016a172-d72b-4104-93ec-fd47c72a2f88",
@@ -274,6 +274,12 @@
           "id": "21a745f6-3e66-4b93-8ba2-8854d1fc62e9",
           "nameProduct": "BATATA PALHA ELMA CHIPS",
           "currentValue": 12,
+          "done": false
+        },
+        {
+          "id": "d47f5f6e-108c-4bb3-a418-b995e73b9edf",
+          "nameProduct": "VASSOURA",
+          "currentValue": 12.5,
           "done": false
         }
       ]
