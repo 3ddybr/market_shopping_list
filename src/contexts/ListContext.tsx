@@ -2,6 +2,8 @@ import { createContext, useState, ReactNode, useEffect } from "react";
 import { api } from "../services/api/api";
 import { marketListTypes } from "../@types/marketList";
 import { useAuth } from "./useAuth";
+import { collection, getDocs } from "firebase/firestore";
+import { dbFirebase } from "../services/api/apiFirebase";
 
 type ProductType = {
   id: string;
@@ -41,11 +43,30 @@ export function ListProvider({ children }: ListProviderProps) {
   };
 
   const getProduct = async () => {
+    const productsCollectionRef = collection(dbFirebase, "products");
     try {
-      const res = await api.get(`products`);
-      const data = res.data;
+      const res = await getDocs(productsCollectionRef);
+      const filteredData = res.docs.map((doc) => ({
+        id: doc.id as string,
+        ...doc.data(),
+      }));
 
-      setProductContext(data);
+      setProductContext(filteredData as ProductType[]);
+      // console.log(filteredData);
+      // console.log(
+      //   data.map(
+      //     (item) => `id:${item.id},  nameProduct:${item.data().nameProduct} `
+      //   )
+      // );
+
+      // data.forEach((doc) => {
+      //   console.log(`${doc.id} => ${doc.data().nameProduct}`);
+      // });
+
+      // const res = await api.get(`products`);
+      // const data = res.data;
+
+      // setProductContext(data);
     } catch (err) {
       console.log(err);
     }

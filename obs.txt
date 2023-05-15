@@ -1,5 +1,0 @@
-##tabela de produtos consultar se existe antes de handleAddProduct
-## estilizar melhor lista de produtos
-
-
-## nao permitir item duplicado na list

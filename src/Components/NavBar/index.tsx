@@ -15,7 +15,7 @@ export default function NavBar() {
       const idList = uuidv4();
       api.post(`/list`, {
         id: idList,
-        userId: idUser,
+        idUser: idUser,
         create_at: new Date().getTime(),
         products: [],
       });

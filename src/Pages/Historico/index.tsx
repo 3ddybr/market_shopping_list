@@ -33,7 +33,7 @@ export const Historic = () => {
       <HistoricContent>
         <h1>Histórico</h1>
         {orderMarketList.map((list, index) => (
-          <Link to={`/${list.id}`}>
+          <Link key={list.id} to={`/${list.id}`}>
             <p key={list.id}>{index + 1} - Criada em</p>
             <span> {convert(list.create_at)}</span>
           </Link>

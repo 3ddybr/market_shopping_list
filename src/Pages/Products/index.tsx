@@ -9,6 +9,8 @@ import { ProductContainer, ProductContent } from "./styled";
 import { api } from "../../services/api/api";
 import { v4 as uuidv4 } from "uuid";
 import { ListContext } from "../../contexts/ListContext";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { dbFirebase } from "../../services/api/apiFirebase";
 
 export const Products = () => {
   const { dataProductContext } = useContext(ListContext);
@@ -18,29 +20,41 @@ export const Products = () => {
   const deferredSearch = useDeferredValue(searchProduct);
 
   const handleAddProduct = async (e: FormEvent) => {
-    e.preventDefault;
+    e.preventDefault();
     const include = dataProductContext.filter(
       (product) => product.nameProduct === inputText
     );
     if (include.length !== 0) {
       alert("Lista de produtos ja possuí esse item");
-      // setSearchProduct(dataProductContext);
-      // console.log(searchProduct);
     } else {
       if (inputText) {
         try {
-          await api.post(`products`, {
-            id: uuidv4(),
+          const productsRef = collection(dbFirebase, "products");
+          const docRef = await addDoc(productsRef, {
             nameProduct: inputText,
           });
+
+          setInputText("");
+          setSearchProduct(dataProductContext);
+
+          // console.log(docRef.id);
+          // await setDoc(doc(dbFirebase, "products", uuidv4()), { inputText });
+
+          // await addDoc(productsRef, {
+          //   id: uuidv4(),
+          //   nameProduct: inputText,
+          // });
+
+          // await api.post(`products`, {
+          //   id: uuidv4(),
+          //   nameProduct: inputText,
+          // });
         } catch (e) {
           console.log(e);
         }
       } else alert("Insira um produto");
-      // alert(`Produto ${inputText} cadastrado`);
     }
   };
-  // console.log("search ", searchProduct, "data context", dataProductContext);
 
   const handleSearch = () => {
     if (inputText !== "") {

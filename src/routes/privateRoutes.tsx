@@ -5,7 +5,7 @@ const ProtectedRoutes = ({ children }: { children: JSX.Element }) => {
   const { token } = useAuth();
 
   if (!token) {
-    return <Navigate to="/" replace={false} />;
+    return <Navigate to="" replace={true} />;
   }
 
   return children;
