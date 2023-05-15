@@ -1,4 +1,4 @@
-import { memo, useRef, useState } from "react";
+import { memo, useState } from "react";
 import { ContainerItemProduct, ContentItemProduct } from "./styles";
 
 import { RiDeleteBin6Line } from "react-icons/ri";

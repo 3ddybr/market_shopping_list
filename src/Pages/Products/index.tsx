@@ -6,14 +6,18 @@ import {
   useState,
 } from "react";
 import { ProductContainer, ProductContent } from "./styled";
-import { api } from "../../services/api/api";
-import { v4 as uuidv4 } from "uuid";
 import { ListContext } from "../../contexts/ListContext";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import { dbFirebase } from "../../services/api/apiFirebase";
 
+type ProductType = {
+  id: string;
+  nameProduct: string;
+};
+
 export const Products = () => {
-  const { dataProductContext } = useContext(ListContext);
+  const { addProduct, dataProductContext } = useContext(ListContext);
+  // const [getDataProduct, setGetDataProduct] = useState<ProductType[]>([]);
   const [inputText, setInputText] = useState("");
   const [searchProduct, setSearchProduct] = useState(dataProductContext);
 
@@ -29,26 +33,12 @@ export const Products = () => {
     } else {
       if (inputText) {
         try {
-          const productsRef = collection(dbFirebase, "products");
-          const docRef = await addDoc(productsRef, {
-            nameProduct: inputText,
-          });
-
+          // const productsRef = collection(dbFirebase, "products");
+          // const refDoc = await addDoc(productsRef, {
+          //   nameProduct: inputText,
+          // });
+          await addProduct(inputText);
           setInputText("");
-          setSearchProduct(dataProductContext);
-
-          // console.log(docRef.id);
-          // await setDoc(doc(dbFirebase, "products", uuidv4()), { inputText });
-
-          // await addDoc(productsRef, {
-          //   id: uuidv4(),
-          //   nameProduct: inputText,
-          // });
-
-          // await api.post(`products`, {
-          //   id: uuidv4(),
-          //   nameProduct: inputText,
-          // });
         } catch (e) {
           console.log(e);
         }

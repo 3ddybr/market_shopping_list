@@ -2,7 +2,7 @@ import { createContext, useState, ReactNode, useEffect } from "react";
 import { api } from "../services/api/api";
 import { marketListTypes } from "../@types/marketList";
 import { useAuth } from "./useAuth";
-import { collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import { dbFirebase } from "../services/api/apiFirebase";
 
 type ProductType = {
@@ -13,6 +13,7 @@ type ProductType = {
 type ContextDefaultValues = {
   dataListContext: marketListTypes[];
   dataProductContext: ProductType[];
+  addProduct: (nameProduct: string) => Promise<void>;
 };
 
 interface ListProviderProps {
@@ -52,23 +53,22 @@ export function ListProvider({ children }: ListProviderProps) {
       }));
 
       setProductContext(filteredData as ProductType[]);
-      // console.log(filteredData);
-      // console.log(
-      //   data.map(
-      //     (item) => `id:${item.id},  nameProduct:${item.data().nameProduct} `
-      //   )
-      // );
-
-      // data.forEach((doc) => {
-      //   console.log(`${doc.id} => ${doc.data().nameProduct}`);
-      // });
-
-      // const res = await api.get(`products`);
-      // const data = res.data;
-
-      // setProductContext(data);
     } catch (err) {
       console.log(err);
+    }
+  };
+
+  const addProduct = async (nameProduct: string) => {
+    try {
+      const productsRef = collection(dbFirebase, "products");
+      const refDoc = await addDoc(productsRef, {
+        nameProduct: nameProduct,
+      });
+      const newProduct = { id: refDoc.id, nameProduct };
+
+      setProductContext((prev) => [...prev, newProduct]);
+    } catch (e) {
+      console.log(e);
     }
   };
 
@@ -82,6 +82,7 @@ export function ListProvider({ children }: ListProviderProps) {
       value={{
         dataListContext: listContextValue,
         dataProductContext: productContext,
+        addProduct,
       }}
     >
       {children}
