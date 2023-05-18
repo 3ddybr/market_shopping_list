@@ -7,17 +7,9 @@ import {
 } from "react";
 import { ProductContainer, ProductContent } from "./styled";
 import { ListContext } from "../../contexts/ListContext";
-import { addDoc, collection, getDocs } from "firebase/firestore";
-import { dbFirebase } from "../../services/api/apiFirebase";
-
-type ProductType = {
-  id: string;
-  nameProduct: string;
-};
 
 export const Products = () => {
   const { addProduct, dataProductContext } = useContext(ListContext);
-  // const [getDataProduct, setGetDataProduct] = useState<ProductType[]>([]);
   const [inputText, setInputText] = useState("");
   const [searchProduct, setSearchProduct] = useState(dataProductContext);
 
@@ -30,13 +22,10 @@ export const Products = () => {
     );
     if (include.length !== 0) {
       alert("Lista de produtos ja possuí esse item");
+      setInputText("");
     } else {
       if (inputText) {
         try {
-          // const productsRef = collection(dbFirebase, "products");
-          // const refDoc = await addDoc(productsRef, {
-          //   nameProduct: inputText,
-          // });
           await addProduct(inputText);
           setInputText("");
         } catch (e) {

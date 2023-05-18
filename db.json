@@ -286,125 +286,40 @@
     }
   ],
   "products": [
-    {
-      "id": "bf66e3c8-88d8-480c-b93d-49af28640e03",
-      "nameProduct": "FEIJAO 1K"
-    },
-    {
-      "id": "d47f5f6e-108c-4bb3-a418-b995e73b9edf",
-      "nameProduct": "VASSOURA"
-    },
-    {
-      "id": "a3b5c644-4f69-4647-b1f0-c0783004b53b",
-      "nameProduct": "CENOURA"
-    },
-    {
-      "id": "a633c4d7-dc30-4e7c-8f7c-588006713b5b",
-      "nameProduct": "ARROZ 5K"
-    },
-    {
-      "id": "b38144d6-685e-4c75-ba62-e811cfd4d347",
-      "nameProduct": "COPO AMERICANO"
-    },
-    {
-      "id": "56013ec6-7ccd-457d-bcdc-91af616d21d4",
-      "nameProduct": "SUCO FRESH"
-    },
-    {
-      "id": "03ff4fd1-ad6f-4c23-8bf6-c713885e93aa",
-      "nameProduct": "LEITE 1L"
-    },
-    {
-      "id": "1034510c-98c2-4beb-a8d8-14d5a2f5ed01",
-      "nameProduct": "PO DE CAFE"
-    },
-    {
-      "id": "83c884e9-9232-4c27-91a8-4147ca4ab354",
-      "nameProduct": "AMAC ROUPA URCA 5L"
-    },
-    {
-      "id": "21a745f6-3e66-4b93-8ba2-8854d1fc62e9",
-      "nameProduct": "BATATA PALHA ELMA CHIPS"
-    },
-    {
-      "id": "f66e8339-6229-4109-b2bd-bb1cb61682d7",
-      "nameProduct": "GELATINA"
-    },
-    {
-      "id": "ba31234e-7c7a-4cce-aa10-b9ea09d23fd5",
-      "nameProduct": "FARINHA DE MANDIOCA"
-    },
-    {
-      "id": "ae05a2e7-70be-45aa-83ca-fafb3892f155",
-      "nameProduct": "MILHO DE PIPOCA "
-    },
-    {
-      "id": "afe13705-58ca-4386-8cfb-ba0d3e7e607b",
-      "nameProduct": "FILTRO DE CAFE"
-    },
-    {
-      "id": "69f8d051-cf28-4e8d-b587-4dd1a5e5ad01",
-      "nameProduct": "OLEO DE SOJA"
-    },
-    {
-      "id": "ab5e9dc4-1aac-4028-85fe-539c5c07701d",
-      "nameProduct": "TOMATE"
-    },
-    {
-      "id": "5016a172-d72b-4104-93ec-fd47c72a2f88",
-      "nameProduct": "ARROZ 2K"
-    },
-    {
-      "id": "30d86fae-48cb-4764-ac39-1df8d2cceb9c",
-      "nameProduct": "MASSA DE PASTEL"
-    },
-    {
-      "id": "60f16957-9b9d-4248-86d1-6b90bbc8c6f6",
-      "nameProduct": "PAO DE FORMA"
-    },
-    {
-      "id": "141ac0dc-4c09-4ddd-ba09-0708cebd01cc",
-      "nameProduct": "SABAO PO URCA"
-    },
-    {
-      "id": "9c6ecf00-1b8a-4c8e-a8aa-15a3661edebc",
-      "nameProduct": "ACUCAR 5K"
-    },
-    {
-      "id": "3eeb7c20-af4b-4f4f-a4f4-4e0aab0527f6",
-      "nameProduct": "OVO"
-    },
-    {
-      "id": "11dc551a-b7ab-4803-a84c-cddc237e555f",
-      "nameProduct": "MANTEIGA"
-    },
-    {
-      "id": "84771051-458c-4334-9531-161068992271",
-      "nameProduct": "PRESUNTO COFRIL KG"
-    },
-    {
-      "id": "b905f8a8-4fd0-4e13-b8b7-2800b3a0609e",
-      "nameProduct": "CREME DENTAL"
-    },
-    {
-      "id": "fd937f73-5622-47f7-84bc-c71caa55e9f7",
-      "nameProduct": "NESCAU 800G"
-    },
-    {
-      "id": "2ccb6fcd-833b-4578-849e-967147a041e4",
-      "nameProduct": "QUEIJO MUSSARELA KG"
-    },
-    {
-      "id": "1c2a1b6b-9b06-4aa7-9506-d0fcafa1bc9d",
-      "nameProduct": "DETERGENTE 500ML"
-    },
-    {
-      "id": "4f09b57e-7803-4b42-bb8a-d5bee6aa9ae6",
-      "nameProduct": "DETERGENTE 5L"
-    },
-    {
-      "id": "0cd6a7b6-3153-4dbb-8172-344200939663",
-      "nameProduct": "MISTURA DE BOLO"
-    }
+    { "id": "01vvLD8cN3EE8YcLZEY1", "nameProduct": "BATATA PALHA ELMA CHIPS" },
+    { "id": "1TJ3QfLryretMIA6WD1z", "nameProduct": "PAPEL HIGIENICO" },
+    { "id": "28CvsBqdQo6sawXdRmsZ", "nameProduct": "ARROZ 2K" },
+    { "id": "472nYdN6ppFA9b6mEHyS", "nameProduct": "MANTEIGA" },
+    { "id": "4Jn5mOKTuxxqt5lyotnZ", "nameProduct": "PO DE CAFE" },
+    { "id": "5EsRX92eJCmHCs1MXc7U", "nameProduct": "CENOURA" },
+    { "id": "7lgQyo24aRV95g3mnaal", "nameProduct": "ALFACE" },
+    { "id": "BPV7Aj6ibQnWoxJLzV6D", "nameProduct": "PAO DE FORMA" },
+    { "id": "CN8QxFbEbyqmGNLcCXg8", "nameProduct": "VASSOURA" },
+    { "id": "E5sfV0FWBLrI3gjkGeO5", "nameProduct": "PRESUNTO COFRIL KG" },
+    { "id": "FsGysCkHvWZRNnW6Q5yq", "nameProduct": "FILTRO DE CAFE" },
+    { "id": "GWE7z42CNlDJR6YcF8A2", "nameProduct": "SABAO PO URCA" },
+    { "id": "HJ1H3Bm2lhggU1bxjEV0", "nameProduct": "NESCAU 800G" },
+    { "id": "NfsLNCKwl0Kmlry1aelV", "nameProduct": "MASSA DE PASTEL" },
+    { "id": "OsRNqtGtKnI7cjT9x4ad", "nameProduct": "GUARDANAPO" },
+    { "id": "QBEBG2uKytwH1oVWYBJc", "nameProduct": "OVO " },
+    { "id": "QQvIAqqxbBxaFaI23t2G", "nameProduct": "QUEIJO MUSSARELA KG" },
+    { "id": "R95BCXKd97ek8WVqmMPt", "nameProduct": "GELATINA" },
+    { "id": "Y3HjDtIf10OSYykgwraD", "nameProduct": "LEITE 1L" },
+    { "id": "bNhUglmJqMs2qlHOQsMv", "nameProduct": "DETERGENTE 500ML" },
+    { "id": "deifpXS1yfKDgIFxlPpz", "nameProduct": "PAPEL TOALHA" },
+    { "id": "dvGuszDNvyGgtMoWnUj4", "nameProduct": "AÇUCAR 5K" },
+    { "id": "ejkM67H35NxHKMivXlph", "nameProduct": "FARINHA DE MANDIOCA" },
+    { "id": "hEOuoyJwHkqTSgyWPXcs", "nameProduct": "TOMATE" },
+    { "id": "hZ93As5SO3syWweUwbQA", "nameProduct": "FEIJAO 1K" },
+    { "id": "kll0EQuwvMgLQRFkdi2n", "nameProduct": "COPO AMERICANO" },
+    { "id": "nEqHCCrNBXGL8xAAnXuY", "nameProduct": "MISTURA DE BOLO" },
+    { "id": "ogWsj3xm4U3wU7gze0sh", "nameProduct": "MILHO DE PIPOCA " },
+    { "id": "pOHUxkV40uNlmsdISgUW", "nameProduct": "CREME DENTAL" },
+    { "id": "pPRVtByUfDd9dxri6bAC", "nameProduct": "SUCO FRESH" },
+    { "id": "qgV2GGxHl9lwEsaNWLBn", "nameProduct": "AMAC ROUPA URCA 5L" },
+    { "id": "r5xOyRbpaNEpWRje0vT0", "nameProduct": "BETERABA" },
+    { "id": "uE6vKvZDtrrELOSAsJn9", "nameProduct": "DETERGENTE 5L" },
+    { "id": "vUVuJR9e6fC99Vkr9I83", "nameProduct": "ARROZ 5K" },
+    { "id": "wzVcF7A1xeANBhIeFQxi", "nameProduct": "OLEO DE SOJA" }
   ]
 }

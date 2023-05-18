@@ -43,6 +43,7 @@ export function ListProvider({ children }: ListProviderProps) {
     }
   };
 
+  //Funçao que pega os produtos
   const getProduct = async () => {
     const productsCollectionRef = collection(dbFirebase, "products");
     try {
@@ -52,12 +53,14 @@ export function ListProvider({ children }: ListProviderProps) {
         ...doc.data(),
       }));
 
+      console.log(filteredData);
       setProductContext(filteredData as ProductType[]);
     } catch (err) {
       console.log(err);
     }
   };
 
+  //Função para adicionar produtos no array ja chamado no context
   const addProduct = async (nameProduct: string) => {
     try {
       const productsRef = collection(dbFirebase, "products");
