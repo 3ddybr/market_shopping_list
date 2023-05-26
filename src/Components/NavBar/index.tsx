@@ -1,8 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { NavBarButton, NavBarContainer, NavBarContent } from "./styles";
-import { api } from "../../services/api/api";
-import { v4 as uuidv4 } from "uuid";
+
 import { useAuth } from "../../contexts/useAuth";
+import { addDoc, collection } from "firebase/firestore";
+import { dbFirebase } from "../../services/api/apiFirebase";
 
 export default function NavBar() {
   const navigate = useNavigate();
@@ -11,16 +12,26 @@ export default function NavBar() {
   const idUser = id;
 
   const createList = async () => {
+    const listCollectionRef = collection(dbFirebase, "list");
     try {
-      const idList = uuidv4();
-      api.post(`/list`, {
-        id: idList,
+      const newList = await addDoc(listCollectionRef, {
         idUser: idUser,
         create_at: new Date().getTime(),
         products: [],
       });
 
-      navigate(`/${idList}`);
+      navigate(`/${newList.id}`);
+
+      //-------------------- chamada a fake api via axios----------------
+      // const idList = uuidv4();
+      // api.post(`/list`, {
+      //   id: idList,
+      //   idUser: idUser,
+      //   create_at: new Date().getTime(),
+      //   products: [],
+      // });
+      // navigate(`/${idList}`);
+      //------------------------------------------------------
     } catch (e) {
       console.log(e);
     }

@@ -16,7 +16,7 @@ export default function Login() {
   const { authenticated } = useAuth();
 
   const user = {
-    id: "1",
+    id: "4GXWiC37MziFwH9GfyfT",
     name: "Alberto",
     image: "asdsa",
     token: "qjdojiasjdqiojasoijdq",

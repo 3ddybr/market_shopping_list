@@ -216,6 +216,8 @@ export default function List() {
   });
   const dataList = list?.create_at as number;
 
+  console.log("dentro de list produt", orderProd);
+
   const counterDone = product.filter((item) => item.done === true);
   return (
     <HomeContainer>

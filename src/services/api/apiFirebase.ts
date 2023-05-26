@@ -16,4 +16,4 @@ const appFirebase = initializeApp(firebaseConfig);
 export const dbFirebase = getFirestore(appFirebase);
 
 // export const appFirebase =
-//   getApps().length > 0 ? getApps()[0] : initializeApp(firebaseConfig);
+// getApps().length > 0 ? getApps()[0] : initializeApp(firebaseConfig);

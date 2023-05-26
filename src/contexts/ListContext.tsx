@@ -1,8 +1,7 @@
 import { createContext, useState, ReactNode, useEffect } from "react";
-import { api } from "../services/api/api";
 import { marketListTypes } from "../@types/marketList";
 import { useAuth } from "./useAuth";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { dbFirebase } from "../services/api/apiFirebase";
 
 type ProductType = {
@@ -31,17 +30,36 @@ export function ListProvider({ children }: ListProviderProps) {
   const [productContext, setProductContext] = useState<ProductType[]>([]);
   const { id: idUser } = useAuth();
 
-  const getList = async () => {
-    try {
-      const res = await api.get("list", {
-        params: { idUser },
-      });
-      const data: marketListTypes[] = res.data;
-      setListContextValue(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  useEffect(() => {
+    setListContextValue([]);
+    const getList = async () => {
+      const listCollectionRef = collection(dbFirebase, "list");
+
+      try {
+        const q = query(listCollectionRef, where("idUser", "==", idUser));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          doc.id;
+          const data = doc.data();
+          const res = { id: doc.id, ...data };
+
+          setListContextValue((prev) => [...prev, res as marketListTypes]);
+        });
+
+        //------------------chamada a fake api via axios------------------
+        // const res = await api.get("list", {
+        //   params: { idUser },
+        // });
+        // const data: marketListTypes[] = filteredData.
+        //------------------------------------------------------
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getList();
+  }, [idUser]);
+
+  console.log(listContextValue);
 
   //Funçao que pega os produtos
   const getProduct = async () => {
@@ -53,7 +71,7 @@ export function ListProvider({ children }: ListProviderProps) {
         ...doc.data(),
       }));
 
-      console.log(filteredData);
+      // console.log(filteredData);
       setProductContext(filteredData as ProductType[]);
     } catch (err) {
       console.log(err);
@@ -76,7 +94,6 @@ export function ListProvider({ children }: ListProviderProps) {
   };
 
   useEffect(() => {
-    getList();
     getProduct();
   }, []);
 
