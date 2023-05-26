@@ -13,6 +13,8 @@ import { HomeContainer, HomeContent } from "./styles";
 import { ListContext } from "../../contexts/ListContext";
 import ReactModal from "react-modal";
 import { ModalProduct } from "../../Components/ModalProduct";
+import { doc, getDoc } from "firebase/firestore";
+import { dbFirebase } from "../../services/api/apiFirebase";
 
 type selectItemType = {
   value: string | undefined;
@@ -64,10 +66,20 @@ export default function List() {
     setIsOpen(false);
   }
   const getList = async () => {
-    const res = await api.get(`list/${idParams}`);
-    const data: marketListTypes = res.data;
-    setList(data);
-    setProduct(data.products);
+    const docRef = doc(dbFirebase, `list/${idParams}`);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      const data = { ...docSnap.data(), id: docSnap.id };
+      const dataConvert = data as marketListTypes;
+      setList(dataConvert);
+      setProduct(dataConvert.products);
+    }
+
+    //------------------chamada a fake api via axios------------------
+    // const res = await api.get(`list/${idParams}`);
+    // const data: marketListTypes = res.data;
+    // setList(data);
+    // setProduct(data.products);
   };
 
   useEffect(() => {
