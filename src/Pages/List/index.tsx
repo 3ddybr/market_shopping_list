@@ -13,7 +13,7 @@ import { HomeContainer, HomeContent } from "./styles";
 import { ListContext } from "../../contexts/ListContext";
 import ReactModal from "react-modal";
 import { ModalProduct } from "../../Components/ModalProduct";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { dbFirebase } from "../../services/api/apiFirebase";
 
 type selectItemType = {
@@ -65,8 +65,8 @@ export default function List() {
   function onRequestClose() {
     setIsOpen(false);
   }
+  const docRef = doc(dbFirebase, `list/${idParams}`);
   const getList = async () => {
-    const docRef = doc(dbFirebase, `list/${idParams}`);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       const data = { ...docSnap.data(), id: docSnap.id };
@@ -120,10 +120,15 @@ export default function List() {
       });
 
       try {
-        await api.patch(`/list/${idParams}`, {
-          id: idParams,
+        await setDoc(docRef, {
           products: newItemList,
         });
+
+        //------------------chamada a fake api via axios------------------
+        // await api.patch(`/list/${idParams}`, {
+        //   id: idParams,
+        //   products: newItemList,
+        // });
       } catch (e) {
         console.log(e);
       }
