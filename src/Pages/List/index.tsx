@@ -187,24 +187,42 @@ export default function List() {
   };
 
   const handleUpdateValue = async (idProd: string, valueProd: number) => {
+    const updatedProduct = product.map((item) =>
+      item.id === idProd
+        ? {
+            ...item,
+            currentValue: valueProd,
+          }
+        : item
+    );
     try {
-      await api.patch(`/list/${idParams}`, {
-        id: idParams,
-        products: [
-          ...product.map((item) =>
-            item.id === idProd
-              ? {
-                  ...item,
-                  currentValue: valueProd,
-                }
-              : item
-          ),
-        ],
+      await updateDoc(docRef, {
+        products: updatedProduct,
       });
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
     }
-    getList();
+    setProduct(updatedProduct);
+
+    //------------------chamada a fake api via axios------------------
+    // try {
+    //   await api.patch(`/list/${idParams}`, {
+    //     id: idParams,
+    //     products: [
+    //       ...product.map((item) =>
+    //         item.id === idProd
+    //           ? {
+    //               ...item,
+    //               currentValue: valueProd,
+    //             }
+    //           : item
+    //       ),
+    //     ],
+    //   });
+    // } catch (e) {
+    //   console.log(e);
+    // }
+    // getList();
   };
 
   const handleUpdateDone = async (idProd: string, doneProd: boolean) => {
