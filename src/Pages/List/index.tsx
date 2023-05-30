@@ -1,7 +1,7 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
 
 import ItemProduct from "../../Components/ItemProduct";
-import { api } from "../../services/api/api";
+// import { api } from "../../services/api/api";
 import { useParams } from "react-router-dom";
 import { marketListTypes } from "../../@types/marketList";
 import { ItemProductTypes } from "../../@types/itemProduct";
@@ -13,13 +13,7 @@ import { HomeContainer, HomeContent } from "./styles";
 import { ListContext } from "../../contexts/ListContext";
 import ReactModal from "react-modal";
 import { ModalProduct } from "../../Components/ModalProduct";
-import {
-  deleteField,
-  doc,
-  getDoc,
-  setDoc,
-  updateDoc,
-} from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { dbFirebase } from "../../services/api/apiFirebase";
 
 type selectItemType = {
@@ -226,24 +220,42 @@ export default function List() {
   };
 
   const handleUpdateDone = async (idProd: string, doneProd: boolean) => {
+    const updatedProduct = product.map((item) =>
+      item.id === idProd
+        ? {
+            ...item,
+            done: doneProd,
+          }
+        : item
+    );
     try {
-      await api.patch(`/list/${idParams}`, {
-        id: idParams,
-        products: [
-          ...product.map((item) =>
-            item.id === idProd
-              ? {
-                  ...item,
-                  done: doneProd,
-                }
-              : item
-          ),
-        ],
+      await updateDoc(docRef, {
+        products: updatedProduct,
       });
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
     }
-    getList();
+    setProduct(updatedProduct);
+
+    //------------------chamada a fake api via axios------------------
+    //   try {
+    //     await api.patch(`/list/${idParams}`, {
+    //       id: idParams,
+    //       products: [
+    //         ...product.map((item) =>
+    //           item.id === idProd
+    //             ? {
+    //                 ...item,
+    //                 done: doneProd,
+    //               }
+    //             : item
+    //         ),
+    //       ],
+    //     });
+    //   } catch (e) {
+    //     console.log(e);
+    //   }
+    //   getList();
   };
 
   const convert = (date: number) => {
@@ -321,7 +333,6 @@ export default function List() {
             />
           ))}
           <ModalProduct isOpen={modalIsOpen} onRequestClose={onRequestClose} />
-          {/* <button onClick={isOpen}>modal</button> */}
         </main>
       </HomeContent>
     </HomeContainer>
