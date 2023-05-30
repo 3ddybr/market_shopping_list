@@ -59,7 +59,7 @@ export function ListProvider({ children }: ListProviderProps) {
     getList();
   }, [idUser]);
 
-  console.log(listContextValue);
+  // console.log(listContextValue);
 
   //Funçao que pega os produtos
   const getProduct = async () => {

@@ -13,7 +13,13 @@ import { HomeContainer, HomeContent } from "./styles";
 import { ListContext } from "../../contexts/ListContext";
 import ReactModal from "react-modal";
 import { ModalProduct } from "../../Components/ModalProduct";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  deleteField,
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import { dbFirebase } from "../../services/api/apiFirebase";
 
 type selectItemType = {
@@ -120,7 +126,7 @@ export default function List() {
       });
 
       try {
-        await setDoc(docRef, {
+        await updateDoc(docRef, {
           products: newItemList,
         });
 
@@ -155,17 +161,29 @@ export default function List() {
   };
 
   const handleDelete = async (idProduct: string) => {
+    const newProductFilter = product.filter((item) => item.id !== idProduct);
     try {
-      await api.put(`/list/${idParams}`, {
-        id: idParams,
-        create_at: list?.create_at,
-        idUser: list?.idUser,
-        products: [...product.filter((item) => item.id !== idProduct)],
+      await updateDoc(docRef, {
+        products: newProductFilter,
       });
     } catch (e) {
       console.log(e);
     }
-    getList();
+
+    setProduct(newProductFilter);
+
+    //------------------chamada a fake api via axios------------------
+    // try {
+    //   await api.put(`/list/${idParams}`, {
+    //     id: idParams,
+    //     create_at: list?.create_at,
+    //     idUser: list?.idUser,
+    //     products: [...product.filter((item) => item.id !== idProduct)],
+    //   });
+    // } catch (e) {
+    //   console.log(e);
+    // }
+    // getList();
   };
 
   const handleUpdateValue = async (idProd: string, valueProd: number) => {
