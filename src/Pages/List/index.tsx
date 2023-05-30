@@ -23,7 +23,7 @@ type selectItemType = {
 
 ReactModal.setAppElement("#root");
 
-export default function List() {
+export function List() {
   const { id: idParams } = useParams();
   const { dataProductContext, dataListContext } = useContext(ListContext);
 

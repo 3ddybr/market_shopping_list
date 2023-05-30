@@ -5,7 +5,7 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 import { Historic } from "../Pages/Historico";
-import List from "../Pages/List/index.js";
+import { List } from "../Pages/List/index.js";
 import { Products } from "../Pages/Products";
 import App from "../App";
 import ProtectedRoutes from "./privateRoutes.js";
