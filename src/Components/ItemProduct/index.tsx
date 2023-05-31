@@ -17,7 +17,7 @@ interface itemProductProps {
   onDelete: () => void;
 }
 
-function ItemProduct({
+export function ItemProduct({
   index,
   id,
   currentValue,
@@ -89,7 +89,7 @@ function ItemProduct({
   );
 }
 
-export default memo(ItemProduct);
+// export default memo(ItemProduct);
 
 // const formmat = new Intl.NumberFormat("pt-BR", {
 //   style: "currency",
