@@ -4,7 +4,7 @@ import { ContainerItemProduct, ContentItemProduct } from "./styles";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaCheck } from "react-icons/fa";
 
-import * as CurrencyFormat from "react-currency-format";
+import CurrencyFormat from "react-currency-format";
 interface itemProductProps {
   index: number;
   id: string;
