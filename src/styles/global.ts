@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     outline: 0;
     box-shadow: 0 0 0 2px ${({ theme }) => theme.white};
   }
-html{
+:root{
     font-size: 62.5%;
 }
 body{

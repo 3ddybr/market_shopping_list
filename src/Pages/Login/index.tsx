@@ -13,15 +13,6 @@ import ImgList from "../../assets/list.png";
 import { useAuth } from "../../contexts/useAuth";
 
 export default function Login() {
-  const { authenticated } = useAuth();
-
-  const user = {
-    id: "4GXWiC37MziFwH9GfyfT",
-    name: "Alberto",
-    image: "asdsa",
-    token: "qjdojiasjdqiojasoijdq",
-  };
-
   return (
     <LoginContainer>
       <LoginContent>
@@ -31,7 +22,9 @@ export default function Login() {
           possa comparar quanto pagou por aquele mesmo item na compra anterior
           automaticamente.
         </p>
-        <LoginButtonGoogle onClick={() => authenticated(user)}>
+        {/* criar uma funca que loga na google e retorna o user */}
+        {/* <LoginButtonGoogle onClick={() => authenticated(user)}> */}
+        <LoginButtonGoogle onClick={useAuth()}>
           <span>
             <FcGoogle size={24} />
           </span>

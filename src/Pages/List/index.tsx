@@ -1,6 +1,6 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
 
-import { ItemProduct } from "../../Components/ItemProduct";
+import ItemProduct from "../../Components/ItemProduct";
 // import { api } from "../../services/api/api";
 import { useParams } from "react-router-dom";
 import { marketListTypes } from "../../@types/marketList";
