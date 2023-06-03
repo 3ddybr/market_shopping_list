@@ -1,5 +1,7 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { api } from "../services/api/api";
+import { dbFirebase } from "../services/api/apiFirebase";
+import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -24,6 +26,7 @@ export const AuthContext = createContext<AuthContextProps>(
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<UserProps | null>();
+  const userCollectionRef = collection(dbFirebase, "user");
 
   useEffect(() => {
     const user = getUserLocalStorage();
@@ -40,11 +43,25 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   //verificar se exite user se nao cadastrar
   async function LoginRequest(user: UserProps) {
     try {
-      const request = await api.post("user", user);
-      return request.data;
-    } catch (err) {
-      console.log(err);
+      // const request =
+      await setDoc(doc(userCollectionRef, user.id), {
+        // id: user.id,
+        name: user.name,
+        image: user.image,
+        token: user.token,
+      });
+      return user;
+    } catch (error) {
+      console.log(error);
     }
+
+    //------------------chamada a fake api via axios------------------
+    // try {
+    // const request = await api.post("user", user);
+    //   return request.data;
+    // } catch (err) {
+    //   console.log(err);
+    // }
   }
 
   async function authenticated(user: UserProps) {

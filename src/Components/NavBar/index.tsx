@@ -8,8 +8,9 @@ import { dbFirebase } from "../../services/api/apiFirebase";
 export default function NavBar() {
   const navigate = useNavigate();
 
-  const { id, token, logout } = useAuth();
-  const idUser = id;
+  const { user, logout } = useAuth();
+  const idUser = user?.id;
+  const token = user?.token;
 
   const createList = async () => {
     const listCollectionRef = collection(dbFirebase, "list");

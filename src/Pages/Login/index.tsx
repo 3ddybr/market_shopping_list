@@ -13,6 +13,7 @@ import ImgList from "../../assets/list.png";
 import { useAuth } from "../../contexts/useAuth";
 
 export default function Login() {
+  const { signInGoogle } = useAuth();
   return (
     <LoginContainer>
       <LoginContent>
@@ -24,7 +25,7 @@ export default function Login() {
         </p>
         {/* criar uma funca que loga na google e retorna o user */}
         {/* <LoginButtonGoogle onClick={() => authenticated(user)}> */}
-        <LoginButtonGoogle onClick={useAuth()}>
+        <LoginButtonGoogle onClick={signInGoogle}>
           <span>
             <FcGoogle size={24} />
           </span>

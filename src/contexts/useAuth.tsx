@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "./AuthContext";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { provider } from "../services/api/apiFirebase";
@@ -10,7 +10,8 @@ interface UserProps {
   token?: string;
 }
 export const useAuth = () => {
-  const { authenticated } = useContext(AuthContext);
+  const { authenticated, logout } = useContext(AuthContext);
+  const [user, setUser] = useState<UserProps | null>();
 
   const auth = getAuth();
 
@@ -21,14 +22,15 @@ export const useAuth = () => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
         // The signed-in user info.
-        const user = {
+        const userResult = {
           id: result.user.uid,
           name: result.user.displayName,
           image: result.user.photoURL,
           token: token,
         };
 
-        authenticated(user as UserProps);
+        authenticated(userResult as UserProps);
+        setUser(userResult as UserProps);
         // IdP data available using getAdditionalUserInfo(result)
         // ...
         console.log("oAuth credential", credential);
@@ -50,5 +52,5 @@ export const useAuth = () => {
       });
   }
 
-  return signInGoogle;
+  return { signInGoogle, user, logout };
 };

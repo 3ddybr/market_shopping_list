@@ -28,7 +28,7 @@ export function ListProvider({ children }: ListProviderProps) {
     []
   );
   const [productContext, setProductContext] = useState<ProductType[]>([]);
-  const { id: idUser } = useAuth();
+  const { user } = useAuth();
 
   useEffect(() => {
     setListContextValue([]);
@@ -36,7 +36,7 @@ export function ListProvider({ children }: ListProviderProps) {
       const listCollectionRef = collection(dbFirebase, "list");
 
       try {
-        const q = query(listCollectionRef, where("idUser", "==", idUser));
+        const q = query(listCollectionRef, where("idUser", "==", user?.id));
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
           doc.id;
@@ -57,7 +57,7 @@ export function ListProvider({ children }: ListProviderProps) {
       }
     };
     getList();
-  }, [idUser]);
+  }, [user?.id]);
 
   // console.log(listContextValue);
 
