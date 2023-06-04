@@ -41,10 +41,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }
 
   // Função para autenticar o usuário
-  //verificar se exite user se nao cadastrar
+  //verificar se exite user se nao cadastrar ou atualiza
   async function LoginRequest(user: UserProps) {
     try {
-      // const request =
       await setDoc(doc(userCollectionRef, user.id), {
         // id: user.id,
         name: user.name,
@@ -65,6 +64,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     // }
   }
 
+  //Funcao para autenticar o usuario
   async function authenticated(user: UserProps) {
     try {
       const response = await getDocs(userCollectionRef);

@@ -9,8 +9,6 @@ import { marketListTypes } from "../@types/marketList";
 import {
   addDoc,
   collection,
-  doc,
-  getDoc,
   getDocs,
   query,
   where,
@@ -45,22 +43,14 @@ export function ListProvider({ children }: ListProviderProps) {
   const [productContext, setProductContext] = useState<ProductType[]>([]);
 
   console.log("listecontex id user", user?.id);
-  // if (user?.id !== undefined) {
+  //Função tra todas as lista do usuário
   useEffect(() => {
     setListContextValue([]);
     const getList = async () => {
       const listCollectionRef = collection(dbFirebase, "list");
       try {
         const q = query(listCollectionRef, where("idUser", "==", user?.id));
-
-        // const q = doc(listCollectionRef, user?.id);
-
         const querySnapshot = await getDocs(q);
-
-        // querySnapshot.data();
-
-        // console.log("querySnap", querySnapshot.data());
-
         querySnapshot.forEach((doc) => {
           doc.id;
           const data = doc.data();
@@ -81,11 +71,9 @@ export function ListProvider({ children }: ListProviderProps) {
     };
     getList();
   }, [user?.id]);
-  // }
 
-  // console.log(listContextValue);
 
-  //Funçao que pega os produtos
+  //Função que pega os produtos já cadastrados no banco
   const getProduct = async () => {
     const productsCollectionRef = collection(dbFirebase, "products");
     try {
@@ -94,8 +82,6 @@ export function ListProvider({ children }: ListProviderProps) {
         id: doc.id as string,
         ...doc.data(),
       }));
-
-      // console.log(filteredData);
       setProductContext(filteredData as ProductType[]);
     } catch (err) {
       console.log(err);

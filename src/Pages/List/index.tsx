@@ -65,6 +65,8 @@ export function List() {
   function onRequestClose() {
     setIsOpen(false);
   }
+
+  //Função que traz a lista especifica que o usuário clicou
   const docRef = doc(dbFirebase, `list/${idParams}`);
   const getList = async () => {
     const docSnap = await getDoc(docRef);
@@ -88,7 +90,6 @@ export function List() {
       value: "",
       label: "",
     });
-    console.log("renderizou dentro effect list");
   }, [idParams]);
 
   const handleAddProduct = async (e: FormEvent) => {
@@ -281,8 +282,6 @@ export function List() {
     }
   });
   const dataList = list?.create_at as number;
-
-  console.log("dentro de list produt", orderProd);
 
   const counterDone = product.filter((item) => item.done === true);
   return (
