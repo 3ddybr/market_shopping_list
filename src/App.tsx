@@ -8,18 +8,19 @@ import Banner from "./Components/Banner";
 
 import { ListProvider } from "./contexts/ListContext";
 import Login from "./Pages/Login";
-import { useAuth } from "./contexts/useAuth";
+import { useContext } from "react";
+import { AuthContext } from "./contexts/AuthContext";
 
 // import { Footer } from "./Components/Footer";
 function App() {
-  const { token } = useAuth();
+  const { user } = useContext(AuthContext);
   return (
     <ListProvider>
       <Navbar />
       <Banner />
       <GlobalStyle />
       <Outlet />
-      {!token ? <Login /> : null}
+      {!user?.token ? <Login /> : null}
 
       {/* <Footer /> */}
     </ListProvider>

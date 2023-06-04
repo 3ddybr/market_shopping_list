@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "./AuthContext";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { provider } from "../services/api/apiFirebase";
@@ -10,11 +10,9 @@ interface UserProps {
   token?: string;
 }
 export const useAuth = () => {
-  const { authenticated, logout } = useContext(AuthContext);
-  const [user, setUser] = useState<UserProps | null>();
-
+  const { authenticated, setUser } = useContext(AuthContext);
+  // useEffect(() => {
   const auth = getAuth();
-
   async function signInGoogle() {
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -28,29 +26,33 @@ export const useAuth = () => {
           image: result.user.photoURL,
           token: token,
         };
-
         authenticated(userResult as UserProps);
         setUser(userResult as UserProps);
         // IdP data available using getAdditionalUserInfo(result)
         // ...
-        console.log("oAuth credential", credential);
-        console.log("oAuth result", result);
+        // console.log("oAuth credential", credential);
+        // console.log("oAuth result", userResult);
+
         //credencial retorna = accessToken, idToken
         //result.user = { id: "uid", name: "displayName", image: "photoURL", email: "email" };
-        return user;
+        // return user;
       })
       .catch((error) => {
+        console.error(error);
         // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
         // The email of the user's account used.
-        const email = error.customData.email;
+        // const email = error.customData.email;
         // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
+        // const credential = GoogleAuthProvider.credentialFromError(error);
 
         // ...
       });
   }
+  // console.log("user dentro auth", user);
 
-  return { signInGoogle, user, logout };
+  // }, []);
+
+  return { signInGoogle };
 };

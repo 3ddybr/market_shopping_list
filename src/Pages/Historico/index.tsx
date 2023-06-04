@@ -4,15 +4,15 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import { HistoricContainer, HistoricContent } from "./styles";
 import { ListContext } from "../../contexts/ListContext";
-import { useAuth } from "../../contexts/useAuth";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export const Historic = () => {
   // const [list, setList] = useState<marketListTypes[]>([]);
+  const { user } = useContext(AuthContext);
 
   const { dataListContext } = useContext(ListContext);
-  const { id } = useAuth();
   const ListFilterPerUser = dataListContext.filter(
-    (list) => list.idUser === id
+    (list) => list.idUser === user?.id
   );
 
   const convert = (date: number) => {

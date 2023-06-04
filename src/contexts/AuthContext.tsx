@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
-import { api } from "../services/api/api";
+// import { api } from "../services/api/api";
 import { dbFirebase } from "../services/api/apiFirebase";
 import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 
@@ -15,7 +15,8 @@ interface UserProps {
 }
 
 interface AuthContextProps extends UserProps {
-  // user: UserProps | null;
+  user: UserProps | null | undefined;
+  setUser: React.Dispatch<React.SetStateAction<any>>;
   authenticated: (user: UserProps) => void;
   logout: () => void;
 }
@@ -66,9 +67,19 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   async function authenticated(user: UserProps) {
     try {
-      const response = await api.get("user");
-      const data: UserProps[] = response.data;
-      const exist = data.find((item) => item.id === user.id);
+      const response = await getDocs(userCollectionRef);
+      const data: UserProps[] = response.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      const exist = data.find((doc) => doc.id === user.id);
+
+      // console.log(exist);
+
+      //------------------chamada a fake api via axios--------------
+      // const response = await api.get("user");
+      // const data: UserProps[] = response.data;
+      // const exist = data.find((item) => item.id === user.id);
 
       if (exist) {
         const payload = {
@@ -84,10 +95,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         const response = await LoginRequest(user);
 
         const payload = {
-          id: response.id,
-          name: response.name,
-          image: response.image,
-          token: response.token,
+          id: response?.id,
+          name: response?.name,
+          image: response?.image,
+          token: response?.token,
         };
 
         setUser(payload);
@@ -114,7 +125,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }
 
   return (
-    <AuthContext.Provider value={{ ...user, authenticated, logout }}>
+    <AuthContext.Provider value={{ user, setUser, authenticated, logout }}>
       {children}
     </AuthContext.Provider>
   );

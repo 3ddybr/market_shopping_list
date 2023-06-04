@@ -50,7 +50,7 @@ function ItemProduct({
         />
 
         <CurrencyFormat
-          defaultValue={currentValue}
+          // defaultValue={currentValue}
           thousandSeparator={"."}
           thousandSpacing={"3"}
           isNumericString={true}

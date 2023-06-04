@@ -1,14 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
 import { NavBarButton, NavBarContainer, NavBarContent } from "./styles";
 
-import { useAuth } from "../../contexts/useAuth";
 import { addDoc, collection } from "firebase/firestore";
 import { dbFirebase } from "../../services/api/apiFirebase";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function NavBar() {
   const navigate = useNavigate();
 
-  const { user, logout } = useAuth();
+  const { user, logout } = useContext(AuthContext);
   const idUser = user?.id;
   const token = user?.token;
 

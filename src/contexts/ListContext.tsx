@@ -1,8 +1,22 @@
-import { createContext, useState, ReactNode, useEffect } from "react";
+import {
+  useContext,
+  createContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 import { marketListTypes } from "../@types/marketList";
-import { useAuth } from "./useAuth";
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 import { dbFirebase } from "../services/api/apiFirebase";
+import { AuthContext } from "./AuthContext";
 
 type ProductType = {
   id: string;
@@ -24,20 +38,29 @@ export const ListContext = createContext<ContextDefaultValues>(
 );
 
 export function ListProvider({ children }: ListProviderProps) {
+  const { user } = useContext(AuthContext);
   const [listContextValue, setListContextValue] = useState<marketListTypes[]>(
     []
   );
   const [productContext, setProductContext] = useState<ProductType[]>([]);
-  const { user } = useAuth();
 
+  console.log("listecontex id user", user?.id);
+  // if (user?.id !== undefined) {
   useEffect(() => {
     setListContextValue([]);
     const getList = async () => {
       const listCollectionRef = collection(dbFirebase, "list");
-
       try {
         const q = query(listCollectionRef, where("idUser", "==", user?.id));
+
+        // const q = doc(listCollectionRef, user?.id);
+
         const querySnapshot = await getDocs(q);
+
+        // querySnapshot.data();
+
+        // console.log("querySnap", querySnapshot.data());
+
         querySnapshot.forEach((doc) => {
           doc.id;
           const data = doc.data();
@@ -58,6 +81,7 @@ export function ListProvider({ children }: ListProviderProps) {
     };
     getList();
   }, [user?.id]);
+  // }
 
   // console.log(listContextValue);
 

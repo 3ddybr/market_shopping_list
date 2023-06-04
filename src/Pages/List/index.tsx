@@ -88,7 +88,8 @@ export function List() {
       value: "",
       label: "",
     });
-  }, []);
+    console.log("renderizou dentro effect list");
+  }, [idParams]);
 
   const handleAddProduct = async (e: FormEvent) => {
     e.preventDefault();
