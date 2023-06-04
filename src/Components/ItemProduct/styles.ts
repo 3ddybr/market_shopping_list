@@ -38,7 +38,7 @@ export const ContentItemProduct = styled.section(
       color: ${({ theme }) => theme.blue};
     }
 
-    p:nth-child(2) {
+    p:nth-child(3) {
       width: 55%;
       overflow: hidden;
       text-overflow: ellipsis;

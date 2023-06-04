@@ -34,6 +34,12 @@ function ItemProduct({
     <ContainerItemProduct>
       <ContentItemProduct done={done}>
         <p>{index}-</p>
+        <input
+          type="checkbox"
+          checked={done}
+          onChange={(e) => onUpdateDone(id, e.target.checked)}
+          title="Marcar quando ja estiver no carrinho"
+        />
         <p>{nameProduct}</p>
 
         <CurrencyFormat
@@ -60,13 +66,6 @@ function ItemProduct({
           prefix="R$"
           value={isCurrentValue}
           onValueChange={(e) => setIsCurrentValue(e.floatValue)}
-        />
-
-        <input
-          type="checkbox"
-          checked={done}
-          onChange={(e) => onUpdateDone(id, e.target.checked)}
-          title="Marcar quando ja estiver no carrinho"
         />
 
         <FaCheck
