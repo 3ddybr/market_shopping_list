@@ -19,7 +19,7 @@ export default function Login() {
       <LoginContent>
         <h3>Faça seu login para acessar suas listas de compras.</h3>
         <p>
-          Tenha acesso a todas suas listas de compras com até 2 anos on-line e
+          Tenha acesso a todas suas listas de compras com até 1 anos on-line e
           possa comparar quanto pagou por aquele mesmo item na compra anterior
           automaticamente.
         </p>

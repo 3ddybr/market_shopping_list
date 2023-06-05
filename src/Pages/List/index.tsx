@@ -182,23 +182,33 @@ export function List() {
     // getList();
   };
 
+  //verificar se os arrays são iguais
+  function checkArrays(a1: ItemProductTypes[], a2: ItemProductTypes[]) {
+    return JSON.stringify(a1) === JSON.stringify(a2);
+  }
+
   const handleUpdateValue = async (idProd: string, valueProd: number) => {
     const updatedProduct = product.map((item) =>
-      item.id === idProd
+      item.id === idProd && valueProd
         ? {
             ...item,
             currentValue: valueProd,
           }
         : item
     );
-    try {
-      await updateDoc(docRef, {
-        products: updatedProduct,
-      });
-    } catch (error) {
-      console.log(error);
+    if (!checkArrays(product, updatedProduct)) {
+      console.log("atualizou");
+      try {
+        await updateDoc(docRef, {
+          products: updatedProduct,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+      setProduct(updatedProduct);
+    } else {
+      return;
     }
-    setProduct(updatedProduct);
 
     //------------------chamada a fake api via axios------------------
     // try {
