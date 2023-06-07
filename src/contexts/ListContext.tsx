@@ -6,13 +6,7 @@ import {
   ReactNode,
 } from "react";
 import { marketListTypes } from "../@types/marketList";
-import {
-  addDoc,
-  collection,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { dbFirebase } from "../services/api/apiFirebase";
 import { AuthContext } from "./AuthContext";
 
@@ -42,36 +36,39 @@ export function ListProvider({ children }: ListProviderProps) {
   );
   const [productContext, setProductContext] = useState<ProductType[]>([]);
 
-  console.log("listecontex id user", user?.id);
+  // console.log("listecontex id user", user?.id);
   //Função tra todas as lista do usuário
   useEffect(() => {
     setListContextValue([]);
-    const getList = async () => {
-      const listCollectionRef = collection(dbFirebase, "list");
-      try {
-        const q = query(listCollectionRef, where("idUser", "==", user?.id));
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-          doc.id;
-          const data = doc.data();
-          const res = { id: doc.id, ...data };
+    if (!user?.id) {
+      return;
+    } else {
+      const getList = async () => {
+        const listCollectionRef = collection(dbFirebase, "list");
+        try {
+          const q = query(listCollectionRef, where("idUser", "==", user?.id));
+          const querySnapshot = await getDocs(q);
+          querySnapshot.forEach((doc) => {
+            doc.id;
+            const data = doc.data();
+            const res = { id: doc.id, ...data };
 
-          setListContextValue((prev) => [...prev, res as marketListTypes]);
-        });
+            setListContextValue((prev) => [...prev, res as marketListTypes]);
+          });
 
-        //------------------chamada a fake api via axios------------------
-        // const res = await api.get("list", {
-        //   params: { idUser },
-        // });
-        // const data: marketListTypes[] = filteredData.
-        //------------------------------------------------------
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getList();
+          //------------------chamada a fake api via axios------------------
+          // const res = await api.get("list", {
+          //   params: { idUser },
+          // });
+          // const data: marketListTypes[] = filteredData.
+          //------------------------------------------------------
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      getList();
+    }
   }, [user?.id]);
-
 
   //Função que pega os produtos já cadastrados no banco
   const getProduct = async () => {
@@ -96,7 +93,6 @@ export function ListProvider({ children }: ListProviderProps) {
         nameProduct: nameProduct,
       });
       const newProduct = { id: refDoc.id, nameProduct };
-
       setProductContext((prev) => [...prev, newProduct]);
     } catch (e) {
       console.log(e);

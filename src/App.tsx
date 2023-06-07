@@ -21,7 +21,6 @@ function App() {
       <GlobalStyle />
       <Outlet />
       {!user?.token ? <Login /> : null}
-
       {/* <Footer /> */}
     </ListProvider>
   );

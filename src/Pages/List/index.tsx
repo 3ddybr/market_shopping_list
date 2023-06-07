@@ -197,7 +197,6 @@ export function List() {
         : item
     );
     if (!checkArrays(product, updatedProduct)) {
-      console.log("atualizou");
       try {
         await updateDoc(docRef, {
           products: updatedProduct,

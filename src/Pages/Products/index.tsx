@@ -23,16 +23,14 @@ export const Products = () => {
     if (include.length !== 0) {
       alert("Lista de produtos ja possuí esse item");
       setInputText("");
-    } else {
-      if (inputText) {
-        try {
-          await addProduct(inputText);
-          setInputText("");
-        } catch (e) {
-          console.log(e);
-        }
-      } else alert("Insira um produto");
-    }
+    } else if (inputText) {
+      try {
+        await addProduct(inputText);
+        setInputText("");
+      } catch (e) {
+        console.log(e);
+      }
+    } else alert("Insira um produto");
   };
 
   const handleSearch = () => {
