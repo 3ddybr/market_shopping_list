@@ -34,7 +34,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     if (user) {
       setUser(user);
     }
-    console.log("renderizou");
   }, []);
 
   function setUserLocalStorage(user: UserProps | null) {

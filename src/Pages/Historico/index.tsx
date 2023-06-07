@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import { HistoricContainer, HistoricContent } from "./styles";
 import { ListContext } from "../../contexts/ListContext";
 import { AuthContext } from "../../contexts/AuthContext";
+import { Spinier } from "../../utils/spinier";
 
 export const Historic = () => {
-  // const [list, setList] = useState<marketListTypes[]>([]);
   const { user } = useContext(AuthContext);
 
   const { dataListContext } = useContext(ListContext);
@@ -32,12 +32,16 @@ export const Historic = () => {
     <HistoricContainer>
       <HistoricContent>
         <h1>Histórico</h1>
-        {orderMarketList.map((list, index) => (
-          <Link key={list.id} to={`/${list.id}`}>
-            <p key={list.id}>{index + 1} - Criada em</p>
-            <span> {convert(list.create_at)}</span>
-          </Link>
-        ))}
+        {dataListContext.length > 0 ? (
+          orderMarketList.map((list, index) => (
+            <Link key={list.id} to={`/${list.id}`}>
+              <p key={list.id}>{index + 1} - Criada em</p>
+              <span> {convert(list.create_at)}</span>
+            </Link>
+          ))
+        ) : (
+          <Spinier />
+        )}
       </HistoricContent>
     </HistoricContainer>
   );
