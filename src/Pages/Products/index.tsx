@@ -7,22 +7,26 @@ import {
 } from "react";
 import { ProductContainer, ProductContent } from "./styled";
 import { ListContext } from "../../contexts/ListContext";
+import { Spinier } from "../../utils/spinier";
 
 export const Products = () => {
   const { addProduct, dataProductContext } = useContext(ListContext);
   const [inputText, setInputText] = useState("");
   const [searchProduct, setSearchProduct] = useState(dataProductContext);
+  const [loading, setLoading] = useState(false);
 
   const deferredSearch = useDeferredValue(searchProduct);
 
   const handleAddProduct = async (e: FormEvent) => {
     e.preventDefault();
+    setLoading(true);
     const include = dataProductContext.filter(
       (product) => product.nameProduct === inputText
     );
     if (include.length !== 0) {
       alert("Lista de produtos ja possuí esse item");
       setInputText("");
+      setLoading(false);
     } else if (inputText) {
       try {
         await addProduct(inputText);
@@ -30,7 +34,9 @@ export const Products = () => {
       } catch (e) {
         console.log(e);
       }
+      setLoading(false);
     } else alert("Insira um produto");
+    setLoading(false);
   };
 
   const handleSearch = () => {
@@ -60,7 +66,6 @@ export const Products = () => {
     <ProductContainer>
       <ProductContent>
         <h1>Cadastrar Produtos</h1>
-
         <form onSubmit={handleAddProduct}>
           <input
             type="text"
@@ -68,7 +73,7 @@ export const Products = () => {
             placeholder="Insira nome do Produto"
             onChange={(event) => setInputText(event.target.value.toUpperCase())}
           />
-          <button type="submit">Adicionar</button>
+          {loading ? <Spinier /> : <button type="submit">Adicionar</button>}
         </form>
         <div>
           {orderProd.map((item) => (

@@ -101,8 +101,12 @@ export function ListProvider({ children }: ListProviderProps) {
   };
 
   useEffect(() => {
-    getProduct();
-  }, []);
+    if (!user?.id) {
+      return;
+    } else {
+      getProduct();
+    }
+  }, [user?.id]);
 
   return (
     <ListContext.Provider
