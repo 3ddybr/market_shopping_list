@@ -1,9 +1,4 @@
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-  createBrowserRouter,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Historic } from "../Pages/Historico";
 import { List } from "../Pages/List/index.js";
 import { Products } from "../Pages/Products";

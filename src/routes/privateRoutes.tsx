@@ -5,9 +5,8 @@ const ProtectedRoutes = ({ children }: { children: JSX.Element }) => {
   const { user } = useContext(AuthContext);
 
   if (!user?.token) {
-    return;
+    return null;
   }
-
   return children;
 };
 
