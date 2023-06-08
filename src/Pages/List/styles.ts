@@ -44,10 +44,33 @@ export const HomeContent = styled.div`
     /* border: 1px solid yellow; */
 
     // css especifico do do input select >>>
+    .css-t3ipsp-control {
+      background: ${({ theme }) => theme.gray_500};
+      color: ${({ theme }) => theme.white};
+    }
+
+    .css-1dimb5e-singleValue {
+      color: ${({ theme }) => theme.white};
+    }
+
+    .css-feonkk-Input2 {
+      color: ${({ theme }) => theme.white};
+    }
     .css-b62m3t-container {
       width: 100%;
       height: 100%;
-      color: black;
+      color: white;
+      background-color: ${({ theme }) => theme.gray_700};
+    }
+
+    .css-13cymwt-control {
+      background: ${({ theme }) => theme.gray_500};
+      color: ${({ theme }) => theme.white};
+    }
+
+    .css-1nmdiq5-menu {
+      background: ${({ theme }) => theme.gray_500};
+      color: ${({ theme }) => theme.white};
     }
     // css especifico do do input select >>>
 

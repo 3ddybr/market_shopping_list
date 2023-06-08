@@ -53,10 +53,13 @@ export const ContentItemProduct = styled.section(
     input[type="text"] {
       width: 100%;
       max-width: 9rem;
-      background: ${({ theme }) => theme.white};
+      background: ${({ theme }) => theme.gray_500};
 
+      color: ${({ theme }) => theme.white};
       font-size: 1.4rem;
       padding: 0.8rem;
+
+      border-radius: 5%;
     }
 
     @media (max-width: 500px) {
