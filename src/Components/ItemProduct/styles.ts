@@ -24,41 +24,52 @@ export const ContentItemProduct = styled.section(
 
     width: 100%;
     max-width: 73.6rem;
-    max-height: 5.2rem;
+    /* max-height: 5.2rem; */
 
     padding: 0.6rem 1rem;
     gap: 0.8rem;
 
     border-bottom: 1px solid ${({ theme }) => theme.blue};
 
-    p:nth-child(1) {
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
       width: 100%;
-      max-width: 2.5rem;
+      gap: 0.8rem;
 
-      color: ${({ theme }) => theme.blue};
+      p:nth-child(1) {
+        width: 100%;
+        max-width: 2.5rem;
+
+        color: ${({ theme }) => theme.blue};
+      }
+      p:nth-child(3) {
+        width: 55%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-decoration: ${done ? "line-through" : "initial"};
+      }
     }
 
-    p:nth-child(3) {
-      width: 55%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      text-decoration: ${done ? "line-through" : "initial"};
-    }
-
-    p:nth-child(7) {
+    p:nth-child(4) {
       display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
       max-width: 4.5rem;
       color: ${({ theme }) => theme.blue};
-      /* border: 1px solid red; */
+    }
+
+    div + div {
+      justify-content: flex-end;
     }
 
     /* p + p {
       width: 45%;
       text-decoration: ${done ? "line-through" : "initial"};
     } */
+
     input[type="text"] {
       width: 100%;
       max-width: 8rem;
@@ -72,36 +83,47 @@ export const ContentItemProduct = styled.section(
     }
 
     @media (max-width: 500px) {
-      p:nth-child(1) {
-        width: 100%;
-        max-width: 1rem;
+      padding: 0.6rem 0;
+      flex-direction: column;
+      /* div:nth-child(1) {
+        border-bottom: 1px solid ${({ theme }) => theme.blue};
+        border-style: dashed;
+      } */
 
-        color: ${({ theme }) => theme.blue};
+      div {
+        justify-content: flex-start;
+
+        p:nth-child(1) {
+          width: 100%;
+          max-width: 2rem;
+
+          color: ${({ theme }) => theme.blue};
+        }
       }
 
       font-size: 1.2rem;
+
+      /* input[type="text"] { */
+      /* width: 100%; */
+      /* max-width: 7.5rem;
+
+        font-size: 1.2rem;
+        padding: 0.4rem; */
+      /* } */
+
+      div + div {
+        justify-content: center;
+      }
+    }
+    @media (max-width: 400px) {
+      /* font-size: 1rem; */
 
       input[type="text"] {
         width: 100%;
         max-width: 7.5rem;
 
         font-size: 1.2rem;
-        padding: 0.4rem;
-
-        /* color: red; */
-      }
-    }
-    @media (max-width: 400px) {
-      font-size: 1rem;
-
-      input[type="text"] {
-        width: 100%;
-        max-width: 5.5rem;
-
-        font-size: 1rem;
-        padding: 0.2rem;
-
-        /* color: red; */
+        /* padding: 0.2rem; */
       }
     }
   `

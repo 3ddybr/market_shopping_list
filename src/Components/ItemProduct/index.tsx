@@ -31,55 +31,57 @@ function ItemProduct({
   const [isCurrentValue, setIsCurrentValue] = useState(currentValue);
 
   const deferred = isCurrentValue - lastValue;
-  const porcent = (deferred * 100) / lastValue;
+  const percent = (deferred * 100) / lastValue;
 
   return (
     <ContainerItemProduct>
       <ContentItemProduct done={done}>
-        <p>{index}-</p>
-        <input
-          type="checkbox"
-          checked={done}
-          onChange={(e) => onUpdateDone(id, e.target.checked)}
-          title="Marcar quando ja estiver no carrinho"
-        />
-        <p>{nameProduct}</p>
+        <div>
+          <p>{index}-</p>
+          <input
+            type="checkbox"
+            checked={done}
+            onChange={(e) => onUpdateDone(id, e.target.checked)}
+            title="Marcar quando ja estiver no carrinho"
+          />
+          <p>{nameProduct}</p>
+        </div>
 
-        <CurrencyFormat
-          thousandSeparator={"."}
-          thousandSpacing={"3"}
-          isNumericString={true}
-          fixedDecimalScale
-          decimalScale={2}
-          decimalSeparator=","
-          prefix="R$"
-          value={lastValue}
-          // onValueChange={(e) => setIsLastValue(e.floatValue)}
-          disabled={true}
-        />
+        <div>
+          <CurrencyFormat
+            thousandSeparator={"."}
+            thousandSpacing={"3"}
+            isNumericString={true}
+            fixedDecimalScale
+            decimalScale={2}
+            decimalSeparator=","
+            prefix="R$"
+            value={lastValue}
+            // onValueChange={(e) => setIsLastValue(e.floatValue)}
+            disabled={true}
+          />
 
-        <CurrencyFormat
-          // defaultValue={currentValue}
-          thousandSeparator={"."}
-          thousandSpacing={"3"}
-          isNumericString={true}
-          fixedDecimalScale
-          decimalScale={2}
-          decimalSeparator=","
-          prefix="R$"
-          value={isCurrentValue}
-          onValueChange={(e) => setIsCurrentValue(e.floatValue)}
-        />
+          <CurrencyFormat
+            // defaultValue={currentValue}
+            thousandSeparator={"."}
+            thousandSpacing={"3"}
+            isNumericString={true}
+            fixedDecimalScale
+            decimalScale={2}
+            decimalSeparator=","
+            prefix="R$"
+            value={isCurrentValue}
+            onValueChange={(e) => setIsCurrentValue(e.floatValue)}
+          />
 
-        <FaCheck
-          size={24}
-          color="green"
-          cursor="pointer"
-          onClick={() => onUpdateValue(id, isCurrentValue)}
-          title="Atualizar o preço"
-        />
-
-        {/* <CurrencyFormat
+          <FaCheck
+            size={24}
+            color="green"
+            cursor="pointer"
+            onClick={() => onUpdateValue(id, isCurrentValue)}
+            title="Atualizar o preço"
+          />
+          {/* <CurrencyFormat
           thousandSeparator={"."}
           thousandSpacing={"3"}
           isNumericString={true}
@@ -91,15 +93,16 @@ function ItemProduct({
           // onValueChange={(e) => setIsLastValue(e.floatValue)}
           disabled={true}
         /> */}
-        <p>{porcent}%</p>
+          <p>{percent}%</p>
 
-        <RiDeleteBin6Line
-          size={24}
-          color="red"
-          cursor="pointer"
-          onClick={onDelete}
-          title="Remover"
-        />
+          <RiDeleteBin6Line
+            size={24}
+            color="red"
+            cursor="pointer"
+            onClick={onDelete}
+            title="Remover"
+          />
+        </div>
       </ContentItemProduct>
     </ContainerItemProduct>
   );
