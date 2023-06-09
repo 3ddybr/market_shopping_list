@@ -93,7 +93,7 @@ function ItemProduct({
           // onValueChange={(e) => setIsLastValue(e.floatValue)}
           disabled={true}
         /> */}
-          <p>{percent}%</p>
+          <p>{percent.toFixed(0)}%</p>
 
           <RiDeleteBin6Line
             size={24}
