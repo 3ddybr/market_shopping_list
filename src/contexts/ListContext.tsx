@@ -91,6 +91,7 @@ export function ListProvider({ children }: ListProviderProps) {
     try {
       const productsRef = collection(dbFirebase, "products");
       const refDoc = await addDoc(productsRef, {
+        idUser: user?.id as string,
         nameProduct: nameProduct,
       });
       const newProduct = { id: refDoc.id, nameProduct };
