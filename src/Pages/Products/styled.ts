@@ -39,13 +39,12 @@ export const ProductContent = styled.div`
 
     gap: 0.8rem;
 
-    /* border: 1px solid red; */
+    /* border: 1px solid red; 578*/
     input {
       width: 100%;
       height: 5.4rem;
       font-size: 1.4rem;
       padding: 1.6rem;
-      gap: 0.8rem;
       border-radius: 8px;
 
       border: 1px solid ${({ theme }) => theme.gray_700};
@@ -64,14 +63,6 @@ export const ProductContent = styled.div`
       background: ${({ theme }) => theme.blue_dark};
       color: ${({ theme }) => theme.white};
     }
-  }
-  div {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 0 1rem;
-
-    /* border: 1px solid red; */
   }
 
   @media (max-width: 500px) {
@@ -94,4 +85,10 @@ export const ProductContent = styled.div`
   }
 `;
 
+export const ProductLis = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0 1rem;
+`;
 // 390*844 px

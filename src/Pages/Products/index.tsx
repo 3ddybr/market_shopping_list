@@ -5,7 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { ProductContainer, ProductContent } from "./styled";
+import { ProductContainer, ProductContent, ProductLis } from "./styled";
 import { ListContext } from "../../contexts/ListContext";
 import { Spinier } from "../../utils/spinier";
 
@@ -75,11 +75,11 @@ export const Products = () => {
           />
           {loading ? <Spinier /> : <button type="submit">Adicionar</button>}
         </form>
-        <div>
+        <ProductLis>
           {orderProd.map((item) => (
             <p key={item.id}>{item.nameProduct}</p>
           ))}
-        </div>
+        </ProductLis>
       </ProductContent>
     </ProductContainer>
   );

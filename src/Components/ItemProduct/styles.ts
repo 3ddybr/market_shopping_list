@@ -45,14 +45,23 @@ export const ContentItemProduct = styled.section(
       text-decoration: ${done ? "line-through" : "initial"};
     }
 
+    p:nth-child(7) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 4.5rem;
+      color: ${({ theme }) => theme.blue};
+      /* border: 1px solid red; */
+    }
+
     /* p + p {
       width: 45%;
       text-decoration: ${done ? "line-through" : "initial"};
     } */
-
     input[type="text"] {
       width: 100%;
-      max-width: 9rem;
+      max-width: 8rem;
       background: ${({ theme }) => theme.gray_500};
 
       color: ${({ theme }) => theme.white};

@@ -30,6 +30,9 @@ function ItemProduct({
 }: itemProductProps) {
   const [isCurrentValue, setIsCurrentValue] = useState(currentValue);
 
+  const deferred = isCurrentValue - lastValue;
+  const porcent = (deferred * 100) / lastValue;
+
   return (
     <ContainerItemProduct>
       <ContentItemProduct done={done}>
@@ -75,6 +78,20 @@ function ItemProduct({
           onClick={() => onUpdateValue(id, isCurrentValue)}
           title="Atualizar o preço"
         />
+
+        {/* <CurrencyFormat
+          thousandSeparator={"."}
+          thousandSpacing={"3"}
+          isNumericString={true}
+          fixedDecimalScale
+          decimalScale={2}
+          decimalSeparator=","
+          prefix="%"
+          value={porcent}
+          // onValueChange={(e) => setIsLastValue(e.floatValue)}
+          disabled={true}
+        /> */}
+        <p>{porcent}%</p>
 
         <RiDeleteBin6Line
           size={24}
