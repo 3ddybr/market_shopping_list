@@ -68,6 +68,11 @@ export function List() {
   }
 
   //Função que traz a lista especifica que o usuário clicou
+
+  //nova funcionalidade -- perguntar se quer que traz os produtos da lista anterior
+  //verificar se existe uma lista anterior
+  //verificar se a lista atual esta vazia
+  //abrir modal perguntando se deseja trazer os produtos da lista anterior
   const docRef = doc(dbFirebase, `list/${idParams}`);
   const getList = async () => {
     const docSnap = await getDoc(docRef);

@@ -13,7 +13,7 @@ export default function NavBar() {
   const idUser = user?.id;
   const token = user?.token;
 
-  //funcao para criar nova lista
+  //função para criar nova lista
   const createList = async () => {
     const listCollectionRef = collection(dbFirebase, "list");
     try {

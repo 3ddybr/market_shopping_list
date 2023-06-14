@@ -45,7 +45,7 @@ export const ContentItemProduct = styled.section(
         color: ${({ theme }) => theme.blue};
       }
       p:nth-child(3) {
-        width: 55%;
+        /* width: 55%; */
         overflow: hidden;
         text-overflow: ellipsis;
         text-decoration: ${done ? "line-through" : "initial"};
