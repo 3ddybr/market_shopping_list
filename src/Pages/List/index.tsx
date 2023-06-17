@@ -9,13 +9,14 @@ import { ItemProductTypes } from "../../@types/itemProduct";
 import moment from "moment";
 import Select from "react-select";
 
-import { HomeContainer, HomeContent } from "./styles";
+import { HomeContainer, HomeContent, HomeQuestionLastProduct } from "./styles";
 import { ListContext } from "../../contexts/ListContext";
 import ReactModal from "react-modal";
 import { ModalProduct } from "../../Components/ModalProduct";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { dbFirebase } from "../../services/api/apiFirebase";
 import { Spinier } from "../../utils/spinier";
+import { RiH1 } from "react-icons/ri";
 
 type selectItemType = {
   value: string | undefined;
@@ -33,20 +34,35 @@ export function List() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const docRef = doc(dbFirebase, `list/${idParams}`);
+  const getList = async () => {
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      const data = { ...docSnap.data(), id: docSnap.id };
+      const dataConvert = data as marketListTypes;
+      setList(dataConvert);
+      setProduct(dataConvert.products);
+    }
+
+    //------------------chamada a fake api via axios------------------
+    // const res = await api.get(`list/${idParams}`);
+    // const data: marketListTypes = res.data;
+    // setList(data);
+    // setProduct(data.products);
+  };
+  const dateListCurrent = list?.create_at as number;
+  const deleteNewerList = dataListContext.filter(
+    (item) => item.create_at < dateListCurrent
+  );
+
+  const orderMarketList = deleteNewerList.sort(function (a, b) {
+    if (a.create_at > b.create_at) {
+      return -1;
+    } else {
+      return +1;
+    }
+  });
   function lastValueProd(prodId: string) {
-    const dataListAtual = list?.create_at as number;
-
-    const deleteNewerLists = dataListContext.filter(
-      (item) => item.create_at < dataListAtual
-    );
-    const orderMarketList = deleteNewerLists.sort(function (a, b) {
-      if (a.create_at > b.create_at) {
-        return -1;
-      } else {
-        return +1;
-      }
-    });
-
     const findFirstList = orderMarketList.find((item) =>
       item.products.find((item) => item.id === prodId)
     );
@@ -67,28 +83,19 @@ export function List() {
     setIsOpen(false);
   }
 
-  //Função que traz a lista especifica que o usuário clicou
+  //funcao que pergunta se quer trazer os produtos da lista anterior
 
-  //nova funcionalidade -- perguntar se quer que traz os produtos da lista anterior
-  //verificar se existe uma lista anterior
-  //verificar se a lista atual esta vazia
-  //abrir modal perguntando se deseja trazer os produtos da lista anterior
-  const docRef = doc(dbFirebase, `list/${idParams}`);
-  const getList = async () => {
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      const data = { ...docSnap.data(), id: docSnap.id };
-      const dataConvert = data as marketListTypes;
-      setList(dataConvert);
-      setProduct(dataConvert.products);
+  function getProductsLastList() {
+    //verificar se existe uma lista anterior
+    if (dataListContext.length > 1) {
+      const ultima = orderMarketList.find(
+        (item) => item.create_at < dateListCurrent
+      );
+      ultima === undefined ? setProduct([]) : setProduct(ultima.products);
+
+      console.log("lista de produtos da ultima", ultima?.products);
     }
-
-    //------------------chamada a fake api via axios------------------
-    // const res = await api.get(`list/${idParams}`);
-    // const data: marketListTypes = res.data;
-    // setList(data);
-    // setProduct(data.products);
-  };
+  }
 
   useEffect(() => {
     getList();
@@ -103,17 +110,17 @@ export function List() {
     setLoading(true);
     let newItemList = [...product];
     //verificar se ja existe produto na lista
-    let existeNewList = newItemList.filter(
+    let existNewList = newItemList.filter(
       (item) => item.id === selectedProd?.value
     );
     let existeTabProd = dataProductContext.filter(
       (item) => item.id === selectedProd?.value
     );
 
-    if (existeNewList.length > 0) {
+    if (existNewList.length > 0) {
       //tem na tab prod e na lista
       alert("Lista já possui este produto");
-      existeNewList = [];
+      existNewList = [];
       existeTabProd = [];
       setSelectedPro({
         value: "",
@@ -149,7 +156,7 @@ export function List() {
       setProduct(newItemList);
 
       existeTabProd = [];
-      existeNewList = [];
+      existNewList = [];
       setSelectedPro({
         value: "",
         label: "",
@@ -280,7 +287,7 @@ export function List() {
     //   getList();
   };
 
-  const convert = (date: number) => {
+  const convertToFormatDate = (date: number) => {
     const dateFormat = moment(date).format("DD/MM/YYYY");
     return dateFormat;
   };
@@ -324,7 +331,7 @@ export function List() {
           {loading ? <Spinier /> : <button type="submit">Adicionar</button>}
         </form>
         <main>
-          <h3>Market List, criada em {convert(dataList)}</h3>
+          <h3>Market List, criada em {convertToFormatDate(dataList)}</h3>
           <header>
             <p>
               Total de Itens: <span>{product.length}</span>
@@ -355,8 +362,16 @@ export function List() {
                 />
               ))}
             </>
-          ) : (
+          ) : loading ? (
             <Spinier />
+          ) : (
+            <HomeQuestionLastProduct>
+              <p>Deseja trazer os produtos da ultima lista? </p>
+              <button onClick={getProductsLastList}>
+                {/* Aperte trazer os produtos da ultima lista */}
+                Sim
+              </button>
+            </HomeQuestionLastProduct>
           )}
 
           <ModalProduct isOpen={modalIsOpen} onRequestClose={onRequestClose} />

@@ -15,7 +15,7 @@ export const Historic = () => {
     (list) => list.idUser === user?.id
   );
 
-  const convert = (date: number) => {
+  const convertToFormatDate = (date: number) => {
     const dateFormat = moment(date).format("DD/MM/YYYY");
     return dateFormat;
   };
@@ -36,7 +36,7 @@ export const Historic = () => {
           orderMarketList.map((list, index) => (
             <Link key={list.id} to={`/${list.id}`}>
               <p key={list.id}>{index + 1} - Criada em</p>
-              <span> {convert(list.create_at)}</span>
+              <span> {convertToFormatDate(list.create_at)}</span>
             </Link>
           ))
         ) : (

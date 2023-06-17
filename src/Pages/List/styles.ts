@@ -140,3 +140,32 @@ export const HomeContent = styled.div`
     }
   }
 `;
+export const HomeQuestionLastProduct = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  background: ${({ theme }) => theme.gray_700};
+
+  padding: 1rem;
+  border-radius: 8px;
+  gap: 1rem;
+
+  p {
+    /* color: ${({ theme }) => theme.gray_700}; */
+  }
+
+  button {
+    width: 100%;
+    max-width: 9rem;
+    height: 100%;
+    max-height: 5.4rem;
+    padding: 1rem;
+    font-size: 1.4rem;
+    border-radius: 8px;
+
+    background: ${({ theme }) => theme.blue_dark};
+    color: ${({ theme }) => theme.white};
+  }
+`;
