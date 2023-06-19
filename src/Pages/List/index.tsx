@@ -16,7 +16,6 @@ import { ModalProduct } from "../../Components/ModalProduct";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { dbFirebase } from "../../services/api/apiFirebase";
 import { Spinier } from "../../utils/spinier";
-import { RiH1 } from "react-icons/ri";
 
 type selectItemType = {
   value: string | undefined;
@@ -85,17 +84,21 @@ export function List() {
 
   //funcao que pergunta se quer trazer os produtos da lista anterior
 
-  function getProductsLastList() {
+  const getProductsLastList = async () => {
     //verificar se existe uma lista anterior
     if (dataListContext.length > 1) {
       const ultima = orderMarketList.find(
         (item) => item.create_at < dateListCurrent
       );
       ultima === undefined ? setProduct([]) : setProduct(ultima.products);
-
+      await updateDoc(docRef, {
+        products: ultima?.products,
+      });
       console.log("lista de produtos da ultima", ultima?.products);
+    } else {
+      alert("Não existe lista anterior");
     }
-  }
+  };
 
   useEffect(() => {
     getList();
@@ -366,7 +369,10 @@ export function List() {
             <Spinier />
           ) : (
             <HomeQuestionLastProduct>
-              <p>Deseja trazer os produtos da ultima lista? </p>
+              <p>
+                Deseja trazer os produtos da ultima lista ? Se não adicione 1
+                produto{" "}
+              </p>
               <button onClick={getProductsLastList}>
                 {/* Aperte trazer os produtos da ultima lista */}
                 Sim
