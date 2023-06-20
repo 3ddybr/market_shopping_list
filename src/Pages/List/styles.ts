@@ -54,7 +54,8 @@ export const HomeContent = styled.div`
     }
 
     .css-feonkk-Input2,
-    .css-1cfo1cf {
+    .css-1cfo1cf,
+    .css-19bb58m {
       color: ${({ theme }) => theme.white};
     }
     .css-b62m3t-container {
