@@ -35,6 +35,7 @@ export function List() {
 
   const docRef = doc(dbFirebase, `list/${idParams}`);
   const getList = async () => {
+    setLoading(true);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       const data = { ...docSnap.data(), id: docSnap.id };
@@ -42,6 +43,7 @@ export function List() {
       setList(dataConvert);
       setProduct(dataConvert.products);
     }
+    setLoading(false);
 
     //------------------chamada a fake api via axios------------------
     // const res = await api.get(`list/${idParams}`);
@@ -83,7 +85,6 @@ export function List() {
   }
 
   //funcao que pergunta se quer trazer os produtos da lista anterior
-
   const getProductsLastList = async () => {
     //verificar se existe uma lista anterior
     if (dataListContext.length > 1) {
@@ -94,7 +95,6 @@ export function List() {
       await updateDoc(docRef, {
         products: ultima?.products,
       });
-      console.log("lista de produtos da ultima", ultima?.products);
     } else {
       alert("Não existe lista anterior");
     }
@@ -371,7 +371,7 @@ export function List() {
             <HomeQuestionLastProduct>
               <p>
                 Deseja trazer os produtos da ultima lista ? Se não adicione 1
-                produto{" "}
+                produto.
               </p>
               <button onClick={getProductsLastList}>
                 {/* Aperte trazer os produtos da ultima lista */}

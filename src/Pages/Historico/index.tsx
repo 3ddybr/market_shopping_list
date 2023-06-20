@@ -1,11 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import moment from "moment";
 import { Link } from "react-router-dom";
 import { HistoricContainer, HistoricContent } from "./styles";
 import { ListContext } from "../../contexts/ListContext";
 import { AuthContext } from "../../contexts/AuthContext";
-import { Spinier } from "../../utils/spinier";
 
 export const Historic = () => {
   const { user } = useContext(AuthContext);
@@ -40,7 +39,10 @@ export const Historic = () => {
             </Link>
           ))
         ) : (
-          <Spinier />
+          <>
+            <h3>Crie sua primeira lista, clicando no botão "Nova Lista" </h3>
+            <h3>no menu acima</h3>
+          </>
         )}
       </HistoricContent>
     </HistoricContainer>

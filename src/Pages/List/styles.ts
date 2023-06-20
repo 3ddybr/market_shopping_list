@@ -53,7 +53,8 @@ export const HomeContent = styled.div`
       color: ${({ theme }) => theme.white};
     }
 
-    .css-feonkk-Input2 {
+    .css-feonkk-Input2,
+    .css-1cfo1cf {
       color: ${({ theme }) => theme.white};
     }
     .css-b62m3t-container {

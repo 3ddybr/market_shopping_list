@@ -39,4 +39,9 @@ export const HistoricContent = styled.div`
 
     /* border: 1px solid yellow; */
   }
+
+  h3 {
+    /* font-size: 1.4rem; */
+    color: ${({ theme }) => theme.danger};
+  }
 `;
