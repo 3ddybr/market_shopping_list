@@ -1,5 +1,5 @@
 import ReactModal from "react-modal";
-import { ModalContainer, ModalContent } from "./styled";
+import { ModalContainer } from "./styled";
 import "./modal.css";
 import { Products } from "../../Pages/Products";
 
@@ -18,9 +18,7 @@ export function ModalProduct({ isOpen, onRequestClose }: ModalProductProps) {
       overlayClassName="modal-overlay"
     >
       <ModalContainer>
-        <ModalContent>
-          <Products />
-        </ModalContent>
+        <Products />
       </ModalContainer>
     </ReactModal>
   );
