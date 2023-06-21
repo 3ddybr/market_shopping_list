@@ -7,7 +7,6 @@ export const HomeContainer = styled.div`
 
   width: 100%;
   height: 100%;
-  /* background: ${({ theme }) => theme.gray_700}; */
 `;
 
 export const HomeContent = styled.div`
@@ -23,7 +22,6 @@ export const HomeContent = styled.div`
   max-width: 73.6rem;
   font-size: 1.4rem;
 
-  /* border: 1px solid yellow; */
   height: 100%;
   min-height: 30rem;
 
@@ -40,8 +38,6 @@ export const HomeContent = styled.div`
 
     width: 100%;
     max-width: 73.6rem;
-
-    /* border: 1px solid yellow; */
 
     // css especifico do do input select >>>
     .css-t3ipsp-control {
@@ -126,10 +122,6 @@ export const HomeContent = styled.div`
 
       p + p {
         color: ${({ theme }) => theme.purple};
-
-        /* span {
-          color: ${({ theme }) => theme.danger};
-        } */
       }
 
       span {
@@ -153,10 +145,6 @@ export const HomeQuestionLastProduct = styled.div`
   padding: 1rem;
   border-radius: 8px;
   gap: 1rem;
-
-  p {
-    /* color: ${({ theme }) => theme.gray_700}; */
-  }
 
   button {
     width: 100%;

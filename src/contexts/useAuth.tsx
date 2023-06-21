@@ -13,7 +13,6 @@ export const useAuth = () => {
   const { authenticated, setUser } = useContext(AuthContext);
   const auth = getAuth();
 
-  //Função autentica usuário pelo Google
   async function signInGoogle() {
     signInWithPopup(auth, provider)
       .then((result) => {

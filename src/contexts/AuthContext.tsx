@@ -45,7 +45,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   async function LoginRequest(user: UserProps) {
     try {
       await setDoc(doc(userCollectionRef, user.id), {
-        // id: user.id,
         name: user.name,
         image: user.image,
         token: user.token,
@@ -73,8 +72,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         ...doc.data(),
       }));
       const exist = data.find((doc) => doc.id === user.id);
-
-      // console.log(exist);
 
       //------------------chamada a fake api via axios--------------
       // const response = await api.get("user");

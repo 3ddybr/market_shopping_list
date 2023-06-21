@@ -36,12 +36,9 @@ export const HistoricContent = styled.div`
 
     width: 100%;
     gap: 2rem;
-
-    /* border: 1px solid yellow; */
   }
 
   h3 {
-    /* font-size: 1.4rem; */
     color: ${({ theme }) => theme.danger};
   }
 `;

@@ -25,5 +25,4 @@ export const BannerContent = styled.div`
   h1 {
     font-size: 4rem;
   }
-  /* border: 1px solid red; */
 `;

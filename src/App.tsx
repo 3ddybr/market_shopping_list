@@ -1,5 +1,3 @@
-import { ThemeProvider } from "styled-components";
-
 import { GlobalStyle } from "./styles/global";
 
 import { Outlet } from "react-router-dom";
@@ -11,7 +9,6 @@ import Login from "./Pages/Login";
 import { useContext } from "react";
 import { AuthContext } from "./contexts/AuthContext";
 
-// import { Footer } from "./Components/Footer";
 function App() {
   const { user } = useContext(AuthContext);
   return (

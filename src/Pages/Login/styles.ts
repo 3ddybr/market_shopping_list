@@ -8,6 +8,7 @@ export const LoginContainer = styled.div`
   width: 100%;
   height: 100%;
 `;
+
 export const LoginContent = styled.div`
   display: flex;
   align-items: center;

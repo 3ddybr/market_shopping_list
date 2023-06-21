@@ -36,7 +36,7 @@ export function ListProvider({ children }: ListProviderProps) {
   );
   const [productContext, setProductContext] = useState<ProductType[]>([]);
 
-  // Função tra todas as lista do usuário
+  // Função traz todas as lista do usuário
   useEffect(() => {
     setListContextValue([]);
     if (!user?.id) {

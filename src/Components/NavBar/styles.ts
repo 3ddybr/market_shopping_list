@@ -10,7 +10,6 @@ export const NavBarContainer = styled.div`
   background: ${({ theme }) => theme.gray_700};
 
   padding: 1rem 2rem;
-  /* border: 1px solid blue; */
 `;
 
 export const NavBarContent = styled.div`
@@ -33,11 +32,9 @@ export const NavBarContent = styled.div`
     gap: 2rem;
 
     li {
-      /* font-size: 1.2rem; */
       cursor: pointer;
     }
   }
-  /* border: 1px solid green; */
 `;
 
 export const NavBarButton = styled.button`
@@ -54,6 +51,5 @@ export const NavBarButton = styled.button`
   @media (max-width: 400px) {
     font-size: 1rem;
     padding: 0.5rem 0.5rem;
-    /* color: red; */
   }
 `;

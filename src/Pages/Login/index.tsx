@@ -23,18 +23,18 @@ export default function Login() {
           possa comparar quanto pagou por aquele mesmo item na compra anterior
           automaticamente.
         </p>
-        {/* criar uma funca que loga na google e retorna o user */}
-        {/* <LoginButtonGoogle onClick={() => authenticated(user)}> */}
         <LoginButtonGoogle onClick={signInGoogle}>
           <span>
             <FcGoogle size={24} />
           </span>
           Login com Google
         </LoginButtonGoogle>
-        <LoginButtonFacebook>
+
+        {/* implementar depois o login do facebook */}
+        {/* <LoginButtonFacebook>
           <BsFacebook size={24} />
           Login com Facebook
-        </LoginButtonFacebook>
+        </LoginButtonFacebook> */}
 
         <section>
           <img src={ImgHistoric} />

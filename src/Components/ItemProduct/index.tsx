@@ -57,12 +57,10 @@ function ItemProduct({
             decimalSeparator=","
             prefix="R$"
             value={lastValue}
-            // onValueChange={(e) => setIsLastValue(e.floatValue)}
             disabled={true}
           />
 
           <CurrencyFormat
-            // defaultValue={currentValue}
             thousandSeparator={"."}
             thousandSpacing={"3"}
             isNumericString={true}
@@ -81,18 +79,6 @@ function ItemProduct({
             onClick={() => onUpdateValue(id, isCurrentValue)}
             title="Atualizar o preço"
           />
-          {/* <CurrencyFormat
-          thousandSeparator={"."}
-          thousandSpacing={"3"}
-          isNumericString={true}
-          fixedDecimalScale
-          decimalScale={2}
-          decimalSeparator=","
-          prefix="%"
-          value={porcent}
-          // onValueChange={(e) => setIsLastValue(e.floatValue)}
-          disabled={true}
-        /> */}
           <p>{percent.toFixed(0)}%</p>
 
           <RiDeleteBin6Line
@@ -109,20 +95,3 @@ function ItemProduct({
 }
 
 export default memo(ItemProduct);
-
-// const formmat = new Intl.NumberFormat("pt-BR", {
-//   style: "currency",
-//   currency: "BRL",
-// });
-
-// const currencyLocal = (valor: number) => {
-//   let newV = new Intl.NumberFormat("pt-BR", {
-//     style: "currency",
-//     currency: "BRL",
-//   });
-//   // let newValue = valor.toLocaleString("pt-BR", {
-//   //   style: "currency",
-//   //   currency: "BRL",
-//   // });
-//   return newV.format(valor);
-// };

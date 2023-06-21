@@ -5,5 +5,3 @@ export const ModalContainer = styled.div`
   align-items: center;
   justify-content: center;
 `;
-
-export const ModalContent = styled.div``;

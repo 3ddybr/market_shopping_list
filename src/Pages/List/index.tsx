@@ -86,7 +86,6 @@ export function List() {
 
   //funcao que pergunta se quer trazer os produtos da lista anterior
   const getProductsLastList = async () => {
-    //verificar se existe uma lista anterior
     if (dataListContext.length > 1) {
       const ultima = orderMarketList.find(
         (item) => item.create_at < dateListCurrent
@@ -112,7 +111,6 @@ export function List() {
     e.preventDefault();
     setLoading(true);
     let newItemList = [...product];
-    //verificar se ja existe produto na lista
     let existNewList = newItemList.filter(
       (item) => item.id === selectedProd?.value
     );
@@ -121,7 +119,6 @@ export function List() {
     );
 
     if (existNewList.length > 0) {
-      //tem na tab prod e na lista
       alert("Lista já possui este produto");
       existNewList = [];
       existeTabProd = [];
@@ -171,7 +168,6 @@ export function List() {
       return;
     } else {
       isOpen();
-      //abrir modal de cadastro
       alert(`Por favor cadastre o produto!`);
       setLoading(false);
     }
@@ -203,7 +199,6 @@ export function List() {
     // getList();
   };
 
-  //verificar se os arrays são iguais
   function checkArrays(a1: ItemProductTypes[], a2: ItemProductTypes[]) {
     return JSON.stringify(a1) === JSON.stringify(a2);
   }
@@ -311,7 +306,7 @@ export function List() {
       return +1;
     }
   });
-  const dataList = list?.create_at as number;
+  const dateList = list?.create_at as number;
 
   const counterDone = product.filter((item) => item.done === true);
   return (
@@ -334,7 +329,7 @@ export function List() {
           {loading ? <Spinier /> : <button type="submit">Adicionar</button>}
         </form>
         <main>
-          <h3>Market List, criada em {convertToFormatDate(dataList)}</h3>
+          <h3>Market List, criada em {convertToFormatDate(dateList)}</h3>
           <header>
             <p>
               Total de Itens: <span>{product.length}</span>
@@ -373,10 +368,7 @@ export function List() {
                 Deseja trazer os produtos da ultima lista ? Se não adicione 1
                 produto.
               </p>
-              <button onClick={getProductsLastList}>
-                {/* Aperte trazer os produtos da ultima lista */}
-                Sim
-              </button>
+              <button onClick={getProductsLastList}>Sim</button>
             </HomeQuestionLastProduct>
           )}
 

@@ -13,8 +13,7 @@ export default function NavBar() {
   const idUser = user?.id;
   const token = user?.token;
 
-  //função para criar nova lista
-  const createList = async () => {
+  const createNewList = async () => {
     const listCollectionRef = collection(dbFirebase, "list");
     try {
       const newList = await addDoc(listCollectionRef, {
@@ -53,7 +52,7 @@ export default function NavBar() {
                 <li>Produtos</li>
               </Link>
             </ul>
-            <NavBarButton onClick={createList}>Nova Lista</NavBarButton>
+            <NavBarButton onClick={createNewList}>Nova Lista</NavBarButton>
             <NavBarButton onClick={logout}>Sair</NavBarButton>
           </>
         ) : null}

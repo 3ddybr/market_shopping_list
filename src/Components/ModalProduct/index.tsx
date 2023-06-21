@@ -1,4 +1,3 @@
-import { useState } from "react";
 import ReactModal from "react-modal";
 import { ModalContainer, ModalContent } from "./styled";
 import "./modal.css";
@@ -16,8 +15,6 @@ export function ModalProduct({ isOpen, onRequestClose }: ModalProductProps) {
       className="modal-content"
       onRequestClose={onRequestClose}
       contentLabel="Example Modal"
-      // style={customStyles}
-      // onAfterOpen={afterOpenModal}
       overlayClassName="modal-overlay"
     >
       <ModalContainer>

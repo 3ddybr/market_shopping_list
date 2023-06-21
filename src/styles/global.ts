@@ -21,8 +21,8 @@ body{
   -webkit-font-smoothing: antialiased;
   line-height: 140%;
   width:100%;
-  /* height:100vh; */
 }
+
 body,
   input,
   textarea,

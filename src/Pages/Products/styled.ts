@@ -39,7 +39,6 @@ export const ProductContent = styled.div`
 
     gap: 0.8rem;
 
-    /* border: 1px solid red; 578*/
     input {
       width: 100%;
       height: 5.4rem;
@@ -71,11 +70,9 @@ export const ProductContent = styled.div`
     form {
       input {
         width: 100%;
-        /* max-width: 7.5rem; */
         height: 3rem;
 
         font-size: 1.2rem;
-        /* padding: 0.4rem; */
       }
       button {
         height: 3rem;
@@ -91,4 +88,3 @@ export const ProductLis = styled.div`
   grid-template-columns: repeat(3, 1fr);
   padding: 0 1rem;
 `;
-// 390*844 px
